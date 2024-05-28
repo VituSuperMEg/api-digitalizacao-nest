@@ -1,0 +1,10 @@
+GET http://localhost:3333/api/v1/entidades
+
+###
+GET http://localhost:3333/api/v1/entidades/municipios/CE
+
+###
+GET http://localhost:3333/api/v1/entidades/entidades/2303808
+
+###
+GET http://localhost:3333/api/v1/entidades/230380801
