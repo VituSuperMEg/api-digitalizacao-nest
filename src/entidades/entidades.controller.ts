@@ -1,8 +1,11 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { clientes, configuracoes } from 'src/config/clients';
+import { Controller, Get, Param, Request, UseGuards } from '@nestjs/common';
+import { clientes } from 'src/config/clients';
+import { DatabaseGuard } from 'src/config/guards/conexao.guard';
+import { ConnectionService } from 'src/services/conexaoDB';
 
 @Controller('/api/v1/entidades')
 export class EntidadesController {
+  constructor(private readonly connectionService: ConnectionService) {}
   @Get()
   getEstados() {
     return clientes.estados;
@@ -16,9 +19,15 @@ export class EntidadesController {
     return clientes.entidades[ibge];
   }
 
-  // Estabelecer Conexão com o banco pelo codigo do ibge
+  @UseGuards(DatabaseGuard)
   @Get('/:cliente')
-  getConectarBanco(@Param('cliente') cliente: string) {
-    return configuracoes.database[cliente];
+  async getConectarBanco(@Param('cliente') cliente: string, @Request() req) {
+    const connection = (req as any).dbConnection;
+    const queryRunner = connection.createQueryRunner();
+    await queryRunner.connect();
+    const result = await queryRunner.query('SELECT NOW()');
+    await queryRunner.release();
+
+    return result;
   }
 }

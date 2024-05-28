@@ -45,8 +45,8 @@ export const configuracoes = {
     230380801: {
       host: 'localhost',
       port: '5432',
-      user: 'postgres',
-      db: 'saaeiguatu',
+      username: 'postgres',
+      database: 'saaeiguatu',
       password: '3640',
     },
   },
