@@ -8,3 +8,10 @@ GET http://localhost:3333/api/v1/entidades/entidades/2303808
 
 ###
 GET http://localhost:3333/api/v1/entidades/230380801
+
+
+###
+GET http://localhost:3333/api/v1/caixas/
+
+Content-Type: application/json
+x-cliente-id :230380801

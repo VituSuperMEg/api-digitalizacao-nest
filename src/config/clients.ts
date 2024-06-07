@@ -43,10 +43,11 @@ export const clientes = {
 export const configuracoes = {
   database: {
     230380801: {
+      type: 'postgres',
       host: 'localhost',
       port: '5432',
       username: 'postgres',
-      database: 'saaeiguatu',
+      database: 'idigitalizacao',
       password: '3640',
     },
   },

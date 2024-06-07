@@ -25,7 +25,7 @@ export class EntidadesController {
     const connection = (req as any).dbConnection;
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
-    const result = await queryRunner.query('SELECT NOW()');
+    const result = await queryRunner.query('SELECT * from caixas');
     await queryRunner.release();
 
     return result;
