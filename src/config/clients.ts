@@ -42,13 +42,21 @@ export const clientes = {
 
 export const configuracoes = {
   database: {
-    230380801: {
+    0: {
       type: 'postgres',
-      host: 'localhost',
+      host: 'ipg04.aws.itarget.com.br',
       port: '5432',
       username: 'postgres',
-      database: 'idigitalizacao',
-      password: '3640',
+      database: 'ipontowebdbpmsolonopole',
+      password: 'S551bp7fRs4qRCWx2M5y',
+    },
+    230380801: {
+      type: 'postgres',
+      host: 'idg-02.ctguosegmz9j.sa-east-1.rds.amazonaws.com',
+      port: '5432',
+      username: 'postgres',
+      database: 'modelo',
+      password: 'S551bp7fRs4qRCWx2M5y',
     },
   },
 };
