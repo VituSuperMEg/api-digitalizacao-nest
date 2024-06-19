@@ -4,9 +4,10 @@ import { CaixasService } from './caixas.service';
 import { caixasProviders } from './caixas.providers';
 import { CaixasController } from './caixas.controller';
 import { DatabaseModule } from 'src/config/database.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, AuthModule],
   controllers: [CaixasController],
   providers: [...caixasProviders, ConnectionService, CaixasService],
 })
