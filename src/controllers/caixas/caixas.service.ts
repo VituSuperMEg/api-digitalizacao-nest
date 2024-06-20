@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Caixas } from 'src/models/caixas.entity';
 import { Repository, Connection } from 'typeorm';
 import { CreateCaixasDTO } from './dto/create-caixas.dto';
+import { UpdateCaixasDTO } from './dto/update-caixas.dto';
 
 @Injectable()
 export class CaixasService {
@@ -29,9 +30,9 @@ export class CaixasService {
     });
   }
 
-  async update(id: number, data: CreateCaixasDTO) {
+  async update(data: UpdateCaixasDTO) {
     const property = await this.caixasRespository.findOne({
-      where: { id },
+      where: { id: data.id },
     });
 
     return this.caixasRespository.save({
