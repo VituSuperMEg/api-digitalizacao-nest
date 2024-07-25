@@ -1,9 +1,23 @@
-import { HttpStatus } from '@nestjs/common';
-import { Response } from 'express';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 
-export const Error = (title: string, res: Response, err?: any) => {
-  res.status(HttpStatus.BAD_REQUEST).json({
-    message: title,
-    message_erro: err,
-  });
-};
+@Injectable()
+export class ResponseService {
+  success(data: any, message: string = 'Success') {
+    return {
+      status: HttpStatus.OK,
+      message,
+      data,
+    };
+  }
+
+  error(title: string, err?: any): void {
+    throw new HttpException(
+      {
+        status: HttpStatus.BAD_REQUEST,
+        error: title,
+        message_erro: err,
+      },
+      HttpStatus.BAD_REQUEST,
+    );
+  }
+}

@@ -6,6 +6,7 @@ import { jwtConstants } from 'src/constants/constants';
 import { UsersModule } from '../users/users.module';
 import { UsersService } from '../users/users.service';
 import { usersProviders } from '../users/users.providers';
+import { ResponseService } from 'src/services/response-message';
 
 @Module({
   imports: [
@@ -17,6 +18,6 @@ import { usersProviders } from '../users/users.providers';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService, ...usersProviders],
+  providers: [AuthService, UsersService, ...usersProviders, ResponseService],
 })
 export class AuthModule {}

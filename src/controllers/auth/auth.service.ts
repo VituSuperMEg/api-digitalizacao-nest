@@ -1,22 +1,22 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { compare } from 'bcrypt';
+import { Injectable } from '@nestjs/common';
 import { Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
-import { Error } from 'src/services/response-message';
+import { ResponseService } from 'src/services/response-message';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    private readonly responseService: ResponseService,
   ) {}
 
   async signIn(login: string, pass: string, res: Response): Promise<any> {
     const user = await this.usersService.findLogin(login);
 
     if (!user) {
-      return Error('Este usuário não existe', res);
+      return this.responseService.error('Este usuário não existe');
     }
     // const decode = await compare(pass, user.senha);
 

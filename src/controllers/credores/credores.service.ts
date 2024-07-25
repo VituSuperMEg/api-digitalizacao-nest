@@ -12,5 +12,4 @@ export class CredoresServices {
     return this.model.find();
   }
 
-  find(id : number): Promise<Credores> {}
 }

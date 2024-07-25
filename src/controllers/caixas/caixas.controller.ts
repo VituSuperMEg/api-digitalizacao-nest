@@ -2,10 +2,10 @@ import {
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
 } from '@nestjs/common';
 import { CaixasService } from './caixas.service';
@@ -13,16 +13,22 @@ import { AuthAndDatabaseGuard } from 'src/config/guards/auth.guards';
 import { CreateCaixasDTO } from './dto/create-caixas.dto';
 import { Response } from 'express';
 import { UpdateCaixasDTO } from './dto/update-caixas.dto';
+import { Connection, Repository } from 'typeorm';
+import { Caixas } from 'src/models/caixas.entity';
 
 @Controller('/api/v1/caixas')
 @UseGuards(AuthAndDatabaseGuard)
 export class CaixasController {
-  constructor(private caixasServices: CaixasService) {}
+  constructor(
+    private caixasServices: CaixasService,
+    @Inject('CAIXAS_REPOSITORY') private caixasRespository: Repository<Caixas>,
+  ) {}
 
+  setConnection(connection: Connection) {
+    this.caixasRespository = connection.getRepository(Caixas);
+  }
   @Get()
-  findAll(@Req() request: Request) {
-    const connection = (request as any).dbConnection;
-    this.caixasServices.setConnection(connection);
+  findAll() {
     return this.caixasServices.findAll();
   }
 
