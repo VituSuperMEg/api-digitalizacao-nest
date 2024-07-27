@@ -23,12 +23,13 @@ const entidades_module_1 = __webpack_require__(/*! ./entidades/entidades.module 
 const auth_module_1 = __webpack_require__(/*! ./controllers/auth/auth.module */ "./src/controllers/auth/auth.module.ts");
 const prisma_service_1 = __webpack_require__(/*! ./services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const database_guard_1 = __webpack_require__(/*! ./config/guards/database.guard */ "./src/config/guards/database.guard.ts");
+const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module */ "./src/controllers/users/users.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [entidades_module_1.EntidadesModule, auth_module_1.AuthModule],
+        imports: [entidades_module_1.EntidadesModule, auth_module_1.AuthModule, users_module_1.UsersModule],
         controllers: [],
         providers: [prisma_service_1.PrismaService, database_guard_1.DynamicDatabaseGuard],
     })
@@ -106,6 +107,79 @@ exports.configuracoes = {
         },
     },
 };
+
+
+/***/ }),
+
+/***/ "./src/config/guards/auth.guards.ts":
+/*!******************************************!*\
+  !*** ./src/config/guards/auth.guards.ts ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthAndDatabaseGuard = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
+const constants_1 = __webpack_require__(/*! src/constants/constants */ "./src/constants/constants.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let AuthAndDatabaseGuard = class AuthAndDatabaseGuard {
+    constructor(jwtService, prismaService) {
+        this.jwtService = jwtService;
+        this.prismaService = prismaService;
+    }
+    async canActivate(context) {
+        const request = context.switchToHttp().getRequest();
+        const token = this.extractTokenFromHeader(request);
+        if (!token) {
+            throw new common_1.UnauthorizedException('Token não encontrado.');
+        }
+        try {
+            const payload = await this.jwtService.verifyAsync(token, {
+                secret: constants_1.jwtConstants.secret,
+            });
+            request['user'] = payload;
+        }
+        catch {
+            throw new common_1.UnauthorizedException('Token inválido.');
+        }
+        const client_id = request.headers['x-cliente-id'];
+        const cliente = String(client_id);
+        if (!cliente) {
+            console.error('Cliente não fornecido nos parâmetros da solicitação.');
+            throw new common_1.UnauthorizedException('Cliente ID não fornecido.');
+        }
+        try {
+            await this.prismaService.setConnectionUrl(cliente);
+            request.dbConnection = this.prismaService.getPrismaClient();
+        }
+        catch (error) {
+            console.error(`Erro de conexão ao banco de dados para o cliente ${cliente}:`, error);
+            throw new common_1.UnauthorizedException(`Erro de conexão ao banco de dados para o cliente ${cliente}`);
+        }
+        return true;
+    }
+    extractTokenFromHeader(request) {
+        const [type, token] = request.headers.authorization?.split(' ') ?? [];
+        return type === 'Bearer' ? token : undefined;
+    }
+};
+exports.AuthAndDatabaseGuard = AuthAndDatabaseGuard;
+exports.AuthAndDatabaseGuard = AuthAndDatabaseGuard = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _a : Object, typeof (_b = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _b : Object])
+], AuthAndDatabaseGuard);
 
 
 /***/ }),
@@ -312,6 +386,140 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
 ], AuthService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.controller.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/users/users.controller.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+let UsersController = class UsersController {
+    constructor(services) {
+        this.services = services;
+    }
+    async findAll() {
+        return await this.services.findAll();
+    }
+    async find(id) {
+        return await this.services.find(+id);
+    }
+};
+exports.UsersController = UsersController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "find", null);
+exports.UsersController = UsersController = __decorate([
+    (0, common_1.Controller)('/api/v1/users'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersServices !== "undefined" && users_service_1.UsersServices) === "function" ? _a : Object])
+], UsersController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.module.ts":
+/*!***********************************************!*\
+  !*** ./src/controllers/users/users.module.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const users_controller_1 = __webpack_require__(/*! ./users.controller */ "./src/controllers/users/users.controller.ts");
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
+let UsersModule = class UsersModule {
+};
+exports.UsersModule = UsersModule;
+exports.UsersModule = UsersModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [users_controller_1.UsersController],
+        providers: [prisma_service_1.PrismaService, users_service_1.UsersServices],
+    })
+], UsersModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.service.ts":
+/*!************************************************!*\
+  !*** ./src/controllers/users/users.service.ts ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let UsersServices = class UsersServices {
+    constructor(db) {
+        this.db = db;
+    }
+    findAll() {
+        return this.db.users.findMany();
+    }
+    find(id) {
+        return this.db.users.findFirst({
+            where: { id: id },
+        });
+    }
+};
+exports.UsersServices = UsersServices;
+exports.UsersServices = UsersServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+], UsersServices);
 
 
 /***/ }),
