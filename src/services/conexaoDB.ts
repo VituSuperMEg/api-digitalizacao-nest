@@ -32,8 +32,6 @@ export class ConnectionService {
     const connectionManager = getConnectionManager();
     const connectionName = dbConfig.database || 'default';
 
-    console.table(dbConfig);
-
     if (connectionManager.has(connectionName)) {
       const existingConnection = connectionManager.get(connectionName);
       if (existingConnection.isConnected) {

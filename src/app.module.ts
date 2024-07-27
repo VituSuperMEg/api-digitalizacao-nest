@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { EntidadesModule } from './entidades/entidades.module';
 import { ConnectionService } from './services/conexaoDB';

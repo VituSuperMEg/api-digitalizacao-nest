@@ -44,11 +44,11 @@ export const configuracoes = {
   database: {
     0: {
       type: 'postgres',
-      host: 'ipg04.aws.itarget.com.br',
-      port: '5432',
-      username: 'postgres',
-      database: 'ipontowebdbpmsolonopole',
-      password: 'S551bp7fRs4qRCWx2M5y',
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      database: process.env.DB_DATABASE,
+      password: process.env.DB_PASSWORD,
     },
     230380801: {
       type: 'postgres',

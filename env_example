@@ -1,0 +1,5 @@
+DB_HOST=localhost
+DB_HOST= '5432',
+DB_USERNAME='postgres',
+DB_DATABASE='ipontowebdbpmsolonopole',
+DB_PASSWORD='S551bp7fRs4qRCWx2M5y',
