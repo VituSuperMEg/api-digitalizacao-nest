@@ -7,31 +7,35 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { jwtConstants } from 'src/constants/constants';
-import { ConnectionService } from 'src/services/conexaoDB';
+import { PrismaService } from 'src/services/prisma/prisma.service';
 
 @Injectable()
 export class AuthAndDatabaseGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
-    private connectionService: ConnectionService,
+    private prismaService: PrismaService,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: Request = context.switchToHttp().getRequest();
 
+    // Extração do token
     const token = this.extractTokenFromHeader(request);
     if (!token) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Token não encontrado.');
     }
+
+    // Verificação do token JWT
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: jwtConstants.secret,
       });
       request['user'] = payload;
     } catch {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Token inválido.');
     }
 
+    // Extração do ID do cliente
     const client_id = request.headers['x-cliente-id'];
     const cliente = String(client_id);
 
@@ -40,9 +44,10 @@ export class AuthAndDatabaseGuard implements CanActivate {
       throw new UnauthorizedException('Cliente ID não fornecido.');
     }
 
+    // Configuração da conexão com o banco de dados
     try {
-      const connection = await this.connectionService.getConnection(cliente);
-      (request as any).dbConnection = connection;
+      await this.prismaService.setConnectionUrl(cliente);
+      (request as any).dbConnection = this.prismaService.getPrismaClient();
     } catch (error) {
       console.error(
         `Erro de conexão ao banco de dados para o cliente ${cliente}:`,

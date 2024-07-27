@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { EntidadesController } from './entidades.controller';
-import { ConnectionService } from 'src/services/conexaoDB';
+import { PrismaService } from 'src/services/prisma/prisma.service';
 
 @Module({
   imports: [],
   controllers: [EntidadesController],
-  providers: [ConnectionService],
+  providers: [PrismaService],
 })
 export class EntidadesModule {}

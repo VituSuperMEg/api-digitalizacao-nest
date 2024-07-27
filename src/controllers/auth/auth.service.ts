@@ -1,28 +1,34 @@
 import { Injectable } from '@nestjs/common';
-import { Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '../users/users.service';
+import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private usersService: UsersService,
+    private readonly prismaService: PrismaService,
     private jwtService: JwtService,
     private readonly responseService: ResponseService,
   ) {}
 
-  async signIn(login: string, pass: string, res: Response): Promise<any> {
-    const user = await this.usersService.findLogin(login);
+  async signIn(login: string, pass: string): Promise<any> {
+    // Assegure-se de que o Prisma Service está usando a conexão correta
+    const prisma = this.prismaService.getPrismaClient();
+
+    const user = await prisma.users.findFirst({
+      where: { login: login },
+    });
 
     if (!user) {
       return this.responseService.error('Este usuário não existe');
     }
-    // const decode = await compare(pass, user.senha);
 
+    // Verifique a senha (adapte para seu método de verificação)
+    // const decode = await compare(pass, user.senha);
     // if (!decode) {
     //   throw new UnauthorizedException();
     // }
+
     const payload = { sub: user.id, username: user.login };
     return {
       access_token: await this.jwtService.signAsync(payload),
