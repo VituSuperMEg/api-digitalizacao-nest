@@ -26,6 +26,7 @@ const database_guard_1 = __webpack_require__(/*! ./config/guards/database.guard 
 const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module */ "./src/controllers/users/users.module.ts");
 const ano_mes_module_1 = __webpack_require__(/*! ./controllers/ano_mes/ano_mes.module */ "./src/controllers/ano_mes/ano_mes.module.ts");
 const salas_module_1 = __webpack_require__(/*! ./controllers/salas/salas.module */ "./src/controllers/salas/salas.module.ts");
+const armario_module_1 = __webpack_require__(/*! ./controllers/armario/armario.module */ "./src/controllers/armario/armario.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -37,6 +38,7 @@ exports.AppModule = AppModule = __decorate([
             users_module_1.UsersModule,
             ano_mes_module_1.AnoMesModule,
             salas_module_1.SalasModule,
+            armario_module_1.ArmarioModule,
         ],
         controllers: [],
         providers: [prisma_service_1.PrismaService, database_guard_1.DynamicDatabaseGuard],
@@ -471,6 +473,270 @@ exports.CreateAnoMesDTO = void 0;
 class CreateAnoMesDTO {
 }
 exports.CreateAnoMesDTO = CreateAnoMesDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/armario.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/armario/armario.controller.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ArmarioController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const armario_service_1 = __webpack_require__(/*! ./armario.service */ "./src/controllers/armario/armario.service.ts");
+const create_armario_dto_1 = __webpack_require__(/*! ./dto/create-armario.dto */ "./src/controllers/armario/dto/create-armario.dto.ts");
+const update_armario_dto_1 = __webpack_require__(/*! ./dto/update-armario.dto */ "./src/controllers/armario/dto/update-armario.dto.ts");
+let ArmarioController = class ArmarioController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    find(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.ArmarioController = ArmarioController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ArmarioController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ArmarioController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_armario_dto_1.CreateArmaroDTO !== "undefined" && create_armario_dto_1.CreateArmaroDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], ArmarioController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_armario_dto_1.UpdateArmarioDTO !== "undefined" && update_armario_dto_1.UpdateArmarioDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], ArmarioController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ArmarioController.prototype, "remove", null);
+exports.ArmarioController = ArmarioController = __decorate([
+    (0, common_1.Controller)('api/v1/armario'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof armario_service_1.ArmarioService !== "undefined" && armario_service_1.ArmarioService) === "function" ? _a : Object])
+], ArmarioController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/armario.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/armario/armario.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ArmarioModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const armario_controller_1 = __webpack_require__(/*! ./armario.controller */ "./src/controllers/armario/armario.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const armario_service_1 = __webpack_require__(/*! ./armario.service */ "./src/controllers/armario/armario.service.ts");
+let ArmarioModule = class ArmarioModule {
+};
+exports.ArmarioModule = ArmarioModule;
+exports.ArmarioModule = ArmarioModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [armario_controller_1.ArmarioController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, armario_service_1.ArmarioService],
+    })
+], ArmarioModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/armario.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/armario/armario.service.ts ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ArmarioService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let ArmarioService = class ArmarioService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    async findAll() {
+        const armarios = await this.db.armario.findMany({
+            select: {
+                id: true,
+                descricao: true,
+                salas: {
+                    select: {
+                        id: true,
+                        descricao: true,
+                    },
+                },
+            },
+        });
+        return armarios;
+    }
+    async find(id) {
+        const armario = await this.db.armario.findFirst({
+            where: { id: id },
+            select: {
+                id: true,
+                descricao: true,
+                salas: {
+                    select: {
+                        id: true,
+                        descricao: true,
+                    },
+                },
+            },
+        });
+        if (!armario) {
+            this.responseService.error('Este registro não existe!');
+        }
+        return armario;
+    }
+    async create(data) {
+        await this.db.armario.create({
+            data: {
+                descricao: data.descricao,
+                salas_id: data.sala_id,
+            },
+        });
+        return this.responseService.success({}, 'Registro criado com Sucesso!');
+    }
+    async update(data) {
+        const { id, descricao } = data;
+        const armario = await this.db.armario.findFirst({
+            where: { id: id },
+        });
+        if (!armario) {
+            this.responseService.error('Este registro não existe!');
+        }
+        await this.db.armario.update({
+            where: { id: id },
+            data: {
+                descricao: descricao,
+            },
+        });
+        return this.responseService.success({}, 'Registro Alterado com Sucesso!');
+    }
+    async remove(id) {
+        const armario = await this.db.armario.findFirst({
+            where: { id: id },
+        });
+        if (!armario) {
+            this.responseService.error('Este registro não existe!');
+        }
+        await this.db.armario.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Registro excluído com Sucesso!');
+    }
+};
+exports.ArmarioService = ArmarioService;
+exports.ArmarioService = ArmarioService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], ArmarioService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/dto/create-armario.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/armario/dto/create-armario.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateArmaroDTO = void 0;
+class CreateArmaroDTO {
+}
+exports.CreateArmaroDTO = CreateArmaroDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/dto/update-armario.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/armario/dto/update-armario.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateArmarioDTO = void 0;
+class UpdateArmarioDTO {
+}
+exports.UpdateArmarioDTO = UpdateArmarioDTO;
 
 
 /***/ }),

@@ -7,6 +7,7 @@ import { DynamicDatabaseGuard } from './config/guards/database.guard';
 import { UsersModule } from './controllers/users/users.module';
 import { AnoMesModule } from './controllers/ano_mes/ano_mes.module';
 import { SalasModule } from './controllers/salas/salas.module';
+import { ArmarioModule } from './controllers/armario/armario.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SalasModule } from './controllers/salas/salas.module';
     UsersModule,
     AnoMesModule,
     SalasModule,
+    ArmarioModule,
   ],
   controllers: [],
   providers: [PrismaService, DynamicDatabaseGuard],
