@@ -25,12 +25,19 @@ const prisma_service_1 = __webpack_require__(/*! ./services/prisma/prisma.servic
 const database_guard_1 = __webpack_require__(/*! ./config/guards/database.guard */ "./src/config/guards/database.guard.ts");
 const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module */ "./src/controllers/users/users.module.ts");
 const ano_mes_module_1 = __webpack_require__(/*! ./controllers/ano_mes/ano_mes.module */ "./src/controllers/ano_mes/ano_mes.module.ts");
+const salas_module_1 = __webpack_require__(/*! ./controllers/salas/salas.module */ "./src/controllers/salas/salas.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [entidades_module_1.EntidadesModule, auth_module_1.AuthModule, users_module_1.UsersModule, ano_mes_module_1.AnoMesModule],
+        imports: [
+            entidades_module_1.EntidadesModule,
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+            ano_mes_module_1.AnoMesModule,
+            salas_module_1.SalasModule,
+        ],
         controllers: [],
         providers: [prisma_service_1.PrismaService, database_guard_1.DynamicDatabaseGuard],
     })
@@ -609,6 +616,109 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
 ], AuthService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/salas/salas.controller.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/salas/salas.controller.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SalasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+let SalasController = class SalasController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() { }
+};
+exports.SalasController = SalasController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "findAll", null);
+exports.SalasController = SalasController = __decorate([
+    (0, common_1.Controller)('api/v1/salas'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof salas_service_1.SalasServices !== "undefined" && salas_service_1.SalasServices) === "function" ? _a : Object])
+], SalasController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/salas/salas.module.ts":
+/*!***********************************************!*\
+  !*** ./src/controllers/salas/salas.module.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SalasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
+const salas_controller_1 = __webpack_require__(/*! ./salas.controller */ "./src/controllers/salas/salas.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const controller_service_1 = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../controller.service'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+let SalasModule = class SalasModule {
+};
+exports.SalasModule = SalasModule;
+exports.SalasModule = SalasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [salas_controller_1.SalasController],
+        providers: [salas_service_1.SalasServices, prisma_service_1.PrismaService, controller_service_1.Controller],
+    })
+], SalasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/salas/salas.service.ts":
+/*!************************************************!*\
+  !*** ./src/controllers/salas/salas.service.ts ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SalasServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let SalasServices = class SalasServices {
+};
+exports.SalasServices = SalasServices;
+exports.SalasServices = SalasServices = __decorate([
+    (0, common_1.Injectable)()
+], SalasServices);
 
 
 /***/ }),

@@ -14,20 +14,43 @@ datasource db {
 }
 
 model Users {
-  id Int @id @default(autoincrement())
-  login String 
-  senha String
-  nome  String?
-  ativo String
-  email String @unique
-  telefone String @unique
-  criado_em DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  login       String
+  senha       String
+  nome        String?
+  ativo       String
+  email       String   @unique
+  telefone    String   @unique
+  criado_em   DateTime @default(now())
   alterado_em DateTime @default(now())
+
   @@map("users")
 }
+
 model AnoMes {
-  id Int @id @default(autoincrement())
+  id  Int    @id @default(autoincrement())
   ano String
   mes String
+
   @@map("ano_mes")
+}
+
+model Salas {
+  id          Int       @id @default(autoincrement())
+  descricao   String
+  criado_em   DateTime  @default(now())
+  alterado_em DateTime  @default(now())
+  Armario     Armario[]
+
+  @@map("salas")
+}
+
+model Armario {
+  id          Int      @id @default(autoincrement())
+  descricao   String
+  criado_em   DateTime @default(now())
+  alterado_em DateTime @default(now())
+  salas       Salas    @relation(fields: [salas_id], references: [id])
+  salas_id    Int
+  @@map("armarios")
 }
