@@ -390,6 +390,38 @@ exports.AuthService = AuthService = __decorate([
 
 /***/ }),
 
+/***/ "./src/controllers/users/dto/create-users.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/users/dto/create-users.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateUsersDTO = void 0;
+class CreateUsersDTO {
+}
+exports.CreateUsersDTO = CreateUsersDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/dto/update-users.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/users/dto/update-users.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateUsersDto = void 0;
+class UpdateUsersDto {
+}
+exports.UpdateUsersDto = UpdateUsersDto;
+
+
+/***/ }),
+
 /***/ "./src/controllers/users/users.controller.ts":
 /*!***************************************************!*\
   !*** ./src/controllers/users/users.controller.ts ***!
@@ -409,12 +441,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UsersController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
 const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const create_users_dto_1 = __webpack_require__(/*! ./dto/create-users.dto */ "./src/controllers/users/dto/create-users.dto.ts");
+const update_users_dto_1 = __webpack_require__(/*! ./dto/update-users.dto */ "./src/controllers/users/dto/update-users.dto.ts");
 let UsersController = class UsersController {
     constructor(services) {
         this.services = services;
@@ -424,6 +458,15 @@ let UsersController = class UsersController {
     }
     async find(id) {
         return await this.services.find(+id);
+    }
+    async create(data) {
+        return this.services.create(data);
+    }
+    async update(data) {
+        return this.services.update(data);
+    }
+    async remove(id) {
+        return this.services.remove(+id);
     }
 };
 exports.UsersController = UsersController;
@@ -440,6 +483,27 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_users_dto_1.CreateUsersDTO !== "undefined" && create_users_dto_1.CreateUsersDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_users_dto_1.UpdateUsersDto !== "undefined" && update_users_dto_1.UpdateUsersDto) === "function" ? _c : Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('remove/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "remove", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('/api/v1/users'),
     (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
@@ -468,13 +532,14 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const users_controller_1 = __webpack_require__(/*! ./users.controller */ "./src/controllers/users/users.controller.ts");
 const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
 exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         controllers: [users_controller_1.UsersController],
-        providers: [prisma_service_1.PrismaService, users_service_1.UsersServices],
+        providers: [prisma_service_1.PrismaService, users_service_1.UsersServices, response_message_1.ResponseService],
     })
 ], UsersModule);
 
@@ -497,14 +562,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UsersServices = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const bcrypt_1 = __webpack_require__(/*! bcrypt */ "bcrypt");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let UsersServices = class UsersServices {
-    constructor(db) {
+    constructor(db, responseService) {
         this.db = db;
+        this.responseService = responseService;
     }
     findAll() {
         return this.db.users.findMany();
@@ -514,11 +582,71 @@ let UsersServices = class UsersServices {
             where: { id: id },
         });
     }
+    async create(data) {
+        try {
+            const { nome, login, senha, email, telefone } = data;
+            const hashPassword = await (0, bcrypt_1.hash)(senha, 10);
+            const user = await this.db.users.findFirst({
+                where: { email: email },
+            });
+            if (user) {
+                return this.responseService.error('Já existe um usuário com este e-mail!');
+            }
+            await this.db.users.create({
+                data: {
+                    nome: nome,
+                    email: email,
+                    login: login,
+                    senha: hashPassword,
+                    ativo: 'S',
+                    telefone: telefone,
+                },
+            });
+            return this.responseService.success({}, 'Usuário cadastrado com sucesso!');
+        }
+        catch (err) {
+            return this.responseService.error('Erro', err);
+        }
+    }
+    async update(data) {
+        const { id, nome, email, telefone, ativo, login, senha } = data;
+        const user = await this.db.users.findFirst({
+            where: { email: email, id: id },
+        });
+        if (!user) {
+            return this.responseService.error('Já existe um usuário com este e-mail!');
+        }
+        const newPasswordHash = await (0, bcrypt_1.hash)(senha, 10);
+        await this.db.users.update({
+            where: { id: id },
+            data: {
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                ativo: ativo,
+                login: login,
+                senha: newPasswordHash,
+            },
+        });
+        return this.responseService.success({}, 'Registro Alterado com Sucesso!');
+    }
+    async remove(id) {
+        const user = await this.db.users.findFirst({
+            where: { id: id },
+        });
+        if (!user) {
+            this.responseService.error('Este usuário não existe em nossa base de dados. Por favor entre em contato com operador do sistema!');
+        }
+        await this.db.users.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Regristo excluído com sucesso!');
+    }
 };
 exports.UsersServices = UsersServices;
 exports.UsersServices = UsersServices = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
 ], UsersServices);
 
 
@@ -674,7 +802,6 @@ let PrismaService = class PrismaService extends client_1.PrismaClient {
     async setConnectionUrl(clientId) {
         const cliente = clients_1.configuracoes.database[+clientId];
         const url = `postgresql://${cliente.username}:${cliente.password}@${cliente.host}:${cliente.port}/${cliente.database}?schema=public`;
-        console.log(url);
         await this.prisma.$disconnect();
         this.prisma = new client_1.PrismaClient({
             datasources: {
@@ -775,6 +902,16 @@ module.exports = require("@nestjs/jwt");
 /***/ ((module) => {
 
 module.exports = require("@prisma/client");
+
+/***/ }),
+
+/***/ "bcrypt":
+/*!*************************!*\
+  !*** external "bcrypt" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("bcrypt");
 
 /***/ }),
 
