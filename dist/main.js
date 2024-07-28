@@ -24,12 +24,13 @@ const auth_module_1 = __webpack_require__(/*! ./controllers/auth/auth.module */ 
 const prisma_service_1 = __webpack_require__(/*! ./services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const database_guard_1 = __webpack_require__(/*! ./config/guards/database.guard */ "./src/config/guards/database.guard.ts");
 const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module */ "./src/controllers/users/users.module.ts");
+const ano_mes_module_1 = __webpack_require__(/*! ./controllers/ano_mes/ano_mes.module */ "./src/controllers/ano_mes/ano_mes.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [entidades_module_1.EntidadesModule, auth_module_1.AuthModule, users_module_1.UsersModule],
+        imports: [entidades_module_1.EntidadesModule, auth_module_1.AuthModule, users_module_1.UsersModule, ano_mes_module_1.AnoMesModule],
         controllers: [],
         providers: [prisma_service_1.PrismaService, database_guard_1.DynamicDatabaseGuard],
     })
@@ -241,6 +242,228 @@ exports.jwtConstants = void 0;
 exports.jwtConstants = {
     secret: '5bfca4a1474397f842accb61211ab197',
 };
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/ano_mes.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.controller.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AnoMesController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const ano_mes_service_1 = __webpack_require__(/*! ./ano_mes.service */ "./src/controllers/ano_mes/ano_mes.service.ts");
+const create_ano_mes_dto_1 = __webpack_require__(/*! ./dto/create.ano_mes.dto */ "./src/controllers/ano_mes/dto/create.ano_mes.dto.ts");
+let AnoMesController = class AnoMesController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    find(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.AnoMesController = AnoMesController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AnoMesController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AnoMesController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_ano_mes_dto_1.CreateAnoMesDTO !== "undefined" && create_ano_mes_dto_1.CreateAnoMesDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], AnoMesController.prototype, "create", null);
+__decorate([
+    (0, common_1.Delete)('remove/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AnoMesController.prototype, "remove", null);
+exports.AnoMesController = AnoMesController = __decorate([
+    (0, common_1.Controller)('api/v1/ano-mes'),
+    __metadata("design:paramtypes", [typeof (_a = typeof ano_mes_service_1.AnoMesService !== "undefined" && ano_mes_service_1.AnoMesService) === "function" ? _a : Object])
+], AnoMesController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/ano_mes.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AnoMesModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const ano_mes_controller_1 = __webpack_require__(/*! ./ano_mes.controller */ "./src/controllers/ano_mes/ano_mes.controller.ts");
+const ano_mes_service_1 = __webpack_require__(/*! ./ano_mes.service */ "./src/controllers/ano_mes/ano_mes.service.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let AnoMesModule = class AnoMesModule {
+};
+exports.AnoMesModule = AnoMesModule;
+exports.AnoMesModule = AnoMesModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [ano_mes_controller_1.AnoMesController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, ano_mes_service_1.AnoMesService, app_util_1.AppUtil],
+    })
+], AnoMesModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/ano_mes.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.service.ts ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AnoMesService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let AnoMesService = class AnoMesService {
+    constructor(db, responseService, appUtil) {
+        this.db = db;
+        this.responseService = responseService;
+        this.appUtil = appUtil;
+    }
+    async findAll() {
+        const sql = await this.db.anoMes.findMany();
+        const data = [];
+        sql.forEach((item) => {
+            data.push({
+                id: item.id,
+                ano: item.ano,
+                mes: this.appUtil.formatarMes(item.mes),
+            });
+        });
+        return data;
+    }
+    async find(id) {
+        const sql = await this.db.anoMes.findFirst({
+            where: { id: id },
+        });
+        const formattedMonth = this.appUtil.formatarMes(sql.mes);
+        const data = {
+            ...sql,
+            mes: formattedMonth,
+        };
+        return data;
+    }
+    async create(data) {
+        const exists = await this.db.anoMes.findFirst({
+            where: {
+                ano: data.ano,
+                mes: data.mes,
+            },
+        });
+        if (exists) {
+            this.responseService.error(`Jà existe este mesmo ano ${data.ano} e este mesmo mês ${this.appUtil.formatarMes(data.mes)} cadastado!`);
+        }
+        await this.db.anoMes.create({
+            data: {
+                ano: data.ano,
+                mes: data.mes,
+            },
+        });
+        return this.responseService.success({}, 'Registrado criado com sucesso!');
+    }
+    async remove(id) {
+        const exits = await this.db.anoMes.findFirst({
+            where: { id: id },
+        });
+        if (!exits) {
+            return this.responseService.error('Este registro não existe!');
+        }
+        await this.db.anoMes.delete({
+            where: {
+                id: id,
+            },
+        });
+        return this.responseService.success({}, 'Registro excluído com sucesso!');
+    }
+};
+exports.AnoMesService = AnoMesService;
+exports.AnoMesService = AnoMesService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof app_util_1.AppUtil !== "undefined" && app_util_1.AppUtil) === "function" ? _c : Object])
+], AnoMesService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/dto/create.ano_mes.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/ano_mes/dto/create.ano_mes.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateAnoMesDTO = void 0;
+class CreateAnoMesDTO {
+}
+exports.CreateAnoMesDTO = CreateAnoMesDTO;
 
 
 /***/ }),
@@ -763,6 +986,62 @@ exports.EntidadesModule = EntidadesModule = __decorate([
         providers: [prisma_service_1.PrismaService],
     })
 ], EntidadesModule);
+
+
+/***/ }),
+
+/***/ "./src/services/app-util.ts":
+/*!**********************************!*\
+  !*** ./src/services/app-util.ts ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppUtil = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let AppUtil = class AppUtil {
+    formatarMes(mes) {
+        switch (mes) {
+            case '1':
+                return 'Janeiro';
+            case '2':
+                return 'Fevereiro';
+            case '3':
+                return 'Março';
+            case '4':
+                return 'Abril';
+            case '5':
+                return 'Maio';
+            case '6':
+                return 'Junho';
+            case '7':
+                return 'Julho';
+            case '8':
+                return 'Agosto';
+            case '9':
+                return 'Setembro';
+            case '10':
+                return 'Outubro';
+            case '11':
+                return 'Novembro';
+            case '12':
+                return 'Dezembro';
+            default:
+                return 'Mês inválido';
+        }
+    }
+};
+exports.AppUtil = AppUtil;
+exports.AppUtil = AppUtil = __decorate([
+    (0, common_1.Injectable)()
+], AppUtil);
 
 
 /***/ }),

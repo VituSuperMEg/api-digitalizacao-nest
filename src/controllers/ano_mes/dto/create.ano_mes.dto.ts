@@ -1,4 +1,4 @@
-export class AnoMesDTO {
+export class CreateAnoMesDTO {
   ano: string;
   mes: string;
 }
