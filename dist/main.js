@@ -620,6 +620,38 @@ exports.AuthService = AuthService = __decorate([
 
 /***/ }),
 
+/***/ "./src/controllers/salas/dto/create-salas.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/salas/dto/create-salas.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateSalasDTO = void 0;
+class CreateSalasDTO {
+}
+exports.CreateSalasDTO = CreateSalasDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/salas/dto/update-salas.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/salas/dto/update-salas.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateSalasDTO = void 0;
+class UpdateSalasDTO {
+}
+exports.UpdateSalasDTO = UpdateSalasDTO;
+
+
+/***/ }),
+
 /***/ "./src/controllers/salas/salas.controller.ts":
 /*!***************************************************!*\
   !*** ./src/controllers/salas/salas.controller.ts ***!
@@ -636,17 +668,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SalasController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
 const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const update_salas_dto_1 = __webpack_require__(/*! ./dto/update-salas.dto */ "./src/controllers/salas/dto/update-salas.dto.ts");
+const create_salas_dto_1 = __webpack_require__(/*! ./dto/create-salas.dto */ "./src/controllers/salas/dto/create-salas.dto.ts");
 let SalasController = class SalasController {
     constructor(service) {
         this.service = service;
     }
-    findAll() { }
+    findAll() {
+        return this.service.findAll();
+    }
+    find(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
 };
 exports.SalasController = SalasController;
 __decorate([
@@ -655,6 +706,34 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], SalasController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_salas_dto_1.CreateSalasDTO !== "undefined" && create_salas_dto_1.CreateSalasDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_salas_dto_1.UpdateSalasDTO !== "undefined" && update_salas_dto_1.UpdateSalasDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('remove/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "remove", null);
 exports.SalasController = SalasController = __decorate([
     (0, common_1.Controller)('api/v1/salas'),
     (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
@@ -683,14 +762,14 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
 const salas_controller_1 = __webpack_require__(/*! ./salas.controller */ "./src/controllers/salas/salas.controller.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
-const controller_service_1 = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../controller.service'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let SalasModule = class SalasModule {
 };
 exports.SalasModule = SalasModule;
 exports.SalasModule = SalasModule = __decorate([
     (0, common_1.Module)({
         controllers: [salas_controller_1.SalasController],
-        providers: [salas_service_1.SalasServices, prisma_service_1.PrismaService, controller_service_1.Controller],
+        providers: [salas_service_1.SalasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
     })
 ], SalasModule);
 
@@ -710,14 +789,77 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SalasServices = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let SalasServices = class SalasServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    async findAll() {
+        return this.db.salas.findMany();
+    }
+    async find(id) {
+        return this.db.salas.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.salas.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                },
+            });
+            return this.responseService.success({}, 'Registro criado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar criar a sala', error);
+        }
+    }
+    async update(data) {
+        try {
+            const exists = await this.db.salas.findFirst({
+                where: { id: data.id },
+            });
+            if (!exists) {
+                return this.responseService.error('Este registro não existe!');
+            }
+            await this.db.salas.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao,
+                },
+            });
+            return this.responseService.success({}, 'Registro atualizado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar atualizar a sala', error);
+        }
+    }
+    async remove(id) {
+        try {
+            await this.db.salas.delete({
+                where: { id: id },
+            });
+            return this.responseService.success({}, 'Registro excluído com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar excluir a sala', error);
+        }
+    }
 };
 exports.SalasServices = SalasServices;
 exports.SalasServices = SalasServices = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
 ], SalasServices);
 
 
