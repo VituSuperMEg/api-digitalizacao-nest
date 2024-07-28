@@ -52,5 +52,105 @@ model Armario {
   alterado_em DateTime @default(now())
   salas       Salas    @relation(fields: [salas_id], references: [id])
   salas_id    Int
+
   @@map("armarios")
+}
+
+model Credores {
+  id                    Int            @id @default(autoincrement())
+  nome                  String
+  tipo_documento        String
+  cpf                   String         @unique
+  logradouro            String?
+  numero                String?
+  cep                   String
+  email                 String         @unique
+  cidade                String?
+  telefone              String
+  telefone_complementar String?
+  banco                 String
+  agencia               String
+  conta                 String
+  observacoes           String?
+  criado_em             DateTime       @default(now())
+  alterado_em           DateTime       @default(now())
+  CabDocumento          CabDocumento[]
+
+  @@map("credores")
+}
+
+model Caixas {
+  id           Int            @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
+  CabDocumento CabDocumento[]
+
+  @@map("caixas")
+}
+
+model Prateleira {
+  id           Int            @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
+  CabDocumento CabDocumento[]
+
+  @@map("prateleira")
+}
+
+model CabDocumento {
+  id                      Int         @id @default(autoincrement())
+  cod_ent                 String?
+  cod_cc                  String?
+  cod_seq                 String?
+  cod_destino             String?
+  cod_setor               String?
+  cod_grupo               String?
+  cod_subgrupo            String?
+  dta_doc                 DateTime?
+  path_doc                String?
+  obs_doc                 String?
+  ano_doc                 String?
+  mes_doc                 String?
+  nome_usuario            String?
+  dta_digita              DateTime?
+  qtde_folhas             String?
+  cod_suborgao            String?
+  credor                  Credores    @relation(fields: [credor_id], references: [id])
+  credor_id               Int
+  num_processo            String?
+  num_empenho             String?
+  dta_pagamento           DateTime?
+  valor_pagamento         String?
+  digitalizado            String?
+  modalidade_licitacao    String?
+  tipo_licitacao          String?
+  classificacao_economica String?
+  doc_caixa               String?
+  num_contrato            String?
+  num_contrato_original   String?
+  tipo_contrato           String?
+  modalidade_contrato     String?
+  data_empenho            DateTime?
+  caixas                  Caixas?     @relation(fields: [caixa_id], references: [id])
+  caixa_id                Int?
+  prateleria              Prateleira? @relation(fields: [prateleria_id], references: [id])
+  prateleria_id           Int?
+  criado_em               DateTime    @default(now())
+  alterado_em             DateTime    @default(now())
+
+  @@map("cab_documento")
+}
+
+model CentroCusto {
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  cod_entidade String?
+  cod_cc       String?
+  ativa_cc     String?
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+
+  @@map("centro_custo")
 }
