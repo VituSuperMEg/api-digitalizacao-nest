@@ -890,7 +890,9 @@ let AuthService = class AuthService {
             ativo: user.ativo,
             username: user.login,
             cliente_id: global.CLIENTE_ID,
-            cliente,
+            cliente: {
+                database: cliente.database,
+            },
         };
         return {
             session: await this.jwtService.signAsync(payload),
