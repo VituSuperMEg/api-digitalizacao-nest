@@ -26,18 +26,15 @@ export class SessionInterceptor implements NestInterceptor {
       if (authHeader) {
         const token = authHeader.replace('Bearer ', '');
         try {
-          // Decodifica o token JWT e extrai as informações
           const decoded = jwt.decode(token, { complete: true });
-          // Armazena as informações decodificadas no contexto da requisição
           request.sessionContext = decoded?.payload || {};
           global.SESSION = decoded?.payload as {
             username: string;
           };
         } catch (err) {
-          console.error('Failed to decode JWT', err);
+          console.error(err);
         }
       } else {
-        // Se não houver cabeçalho de autorização, configura um contexto vazio
         request.sessionContext = {};
       }
     }

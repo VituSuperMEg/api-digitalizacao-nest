@@ -1,6 +1,7 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { compare } from 'bcrypt';
+import { Request } from 'express';
+import { configuracoes } from 'src/config/clients';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 
@@ -13,7 +14,6 @@ export class AuthService {
   ) {}
 
   async signIn(login: string, pass: string): Promise<any> {
-    // Assegure-se de que o Prisma Service está usando a conexão correta
     const prisma = this.prismaService.getPrismaClient();
 
     const user = await prisma.users.findFirst({
@@ -29,8 +29,17 @@ export class AuthService {
     // if (!decode) {
     //   throw new UnauthorizedException();
     // }
+    const cliente = configuracoes.database[global.CLIENTE_ID];
+    const payload = {
+      sub: user.id,
+      id: user.id,
+      email: user.email,
+      ativo: user.ativo,
+      username: user.login,
+      cliente_id: global.CLIENTE_ID,
+      cliente,
+    };
 
-    const payload = { sub: user.id, username: user.login };
     return {
       session: await this.jwtService.signAsync(payload),
     };

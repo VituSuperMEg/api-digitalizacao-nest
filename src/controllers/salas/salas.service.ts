@@ -12,6 +12,8 @@ export class SalasServices {
   ) {}
 
   async findAll() {
+    console.log(global.SESSION);
+
     return this.db.salas.findMany();
   }
 

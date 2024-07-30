@@ -22,7 +22,6 @@ export class SalasController {
   @Get()
   @Session()
   findAll() {
-    console.log(global.SESSION.username);
     return this.service.findAll();
   }
   @Get(':id')

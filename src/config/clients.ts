@@ -51,11 +51,11 @@ export const configuracoes = {
     },
     230380801: {
       type: 'postgres',
-      host: 'idg-02.ctguosegmz9j.sa-east-1.rds.amazonaws.com',
+      host: 'localhost',
       port: '5432',
       username: 'postgres',
-      database: 'modelo',
-      password: 'S551bp7fRs4qRCWx2M5y',
+      database: 'default',
+      password: '3640',
     },
   },
 };

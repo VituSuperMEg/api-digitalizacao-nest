@@ -38,7 +38,6 @@ export class AuthAndDatabaseGuard implements CanActivate {
     // Extração do ID do cliente
     const client_id = request.headers['x-cliente-id'];
     const cliente = String(client_id);
-
     if (!cliente) {
       console.error('Cliente não fornecido nos parâmetros da solicitação.');
       throw new UnauthorizedException('Cliente ID não fornecido.');

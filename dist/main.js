@@ -118,11 +118,11 @@ exports.configuracoes = {
         },
         230380801: {
             type: 'postgres',
-            host: 'idg-02.ctguosegmz9j.sa-east-1.rds.amazonaws.com',
+            host: 'localhost',
             port: '5432',
             username: 'postgres',
-            database: 'modelo',
-            password: 'S551bp7fRs4qRCWx2M5y',
+            database: 'default',
+            password: '3640',
         },
     },
 };
@@ -231,6 +231,7 @@ let DynamicDatabaseGuard = class DynamicDatabaseGuard {
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
         const clientId = request.headers['x-cliente-id'];
+        global.CLIENTE_ID = String(clientId);
         if (!clientId) {
             throw new Error('O CÓDIGO DO CLIENTE NÃO FOI INFORMADO');
         }
@@ -864,6 +865,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
+const clients_1 = __webpack_require__(/*! src/config/clients */ "./src/config/clients.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let AuthService = class AuthService {
@@ -880,7 +882,16 @@ let AuthService = class AuthService {
         if (!user) {
             return this.responseService.error('Este usuário não existe');
         }
-        const payload = { sub: user.id, username: user.login };
+        const cliente = clients_1.configuracoes.database[global.CLIENTE_ID];
+        const payload = {
+            sub: user.id,
+            id: user.id,
+            email: user.email,
+            ativo: user.ativo,
+            username: user.login,
+            cliente_id: global.CLIENTE_ID,
+            cliente,
+        };
         return {
             session: await this.jwtService.signAsync(payload),
         };
@@ -960,7 +971,6 @@ let SalasController = class SalasController {
         this.service = service;
     }
     findAll() {
-        console.log(global.SESSION.username);
         return this.service.findAll();
     }
     find(id) {
@@ -1082,6 +1092,7 @@ let SalasServices = class SalasServices {
         this.responseService = responseService;
     }
     async findAll() {
+        console.log(global.SESSION);
         return this.db.salas.findMany();
     }
     async find(id) {
@@ -1466,7 +1477,7 @@ let SessionInterceptor = class SessionInterceptor {
                     global.SESSION = decoded?.payload;
                 }
                 catch (err) {
-                    console.error('Failed to decode JWT', err);
+                    console.error(err);
                 }
             }
             else {

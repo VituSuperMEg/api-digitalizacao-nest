@@ -8,6 +8,7 @@ export class DynamicDatabaseGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const clientId = request.headers['x-cliente-id'];
+    global.CLIENTE_ID = String(clientId);
 
     if (!clientId) {
       throw new Error('O CÓDIGO DO CLIENTE NÃO FOI INFORMADO');
