@@ -8,6 +8,8 @@ import { UsersModule } from './controllers/users/users.module';
 import { AnoMesModule } from './controllers/ano_mes/ano_mes.module';
 import { SalasModule } from './controllers/salas/salas.module';
 import { ArmarioModule } from './controllers/armario/armario.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { SessionInterceptor } from './customs/interceptor/session.interceptor';
 
 @Module({
   imports: [
@@ -19,6 +21,13 @@ import { ArmarioModule } from './controllers/armario/armario.module';
     ArmarioModule,
   ],
   controllers: [],
-  providers: [PrismaService, DynamicDatabaseGuard],
+  providers: [
+    PrismaService,
+    DynamicDatabaseGuard,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: SessionInterceptor,
+    },
+  ],
 })
 export class AppModule {}

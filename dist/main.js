@@ -27,6 +27,8 @@ const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module 
 const ano_mes_module_1 = __webpack_require__(/*! ./controllers/ano_mes/ano_mes.module */ "./src/controllers/ano_mes/ano_mes.module.ts");
 const salas_module_1 = __webpack_require__(/*! ./controllers/salas/salas.module */ "./src/controllers/salas/salas.module.ts");
 const armario_module_1 = __webpack_require__(/*! ./controllers/armario/armario.module */ "./src/controllers/armario/armario.module.ts");
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -41,7 +43,14 @@ exports.AppModule = AppModule = __decorate([
             armario_module_1.ArmarioModule,
         ],
         controllers: [],
-        providers: [prisma_service_1.PrismaService, database_guard_1.DynamicDatabaseGuard],
+        providers: [
+            prisma_service_1.PrismaService,
+            database_guard_1.DynamicDatabaseGuard,
+            {
+                provide: core_1.APP_INTERCEPTOR,
+                useClass: session_interceptor_1.SessionInterceptor,
+            },
+        ],
     })
 ], AppModule);
 
@@ -873,7 +882,7 @@ let AuthService = class AuthService {
         }
         const payload = { sub: user.id, username: user.login };
         return {
-            access_token: await this.jwtService.signAsync(payload),
+            session: await this.jwtService.signAsync(payload),
         };
     }
 };
@@ -945,11 +954,13 @@ const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/contro
 const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
 const update_salas_dto_1 = __webpack_require__(/*! ./dto/update-salas.dto */ "./src/controllers/salas/dto/update-salas.dto.ts");
 const create_salas_dto_1 = __webpack_require__(/*! ./dto/create-salas.dto */ "./src/controllers/salas/dto/create-salas.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
 let SalasController = class SalasController {
     constructor(service) {
         this.service = service;
     }
     findAll() {
+        console.log(global.SESSION.username);
         return this.service.findAll();
     }
     find(id) {
@@ -968,6 +979,7 @@ let SalasController = class SalasController {
 exports.SalasController = SalasController;
 __decorate([
     (0, common_1.Get)(),
+    (0, session_decorator_1.Session)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
@@ -1393,6 +1405,86 @@ exports.UsersServices = UsersServices = __decorate([
 
 /***/ }),
 
+/***/ "./src/customs/decorator/session.decorator.ts":
+/*!****************************************************!*\
+  !*** ./src/customs/decorator/session.decorator.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GetSession = exports.Session = exports.SESSION_KEY = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+exports.SESSION_KEY = 'session';
+const Session = () => (0, common_1.SetMetadata)(exports.SESSION_KEY, true);
+exports.Session = Session;
+exports.GetSession = (0, common_1.createParamDecorator)((data, ctx) => {
+    const request = ctx.switchToHttp().getRequest();
+    return request.session;
+});
+
+
+/***/ }),
+
+/***/ "./src/customs/interceptor/session.interceptor.ts":
+/*!********************************************************!*\
+  !*** ./src/customs/interceptor/session.interceptor.ts ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SessionInterceptor = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const session_decorator_1 = __webpack_require__(/*! ../decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const jwt = __webpack_require__(/*! jsonwebtoken */ "jsonwebtoken");
+let SessionInterceptor = class SessionInterceptor {
+    constructor(reflector) {
+        this.reflector = reflector;
+    }
+    intercept(context, next) {
+        const isSessionEnabled = this.reflector.get(session_decorator_1.SESSION_KEY, context.getHandler());
+        if (isSessionEnabled) {
+            const request = context.switchToHttp().getRequest();
+            const authHeader = request.headers['authorization'];
+            if (authHeader) {
+                const token = authHeader.replace('Bearer ', '');
+                try {
+                    const decoded = jwt.decode(token, { complete: true });
+                    request.sessionContext = decoded?.payload || {};
+                    global.SESSION = decoded?.payload;
+                }
+                catch (err) {
+                    console.error('Failed to decode JWT', err);
+                }
+            }
+            else {
+                request.sessionContext = {};
+            }
+        }
+        return next.handle();
+    }
+};
+exports.SessionInterceptor = SessionInterceptor;
+exports.SessionInterceptor = SessionInterceptor = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
+], SessionInterceptor);
+
+
+/***/ }),
+
 /***/ "./src/entidades/entidades.controller.ts":
 /*!***********************************************!*\
   !*** ./src/entidades/entidades.controller.ts ***!
@@ -1720,6 +1812,16 @@ module.exports = require("bcrypt");
 
 module.exports = require("dotenv/config");
 
+/***/ }),
+
+/***/ "jsonwebtoken":
+/*!*******************************!*\
+  !*** external "jsonwebtoken" ***!
+  \*******************************/
+/***/ ((module) => {
+
+module.exports = require("jsonwebtoken");
+
 /***/ })
 
 /******/ 	});
@@ -1760,9 +1862,11 @@ var exports = __webpack_exports__;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
+const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     await app.listen(3333);
+    app.useGlobalInterceptors(new session_interceptor_1.SessionInterceptor(new core_1.Reflector()));
 }
 bootstrap();
 

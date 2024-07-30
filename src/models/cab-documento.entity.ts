@@ -99,7 +99,7 @@ export class CabDocumento {
   modalidade_contrato: string;
 
   @Column({ length: 1, type: 'number', default: null })
-  contra_extra_id: string;
+  conta_extra_id: string;
 
   @Column({ type: 'timestamp', default: null })
   data_empenho: Date;
