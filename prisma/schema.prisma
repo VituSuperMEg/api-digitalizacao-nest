@@ -14,23 +14,29 @@ datasource db {
 }
 
 model Users {
-  id          Int      @id @default(autoincrement())
-  login       String
-  senha       String
-  nome        String?
-  ativo       String
-  email       String   @unique
-  telefone    String   @unique
-  criado_em   DateTime @default(now())
-  alterado_em DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  login        String
+  senha        String
+  nome         String?
+  ativo        String
+  email        String   @unique
+  telefone     String   @unique
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("users")
 }
 
 model AnoMes {
-  id  Int    @id @default(autoincrement())
-  ano String
-  mes String
+  id           Int      @id @default(autoincrement())
+  ano          String
+  mes          String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("ano_mes")
 }
@@ -43,6 +49,8 @@ model Salas {
   Armario       Armario[]
   Gaveta        Gaveta[]
   Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
 
   @@map("salas")
 }
@@ -56,6 +64,8 @@ model Armario {
   salas_id      Int
   Gaveta        Gaveta[]
   Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
 
   @@map("armarios")
 }
@@ -81,6 +91,9 @@ model Credores {
   CabDocumento          CabDocumento[]
   DetDocumento          DetDocumento[]
 
+  criado_por   Int?
+  alterado_por Int?
+
   @@map("credores")
 }
 
@@ -90,6 +103,8 @@ model Caixas {
   criado_em    DateTime       @default(now())
   alterado_em  DateTime       @default(now())
   CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("caixas")
 }
@@ -100,6 +115,8 @@ model Prateleira {
   criado_em    DateTime       @default(now())
   alterado_em  DateTime       @default(now())
   CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("prateleira")
 }
@@ -111,6 +128,8 @@ model ContasExtras {
   exercicio    String
   orcamento    String
   CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("contas_extras")
 }
@@ -157,6 +176,8 @@ model CabDocumento {
   contas_extra_id         Int?
   criado_em               DateTime      @default(now())
   alterado_em             DateTime      @default(now())
+  criado_por              Int?
+  alterado_por            Int?
 
   @@map("cab_documento")
 }
@@ -170,6 +191,8 @@ model CentroCusto {
   criado_em        DateTime  @default(now())
   alterado_em      DateTime  @default(now())
   Destino          Destino[]
+  criado_por       Int?
+  alterado_por     Int?
 
   @@map("centro_custo")
 }
@@ -182,19 +205,23 @@ model Gaveta {
   armarios      Armario         @relation(fields: [armario_id], references: [id])
   armario_id    Int
   Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
 
   @@map("gaveta")
 }
 
 model Compartimento {
-  id         Int     @id @default(autoincrement())
-  descricao  String
-  salas      Salas   @relation(fields: [sala_id], references: [id])
-  sala_id    Int
-  armarios   Armario @relation(fields: [armario_id], references: [id])
-  armario_id Int
-  gavetas    Gaveta  @relation(fields: [gaveta_id], references: [id])
-  gaveta_id  Int
+  id           Int     @id @default(autoincrement())
+  descricao    String
+  salas        Salas   @relation(fields: [sala_id], references: [id])
+  sala_id      Int
+  armarios     Armario @relation(fields: [armario_id], references: [id])
+  armario_id   Int
+  gavetas      Gaveta  @relation(fields: [gaveta_id], references: [id])
+  gaveta_id    Int
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("compartimento")
 }
@@ -210,6 +237,8 @@ model Orgaos {
   alterado_em               DateTime                    @default(now())
   DespesaCategoriaEconomica DespesaCategoriaEconomica[]
   Destino                   Destino[]
+  criado_por                Int?
+  alterado_por              Int?
 
   @@map("orgaos")
 }
@@ -223,6 +252,8 @@ model UnidadeOrcamentaria {
   alterado_em               DateTime                    @default(now())
   DespesaCategoriaEconomica DespesaCategoriaEconomica[]
   Destino                   Destino[]
+  criado_por                Int?
+  alterado_por              Int?
 
   @@map("unidades_orcamentaria")
 }
@@ -239,6 +270,8 @@ model DespesaCategoriaEconomica {
   codigo_elmento        String
   criado_em             DateTime            @default(now())
   alterado_em           DateTime            @default(now())
+  criado_por            Int?
+  alterado_por          Int?
 
   @@map("despesa_categoria_economica")
 }
@@ -265,6 +298,8 @@ model Entidade {
   criado_em             DateTime  @default(now())
   alterado_em           DateTime  @default(now())
   Destino               Destino[]
+  criado_por            Int?
+  alterado_por          Int?
 
   @@map("entidade")
 }
@@ -294,6 +329,8 @@ model Destino {
   competencia          String
   criado_em            DateTime            @default(now())
   alterado_em          DateTime            @default(now())
+  criado_por           Int?
+  alterado_por         Int?
 
   @@map("destino")
 }
@@ -310,15 +347,19 @@ model DetDocumento {
   nome_arquivo       String
   criado_em          DateTime @default(now())
   alterado_em        DateTime @default(now())
+  criado_por         Int?
+  alterado_por       Int?
 
   @@map("det_documento")
 }
 
 model Estante {
-  id          Int      @id @default(autoincrement())
-  descricao   String
-  criado_em   DateTime @default(now())
-  alterado_em DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
 
   @@map("estante")
 }
@@ -331,6 +372,8 @@ model Grupo {
   patrimonio    String
   criado_em     DateTime @default(now())
   alterado_em   DateTime @default(now())
+  criado_por    Int?
+  alterado_por  Int?
 
   @@map("grupo")
 }

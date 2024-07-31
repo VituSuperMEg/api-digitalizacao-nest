@@ -1005,6 +1005,7 @@ __decorate([
 ], SalasController.prototype, "find", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [typeof (_b = typeof create_salas_dto_1.CreateSalasDTO !== "undefined" && create_salas_dto_1.CreateSalasDTO) === "function" ? _b : Object]),
@@ -1012,6 +1013,7 @@ __decorate([
 ], SalasController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [typeof (_c = typeof update_salas_dto_1.UpdateSalasDTO !== "undefined" && update_salas_dto_1.UpdateSalasDTO) === "function" ? _c : Object]),
@@ -1094,7 +1096,6 @@ let SalasServices = class SalasServices {
         this.responseService = responseService;
     }
     async findAll() {
-        console.log(global.SESSION);
         return this.db.salas.findMany();
     }
     async find(id) {
@@ -1107,6 +1108,7 @@ let SalasServices = class SalasServices {
             await this.db.salas.create({
                 data: {
                     descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
                 },
             });
             return this.responseService.success({}, 'Registro criado com sucesso!');
@@ -1127,6 +1129,8 @@ let SalasServices = class SalasServices {
                 where: { id: data.id },
                 data: {
                     descricao: data.descricao,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
                 },
             });
             return this.responseService.success({}, 'Registro atualizado com sucesso!');

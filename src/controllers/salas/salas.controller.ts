@@ -29,10 +29,12 @@ export class SalasController {
     return this.service.find(+id);
   }
   @Post()
+  @Session()
   create(@Body() data: CreateSalasDTO) {
     return this.service.create(data);
   }
   @Put()
+  @Session()
   update(@Body() data: UpdateSalasDTO) {
     return this.service.update(data);
   }

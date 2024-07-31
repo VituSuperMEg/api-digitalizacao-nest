@@ -3,7 +3,10 @@ import { PrismaClient } from '@prisma/client';
 import { configuracoes } from 'src/config/clients';
 
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
   private prisma: PrismaClient;
 
   constructor() {
@@ -31,7 +34,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
 
     // Monta a URL de conexão
     const url = `postgresql://${cliente.username}:${cliente.password}@${cliente.host}:${cliente.port}/${cliente.database}?schema=public`;
-  
+
     // Desconecta a conexão anterior
     await this.prisma.$disconnect();
 

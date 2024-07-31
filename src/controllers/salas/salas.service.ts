@@ -12,8 +12,6 @@ export class SalasServices {
   ) {}
 
   async findAll() {
-    console.log(global.SESSION);
-
     return this.db.salas.findMany();
   }
 
@@ -28,6 +26,7 @@ export class SalasServices {
       await this.db.salas.create({
         data: {
           descricao: data.descricao.toUpperCase(),
+          criado_por: global.SESSION.id,
         },
       });
       return this.responseService.success({}, 'Registro criado com sucesso!');
@@ -48,6 +47,8 @@ export class SalasServices {
         where: { id: data.id },
         data: {
           descricao: data.descricao,
+          alterado_por: global.SESSION.id,
+          alterado_em: new Date(),
         },
       });
       return this.responseService.success(
