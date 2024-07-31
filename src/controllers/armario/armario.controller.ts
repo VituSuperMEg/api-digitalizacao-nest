@@ -12,6 +12,7 @@ import { AuthAndDatabaseGuard } from 'src/config/guards/auth.guards';
 import { ArmarioService } from './armario.service';
 import { CreateArmaroDTO } from './dto/create-armario.dto';
 import { UpdateArmarioDTO } from './dto/update-armario.dto';
+import { Session } from 'src/customs/decorator/session.decorator';
 
 @Controller('api/v1/armario')
 @UseGuards(AuthAndDatabaseGuard)
@@ -27,10 +28,12 @@ export class ArmarioController {
     return this.service.find(+id);
   }
   @Post()
+  @Session()
   create(@Body() data: CreateArmaroDTO) {
     return this.service.create(data);
   }
   @Put()
+  @Session()
   update(@Body() data: UpdateArmarioDTO) {
     return this.service.update(data);
   }

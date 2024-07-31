@@ -32,4 +32,8 @@ export class AppUtil {
         return 'Mês inválido';
     }
   }
+
+  clearMask(value: string): string {
+    return value?.replace(/\D/g, '');
+  }
 }

@@ -16,6 +16,10 @@ export class ArmarioService {
       select: {
         id: true,
         descricao: true,
+        criado_por: true,
+        alterado_em: true,
+        criado_em: true,
+        alterado_por: true,
         salas: {
           select: {
             id: true,
@@ -33,6 +37,10 @@ export class ArmarioService {
       select: {
         id: true,
         descricao: true,
+        criado_por: true,
+        alterado_em: true,
+        criado_em: true,
+        alterado_por: true,
         salas: {
           select: {
             id: true,
@@ -52,6 +60,7 @@ export class ArmarioService {
       data: {
         descricao: data.descricao,
         salas_id: data.sala_id,
+        criado_por: global.SESSION.id,
       },
     });
     return this.responseService.success({}, 'Registro criado com Sucesso!');
@@ -72,6 +81,8 @@ export class ArmarioService {
       where: { id: id },
       data: {
         descricao: descricao,
+        alterado_por: global.SESSION.id,
+        alterado_em: new Date(),
       },
     });
 
