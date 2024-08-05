@@ -943,7 +943,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b;
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CredoresController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
@@ -951,6 +951,7 @@ const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "
 const credores_service_1 = __webpack_require__(/*! ./credores.service */ "./src/controllers/credores/credores.service.ts");
 const create_credor_dto_1 = __webpack_require__(/*! ./dto/create-credor.dto */ "./src/controllers/credores/dto/create-credor.dto.ts");
 const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const update_credor_dto_1 = __webpack_require__(/*! ./dto/update-credor.dto */ "./src/controllers/credores/dto/update-credor.dto.ts");
 let CredoresController = class CredoresController {
     constructor(service) {
         this.service = service;
@@ -963,6 +964,12 @@ let CredoresController = class CredoresController {
     }
     create(data) {
         return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
     }
 };
 exports.CredoresController = CredoresController;
@@ -987,6 +994,22 @@ __decorate([
     __metadata("design:paramtypes", [typeof (_b = typeof create_credor_dto_1.CreateCredorDTO !== "undefined" && create_credor_dto_1.CreateCredorDTO) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
 ], CredoresController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_credor_dto_1.UpdateCredorDTO !== "undefined" && update_credor_dto_1.UpdateCredorDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CredoresController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CredoresController.prototype, "remove", null);
 exports.CredoresController = CredoresController = __decorate([
     (0, common_1.Controller)('api/v1/credores'),
     (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
@@ -1077,7 +1100,7 @@ let CredoresService = class CredoresService {
         const { agencia, banco, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, } = data;
         const cpfClear = this.appUtil.clearMask(cpf);
         const telefoneClear = this.appUtil.clearMask(telefone);
-        const telefoneComplementarClear = this.appUtil.clearMask(telefone);
+        const telefoneComplementarClear = this.appUtil.clearMask(telefone_complementar);
         const cepClear = this.appUtil.clearMask(cep);
         await this.db.credores.create({
             data: {
@@ -1099,6 +1122,41 @@ let CredoresService = class CredoresService {
             },
         });
         return this.responseService.success({}, 'Registro criado com Sucesso');
+    }
+    async update(data) {
+        const { id, agencia, banco, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, } = data;
+        const cpfClear = this.appUtil.clearMask(cpf);
+        const telefoneClear = this.appUtil.clearMask(telefone);
+        const telefoneComplementarClear = this.appUtil.clearMask(telefone_complementar);
+        const cepClear = this.appUtil.clearMask(cep);
+        await this.db.credores.update({
+            where: { id: id },
+            data: {
+                agencia,
+                banco,
+                cep: cepClear,
+                cidade,
+                conta,
+                cpf: cpfClear,
+                email,
+                logradouro,
+                nome,
+                numero,
+                observacoes,
+                telefone: telefoneClear,
+                telefone_complementar: telefoneComplementarClear,
+                tipo_documento,
+                alterado_por: global.SESSION.id,
+                alterado_em: new Date(),
+            },
+        });
+        return this.responseService.success({}, 'Registro Alterado com Sucesso');
+    }
+    async remove(id) {
+        await this.db.credores.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Registro Excluído com Sucesso');
     }
 };
 exports.CredoresService = CredoresService;
@@ -1122,6 +1180,22 @@ exports.CreateCredorDTO = void 0;
 class CreateCredorDTO {
 }
 exports.CreateCredorDTO = CreateCredorDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/credores/dto/update-credor.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/credores/dto/update-credor.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCredorDTO = void 0;
+class UpdateCredorDTO {
+}
+exports.UpdateCredorDTO = UpdateCredorDTO;
 
 
 /***/ }),

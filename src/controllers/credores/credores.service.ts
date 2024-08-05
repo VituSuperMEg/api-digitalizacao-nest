@@ -3,6 +3,7 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 import { CreateCredorDTO } from './dto/create-credor.dto';
 import { AppUtil } from 'src/services/app-util';
+import { UpdateCredorDTO } from './dto/update-credor.dto';
 
 @Injectable()
 export class CredoresService {
@@ -48,7 +49,9 @@ export class CredoresService {
 
     const cpfClear = this.appUtil.clearMask(cpf);
     const telefoneClear = this.appUtil.clearMask(telefone);
-    const telefoneComplementarClear = this.appUtil.clearMask(telefone);
+    const telefoneComplementarClear = this.appUtil.clearMask(
+      telefone_complementar,
+    );
     const cepClear = this.appUtil.clearMask(cep);
 
     await this.db.credores.create({
@@ -71,5 +74,62 @@ export class CredoresService {
       },
     });
     return this.responseService.success({}, 'Registro criado com Sucesso');
+  }
+
+  async update(data: UpdateCredorDTO) {
+    const {
+      id,
+      agencia,
+      banco,
+      cep,
+      cidade,
+      conta,
+      cpf,
+      email,
+      logradouro,
+      nome,
+      numero,
+      observacoes,
+      telefone,
+      telefone_complementar,
+      tipo_documento,
+    } = data;
+
+    const cpfClear = this.appUtil.clearMask(cpf);
+    const telefoneClear = this.appUtil.clearMask(telefone);
+    const telefoneComplementarClear = this.appUtil.clearMask(
+      telefone_complementar,
+    );
+    const cepClear = this.appUtil.clearMask(cep);
+
+    await this.db.credores.update({
+      where: { id: id },
+      data: {
+        agencia,
+        banco,
+        cep: cepClear,
+        cidade,
+        conta,
+        cpf: cpfClear,
+        email,
+        logradouro,
+        nome,
+        numero,
+        observacoes,
+        telefone: telefoneClear,
+        telefone_complementar: telefoneComplementarClear,
+        tipo_documento,
+        alterado_por: global.SESSION.id,
+        alterado_em: new Date(),
+      },
+    });
+    return this.responseService.success({}, 'Registro Alterado com Sucesso');
+  }
+
+  async remove(id: number) {
+    await this.db.credores.delete({
+      where: { id: id },
+    });
+    return this.responseService.success({}, 'Registro Excluído com Sucesso');
   }
 }
