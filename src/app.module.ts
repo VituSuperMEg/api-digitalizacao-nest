@@ -11,6 +11,7 @@ import { ArmarioModule } from './controllers/armario/armario.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { SessionInterceptor } from './customs/interceptor/session.interceptor';
 import { CredoresModule } from './controllers/credores/credores.module';
+import { OrgaosModule } from './controllers/orgaos/orgaos.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CredoresModule } from './controllers/credores/credores.module';
     SalasModule,
     ArmarioModule,
     CredoresModule,
+    OrgaosModule,
   ],
   controllers: [],
   providers: [

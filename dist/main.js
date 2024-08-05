@@ -30,6 +30,7 @@ const armario_module_1 = __webpack_require__(/*! ./controllers/armario/armario.m
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
 const credores_module_1 = __webpack_require__(/*! ./controllers/credores/credores.module */ "./src/controllers/credores/credores.module.ts");
+const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.module */ "./src/controllers/orgaos/orgaos.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -43,6 +44,7 @@ exports.AppModule = AppModule = __decorate([
             salas_module_1.SalasModule,
             armario_module_1.ArmarioModule,
             credores_module_1.CredoresModule,
+            orgaos_module_1.OrgaosModule,
         ],
         controllers: [],
         providers: [
@@ -1196,6 +1198,182 @@ exports.UpdateCredorDTO = void 0;
 class UpdateCredorDTO {
 }
 exports.UpdateCredorDTO = UpdateCredorDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/dto/create-orgao.dto.ts":
+/*!********************************************************!*\
+  !*** ./src/controllers/orgaos/dto/create-orgao.dto.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateOrgaosDTO = void 0;
+class CreateOrgaosDTO {
+}
+exports.CreateOrgaosDTO = CreateOrgaosDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/orgaos.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OrgaosController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/controllers/orgaos/orgaos.service.ts");
+const create_orgao_dto_1 = __webpack_require__(/*! ./dto/create-orgao.dto */ "./src/controllers/orgaos/dto/create-orgao.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let OrgaosController = class OrgaosController {
+    constructor(orgaoService) {
+        this.orgaoService = orgaoService;
+    }
+    findAll() {
+        return this.orgaoService.findAll();
+    }
+    create(data) {
+        return this.orgaoService.create(data);
+    }
+};
+exports.OrgaosController = OrgaosController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], OrgaosController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_orgao_dto_1.CreateOrgaosDTO !== "undefined" && create_orgao_dto_1.CreateOrgaosDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], OrgaosController.prototype, "create", null);
+exports.OrgaosController = OrgaosController = __decorate([
+    (0, common_1.Controller)('api/v1/orgaos'),
+    __metadata("design:paramtypes", [typeof (_a = typeof orgaos_service_1.OrgaosService !== "undefined" && orgaos_service_1.OrgaosService) === "function" ? _a : Object])
+], OrgaosController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/orgaos.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OrgaosModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const orgaos_controller_1 = __webpack_require__(/*! ./orgaos.controller */ "./src/controllers/orgaos/orgaos.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/controllers/orgaos/orgaos.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let OrgaosModule = class OrgaosModule {
+};
+exports.OrgaosModule = OrgaosModule;
+exports.OrgaosModule = OrgaosModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [orgaos_controller_1.OrgaosController],
+        providers: [prisma_service_1.PrismaService, orgaos_service_1.OrgaosService, response_message_1.ResponseService, app_util_1.AppUtil],
+    })
+], OrgaosModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/orgaos.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OrgaosService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let OrgaosService = class OrgaosService {
+    constructor(db, responseService, appUtil) {
+        this.db = db;
+        this.responseService = responseService;
+        this.appUtil = appUtil;
+    }
+    async findAll() {
+        return this.db.orgaos.findMany();
+    }
+    async find(id) {
+        return this.db.orgaos.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            const cpf = this.appUtil.clearMask(data.cpf);
+            await this.db.orgaos.create({
+                data: {
+                    sigla: data.sigla,
+                    cpf: cpf,
+                    responsavel: data.responsavel.toUpperCase(),
+                    num_expediente: data.num_expediente,
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Regiostro Criado com Sucesso!');
+        }
+        catch (error) {
+            throw new Error(error);
+        }
+    }
+};
+exports.OrgaosService = OrgaosService;
+exports.OrgaosService = OrgaosService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof app_util_1.AppUtil !== "undefined" && app_util_1.AppUtil) === "function" ? _c : Object])
+], OrgaosService);
 
 
 /***/ }),
