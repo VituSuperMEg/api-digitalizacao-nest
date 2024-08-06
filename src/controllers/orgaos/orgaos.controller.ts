@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { OrgaosService } from './orgaos.service';
 import { CreateOrgaosDTO } from './dto/create-orgao.dto';
 import { Session } from 'src/customs/decorator/session.decorator';
+import { UpdateOrgaosDTO } from './dto/update-orgao.dto';
 
 @Controller('api/v1/orgaos')
 export class OrgaosController {
@@ -16,5 +25,16 @@ export class OrgaosController {
   @Session()
   create(@Body() data: CreateOrgaosDTO) {
     return this.orgaoService.create(data);
+  }
+
+  @Put()
+  @Session()
+  update(@Body() data: UpdateOrgaosDTO) {
+    return this.orgaoService.update(data);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.orgaoService.remove(+id);
   }
 }

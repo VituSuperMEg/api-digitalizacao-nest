@@ -1218,6 +1218,22 @@ exports.CreateOrgaosDTO = CreateOrgaosDTO;
 
 /***/ }),
 
+/***/ "./src/controllers/orgaos/dto/update-orgao.dto.ts":
+/*!********************************************************!*\
+  !*** ./src/controllers/orgaos/dto/update-orgao.dto.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateOrgaosDTO = void 0;
+class UpdateOrgaosDTO {
+}
+exports.UpdateOrgaosDTO = UpdateOrgaosDTO;
+
+
+/***/ }),
+
 /***/ "./src/controllers/orgaos/orgaos.controller.ts":
 /*!*****************************************************!*\
   !*** ./src/controllers/orgaos/orgaos.controller.ts ***!
@@ -1237,13 +1253,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b;
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OrgaosController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/controllers/orgaos/orgaos.service.ts");
 const create_orgao_dto_1 = __webpack_require__(/*! ./dto/create-orgao.dto */ "./src/controllers/orgaos/dto/create-orgao.dto.ts");
 const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const update_orgao_dto_1 = __webpack_require__(/*! ./dto/update-orgao.dto */ "./src/controllers/orgaos/dto/update-orgao.dto.ts");
 let OrgaosController = class OrgaosController {
     constructor(orgaoService) {
         this.orgaoService = orgaoService;
@@ -1253,6 +1270,12 @@ let OrgaosController = class OrgaosController {
     }
     create(data) {
         return this.orgaoService.create(data);
+    }
+    update(data) {
+        return this.orgaoService.update(data);
+    }
+    remove(id) {
+        return this.orgaoService.remove(+id);
     }
 };
 exports.OrgaosController = OrgaosController;
@@ -1270,6 +1293,21 @@ __decorate([
     __metadata("design:paramtypes", [typeof (_b = typeof create_orgao_dto_1.CreateOrgaosDTO !== "undefined" && create_orgao_dto_1.CreateOrgaosDTO) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
 ], OrgaosController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_orgao_dto_1.UpdateOrgaosDTO !== "undefined" && update_orgao_dto_1.UpdateOrgaosDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], OrgaosController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], OrgaosController.prototype, "remove", null);
 exports.OrgaosController = OrgaosController = __decorate([
     (0, common_1.Controller)('api/v1/orgaos'),
     __metadata("design:paramtypes", [typeof (_a = typeof orgaos_service_1.OrgaosService !== "undefined" && orgaos_service_1.OrgaosService) === "function" ? _a : Object])
@@ -1335,6 +1373,7 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+const db_services_1 = __webpack_require__(/*! src/services/prisma/db-services */ "./src/services/prisma/db-services.ts");
 let OrgaosService = class OrgaosService {
     constructor(db, responseService, appUtil) {
         this.db = db;
@@ -1354,7 +1393,7 @@ let OrgaosService = class OrgaosService {
             const cpf = this.appUtil.clearMask(data.cpf);
             await this.db.orgaos.create({
                 data: {
-                    sigla: data.sigla,
+                    sigla: data.sigla.toUpperCase(),
                     cpf: cpf,
                     responsavel: data.responsavel.toUpperCase(),
                     num_expediente: data.num_expediente,
@@ -1367,6 +1406,30 @@ let OrgaosService = class OrgaosService {
         catch (error) {
             throw new Error(error);
         }
+    }
+    async update(data) {
+        await (0, db_services_1.Already)('orgaos', data.id);
+        const cpf = this.appUtil.clearMask(data.cpf);
+        await this.db.orgaos.update({
+            where: { id: data.id },
+            data: {
+                sigla: data.sigla.toUpperCase(),
+                cpf: cpf,
+                responsavel: data.responsavel.toUpperCase(),
+                num_expediente: data.num_expediente,
+                descricao: data.descricao.toUpperCase(),
+                alterado_por: global.SESSION.id,
+                alterado_em: new Date(),
+            },
+        });
+        return this.responseService.success({}, 'Regiostro Alterado com Sucesso!');
+    }
+    async remove(id) {
+        await (0, db_services_1.Already)('orgaos', id);
+        await this.db.orgaos.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Regiostro Excluído com Sucesso!');
     }
 };
 exports.OrgaosService = OrgaosService;
@@ -2142,6 +2205,33 @@ exports.AppUtil = AppUtil;
 exports.AppUtil = AppUtil = __decorate([
     (0, common_1.Injectable)()
 ], AppUtil);
+
+
+/***/ }),
+
+/***/ "./src/services/prisma/db-services.ts":
+/*!********************************************!*\
+  !*** ./src/services/prisma/db-services.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Already = void 0;
+const client_1 = __webpack_require__(/*! @prisma/client */ "@prisma/client");
+const response_message_1 = __webpack_require__(/*! ../response-message */ "./src/services/response-message.ts");
+const prisma = new client_1.PrismaClient();
+const responseService = new response_message_1.ResponseService();
+const Already = async (db, id, title = 'Não existe nenhum registro com este código!') => {
+    const model = prisma[db];
+    const record = await model.findUnique({
+        where: { id },
+    });
+    if (!record || record === null) {
+        return responseService.error(title);
+    }
+};
+exports.Already = Already;
 
 
 /***/ }),
