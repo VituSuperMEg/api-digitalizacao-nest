@@ -31,6 +31,7 @@ const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
 const credores_module_1 = __webpack_require__(/*! ./controllers/credores/credores.module */ "./src/controllers/credores/credores.module.ts");
 const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.module */ "./src/controllers/orgaos/orgaos.module.ts");
+const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -53,6 +54,10 @@ exports.AppModule = AppModule = __decorate([
             {
                 provide: core_1.APP_INTERCEPTOR,
                 useClass: session_interceptor_1.SessionInterceptor,
+            },
+            {
+                provide: core_1.APP_PIPE,
+                useClass: validation_pipe_1.ValidationPipe,
             },
         ],
     })
@@ -1206,14 +1211,52 @@ exports.UpdateCredorDTO = UpdateCredorDTO;
 /*!********************************************************!*\
   !*** ./src/controllers/orgaos/dto/create-orgao.dto.ts ***!
   \********************************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CreateOrgaosDTO = void 0;
+const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
 class CreateOrgaosDTO {
 }
 exports.CreateOrgaosDTO = CreateOrgaosDTO;
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "sigla", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "descricao", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "cpf", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "responsavel", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "num_expediente", void 0);
 
 
 /***/ }),
@@ -1261,6 +1304,7 @@ const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/cont
 const create_orgao_dto_1 = __webpack_require__(/*! ./dto/create-orgao.dto */ "./src/controllers/orgaos/dto/create-orgao.dto.ts");
 const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
 const update_orgao_dto_1 = __webpack_require__(/*! ./dto/update-orgao.dto */ "./src/controllers/orgaos/dto/update-orgao.dto.ts");
+const validation_pipe_1 = __webpack_require__(/*! src/pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 let OrgaosController = class OrgaosController {
     constructor(orgaoService) {
         this.orgaoService = orgaoService;
@@ -1296,7 +1340,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)(),
     (0, session_decorator_1.Session)(),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_1.Body)(new validation_pipe_1.ValidationPipe())),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [typeof (_c = typeof update_orgao_dto_1.UpdateOrgaosDTO !== "undefined" && update_orgao_dto_1.UpdateOrgaosDTO) === "function" ? _c : Object]),
     __metadata("design:returntype", void 0)
@@ -2150,6 +2194,56 @@ exports.EntidadesModule = EntidadesModule = __decorate([
 
 /***/ }),
 
+/***/ "./src/pipes/validation.pipe.ts":
+/*!**************************************!*\
+  !*** ./src/pipes/validation.pipe.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ValidationPipe = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+const class_transformer_1 = __webpack_require__(/*! class-transformer */ "class-transformer");
+let ValidationPipe = class ValidationPipe {
+    async transform(value, { metatype }) {
+        if (!metatype || !this.toValidate(metatype)) {
+            return value;
+        }
+        const object = (0, class_transformer_1.plainToInstance)(metatype, value);
+        const errors = await (0, class_validator_1.validate)(object);
+        if (errors.length > 0) {
+            throw new common_1.BadRequestException(this.formatErrors(errors));
+        }
+        return value;
+    }
+    toValidate(metatype) {
+        const types = [String, Boolean, Number, Array, Object];
+        return !types.includes(metatype);
+    }
+    formatErrors(errors) {
+        return errors.map((err) => {
+            return {
+                constraints: err.constraints,
+            };
+        });
+    }
+};
+exports.ValidationPipe = ValidationPipe;
+exports.ValidationPipe = ValidationPipe = __decorate([
+    (0, common_1.Injectable)()
+], ValidationPipe);
+
+
+/***/ }),
+
 /***/ "./src/services/app-util.ts":
 /*!**********************************!*\
   !*** ./src/services/app-util.ts ***!
@@ -2384,6 +2478,26 @@ module.exports = require("bcrypt");
 
 /***/ }),
 
+/***/ "class-transformer":
+/*!************************************!*\
+  !*** external "class-transformer" ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = require("class-transformer");
+
+/***/ }),
+
+/***/ "class-validator":
+/*!**********************************!*\
+  !*** external "class-validator" ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = require("class-validator");
+
+/***/ }),
+
 /***/ "dotenv/config":
 /*!********************************!*\
   !*** external "dotenv/config" ***!
@@ -2443,10 +2557,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
 const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
+const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     await app.listen(3333);
     app.useGlobalInterceptors(new session_interceptor_1.SessionInterceptor(new core_1.Reflector()));
+    app.useGlobalPipes(new validation_pipe_1.ValidationPipe());
 }
 bootstrap();
 

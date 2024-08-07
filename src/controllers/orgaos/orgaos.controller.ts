@@ -11,6 +11,7 @@ import { OrgaosService } from './orgaos.service';
 import { CreateOrgaosDTO } from './dto/create-orgao.dto';
 import { Session } from 'src/customs/decorator/session.decorator';
 import { UpdateOrgaosDTO } from './dto/update-orgao.dto';
+import { ValidationPipe } from 'src/pipes/validation.pipe';
 
 @Controller('api/v1/orgaos')
 export class OrgaosController {
@@ -29,7 +30,7 @@ export class OrgaosController {
 
   @Put()
   @Session()
-  update(@Body() data: UpdateOrgaosDTO) {
+  update(@Body(new ValidationPipe()) data: UpdateOrgaosDTO) {
     return this.orgaoService.update(data);
   }
 
