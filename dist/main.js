@@ -32,6 +32,7 @@ const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/sess
 const credores_module_1 = __webpack_require__(/*! ./controllers/credores/credores.module */ "./src/controllers/credores/credores.module.ts");
 const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.module */ "./src/controllers/orgaos/orgaos.module.ts");
 const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
+const caixas_module_1 = __webpack_require__(/*! ./controllers/caixas/caixas.module */ "./src/controllers/caixas/caixas.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -46,6 +47,7 @@ exports.AppModule = AppModule = __decorate([
             armario_module_1.ArmarioModule,
             credores_module_1.CredoresModule,
             orgaos_module_1.OrgaosModule,
+            caixas_module_1.CaixasModule,
         ],
         controllers: [],
         providers: [
@@ -927,6 +929,240 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
 ], AuthService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/caixas/caixas.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const caixas_service_1 = __webpack_require__(/*! ./caixas.service */ "./src/controllers/caixas/caixas.service.ts");
+const create_caixas_dto_1 = __webpack_require__(/*! ./dto/create-caixas.dto */ "./src/controllers/caixas/dto/create-caixas.dto.ts");
+const update_caixas_dto_1 = __webpack_require__(/*! ./dto/update-caixas.dto */ "./src/controllers/caixas/dto/update-caixas.dto.ts");
+let CaixasController = class CaixasController {
+    constructor(services) {
+        this.services = services;
+    }
+    findAll() {
+        return this.services.findAll();
+    }
+    find(id) {
+        return this.services.find(+id);
+    }
+    create(data) {
+        return this.services.create(data);
+    }
+    update(data) {
+        return this.services.update(data);
+    }
+    remove(id) {
+        return this.services.remove(+id);
+    }
+};
+exports.CaixasController = CaixasController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_caixas_dto_1.CreateCaixasDTO !== "undefined" && create_caixas_dto_1.CreateCaixasDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_caixas_dto_1.UpdateCaixasDTO !== "undefined" && update_caixas_dto_1.UpdateCaixasDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "remove", null);
+exports.CaixasController = CaixasController = __decorate([
+    (0, common_1.Controller)('api/v1/caixas'),
+    __metadata("design:paramtypes", [typeof (_a = typeof caixas_service_1.CaixasServices !== "undefined" && caixas_service_1.CaixasServices) === "function" ? _a : Object])
+], CaixasController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/caixas/caixas.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const caixas_controller_1 = __webpack_require__(/*! ./caixas.controller */ "./src/controllers/caixas/caixas.controller.ts");
+const caixas_service_1 = __webpack_require__(/*! ./caixas.service */ "./src/controllers/caixas/caixas.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CaixasModule = class CaixasModule {
+};
+exports.CaixasModule = CaixasModule;
+exports.CaixasModule = CaixasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [caixas_controller_1.CaixasController],
+        providers: [caixas_service_1.CaixasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], CaixasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/caixas/caixas.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CaixasServices = class CaixasServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.caixas.findMany();
+    }
+    find(id) {
+        return this.db.caixas.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.caixas.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível criar a caixa', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.caixas.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Registro Atualizado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível atualizar a caixa', error);
+        }
+    }
+    async remove(id) {
+        await this.db.caixas.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Registro Excluído com Sucesso');
+    }
+};
+exports.CaixasServices = CaixasServices;
+exports.CaixasServices = CaixasServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], CaixasServices);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/dto/create-caixas.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/caixas/dto/create-caixas.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCaixasDTO = void 0;
+class CreateCaixasDTO {
+}
+exports.CreateCaixasDTO = CreateCaixasDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/dto/update-caixas.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/caixas/dto/update-caixas.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCaixasDTO = void 0;
+class UpdateCaixasDTO {
+}
+exports.UpdateCaixasDTO = UpdateCaixasDTO;
 
 
 /***/ }),

@@ -13,6 +13,7 @@ import { SessionInterceptor } from './customs/interceptor/session.interceptor';
 import { CredoresModule } from './controllers/credores/credores.module';
 import { OrgaosModule } from './controllers/orgaos/orgaos.module';
 import { ValidationPipe } from './pipes/validation.pipe';
+import { CaixasModule } from './controllers/caixas/caixas.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ValidationPipe } from './pipes/validation.pipe';
     ArmarioModule,
     CredoresModule,
     OrgaosModule,
+    CaixasModule,
   ],
   controllers: [],
   providers: [
