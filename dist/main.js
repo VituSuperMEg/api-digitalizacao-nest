@@ -33,6 +33,7 @@ const credores_module_1 = __webpack_require__(/*! ./controllers/credores/credore
 const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.module */ "./src/controllers/orgaos/orgaos.module.ts");
 const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 const caixas_module_1 = __webpack_require__(/*! ./controllers/caixas/caixas.module */ "./src/controllers/caixas/caixas.module.ts");
+const prateleira_module_1 = __webpack_require__(/*! ./controllers/prateleira/prateleira.module */ "./src/controllers/prateleira/prateleira.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -48,6 +49,7 @@ exports.AppModule = AppModule = __decorate([
             credores_module_1.CredoresModule,
             orgaos_module_1.OrgaosModule,
             caixas_module_1.CaixasModule,
+            prateleira_module_1.PrateleiraModule,
         ],
         controllers: [],
         providers: [
@@ -1717,6 +1719,244 @@ exports.OrgaosService = OrgaosService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof app_util_1.AppUtil !== "undefined" && app_util_1.AppUtil) === "function" ? _c : Object])
 ], OrgaosService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/dto/create-prateleira.dto.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/prateleira/dto/create-prateleira.dto.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreatePrateleiraDTO = void 0;
+class CreatePrateleiraDTO {
+}
+exports.CreatePrateleiraDTO = CreatePrateleiraDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/dto/update-prateleira.dto.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/prateleira/dto/update-prateleira.dto.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdatePrateleiraDTO = void 0;
+class UpdatePrateleiraDTO {
+}
+exports.UpdatePrateleiraDTO = UpdatePrateleiraDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/prateleira.controller.ts":
+/*!*************************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.controller.ts ***!
+  \*************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PrateleiraController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prateleira_service_1 = __webpack_require__(/*! ./prateleira.service */ "./src/controllers/prateleira/prateleira.service.ts");
+const create_prateleira_dto_1 = __webpack_require__(/*! ./dto/create-prateleira.dto */ "./src/controllers/prateleira/dto/create-prateleira.dto.ts");
+const update_prateleira_dto_1 = __webpack_require__(/*! ./dto/update-prateleira.dto */ "./src/controllers/prateleira/dto/update-prateleira.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let PrateleiraController = class PrateleiraController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.PrateleiraController = PrateleiraController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PrateleiraController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], PrateleiraController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_prateleira_dto_1.CreatePrateleiraDTO !== "undefined" && create_prateleira_dto_1.CreatePrateleiraDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], PrateleiraController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_prateleira_dto_1.UpdatePrateleiraDTO !== "undefined" && update_prateleira_dto_1.UpdatePrateleiraDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], PrateleiraController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], PrateleiraController.prototype, "remove", null);
+exports.PrateleiraController = PrateleiraController = __decorate([
+    (0, common_1.Controller)('api/v1/prateleira'),
+    __metadata("design:paramtypes", [typeof (_a = typeof prateleira_service_1.PrateleiraService !== "undefined" && prateleira_service_1.PrateleiraService) === "function" ? _a : Object])
+], PrateleiraController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/prateleira.module.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.module.ts ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PrateleiraModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prateleira_controller_1 = __webpack_require__(/*! ./prateleira.controller */ "./src/controllers/prateleira/prateleira.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prateleira_service_1 = __webpack_require__(/*! ./prateleira.service */ "./src/controllers/prateleira/prateleira.service.ts");
+let PrateleiraModule = class PrateleiraModule {
+};
+exports.PrateleiraModule = PrateleiraModule;
+exports.PrateleiraModule = PrateleiraModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [prateleira_controller_1.PrateleiraController],
+        providers: [prateleira_service_1.PrateleiraService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], PrateleiraModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/prateleira.service.ts":
+/*!**********************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.service.ts ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PrateleiraService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let PrateleiraService = class PrateleiraService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.prateleira.findMany();
+    }
+    find(id) {
+        return this.db.prateleira.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.prateleira.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso!');
+        }
+        catch (err) {
+            this.responseService.error('Erro ao tentar criar a prateleira', err);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.prateleira.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Registro Alterado com sucesso!');
+        }
+        catch (err) {
+            this.responseService.error('Erro ao tentar criar a prateleira', err);
+        }
+    }
+    remove(id) {
+        this.db.prateleira.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Registro Excluído com Sucesso!');
+    }
+};
+exports.PrateleiraService = PrateleiraService;
+exports.PrateleiraService = PrateleiraService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], PrateleiraService);
 
 
 /***/ }),

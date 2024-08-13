@@ -14,6 +14,7 @@ import { CredoresModule } from './controllers/credores/credores.module';
 import { OrgaosModule } from './controllers/orgaos/orgaos.module';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { CaixasModule } from './controllers/caixas/caixas.module';
+import { PrateleiraModule } from './controllers/prateleira/prateleira.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CaixasModule } from './controllers/caixas/caixas.module';
     CredoresModule,
     OrgaosModule,
     CaixasModule,
+    PrateleiraModule,
   ],
   controllers: [],
   providers: [
