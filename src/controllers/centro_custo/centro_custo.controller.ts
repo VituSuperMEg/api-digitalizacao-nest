@@ -10,6 +10,7 @@ import {
 import { CentroCustoService } from './centro_custo.service';
 import { CreateCentroCustoDTO } from './dto/create-centro-custo.dto';
 import { UpdateCentroCusto } from './dto/update-centro-custo.dto';
+import { Session } from 'src/customs/decorator/session.decorator';
 
 @Controller('api/v1/centro-custo')
 export class CentroCustoController {
@@ -24,10 +25,12 @@ export class CentroCustoController {
     return this.service.find(+id);
   }
   @Post()
+  @Session()
   create(@Body() data: CreateCentroCustoDTO) {
     return this.service.create(data);
   }
   @Put()
+  @Session()
   update(@Body() data: UpdateCentroCusto) {
     return this.service.update(data);
   }

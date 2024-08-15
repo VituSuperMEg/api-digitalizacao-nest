@@ -209,21 +209,25 @@ model Gaveta {
   Compartimento Compartimento[]
   criado_por    Int?
   alterado_por  Int?
+  criado_em     DateTime        @default(now())
+  alterado_em   DateTime        @default(now())
 
   @@map("gaveta")
 }
 
 model Compartimento {
-  id           Int     @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   descricao    String
-  salas        Salas   @relation(fields: [sala_id], references: [id])
+  salas        Salas    @relation(fields: [sala_id], references: [id])
   sala_id      Int
-  armarios     Armario @relation(fields: [armario_id], references: [id])
+  armarios     Armario  @relation(fields: [armario_id], references: [id])
   armario_id   Int
-  gavetas      Gaveta  @relation(fields: [gaveta_id], references: [id])
+  gavetas      Gaveta   @relation(fields: [gaveta_id], references: [id])
   gaveta_id    Int
   criado_por   Int?
   alterado_por Int?
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
 
   @@map("compartimento")
 }
