@@ -130,6 +130,8 @@ model ContasExtras {
   CabDocumento CabDocumento[]
   criado_por   Int?
   alterado_por Int?
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
 
   @@map("contas_extras")
 }
@@ -187,7 +189,7 @@ model CentroCusto {
   descricao        String
   cod_entidade     String?
   cod_centro_custo String?
-  ativo            String?
+  ativo            String?   @default("S")
   criado_em        DateTime  @default(now())
   alterado_em      DateTime  @default(now())
   Destino          Destino[]

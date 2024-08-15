@@ -34,6 +34,8 @@ const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.modu
 const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 const caixas_module_1 = __webpack_require__(/*! ./controllers/caixas/caixas.module */ "./src/controllers/caixas/caixas.module.ts");
 const prateleira_module_1 = __webpack_require__(/*! ./controllers/prateleira/prateleira.module */ "./src/controllers/prateleira/prateleira.module.ts");
+const contas_extras_module_1 = __webpack_require__(/*! ./controllers/contas_extras/contas_extras.module */ "./src/controllers/contas_extras/contas_extras.module.ts");
+const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo/centro_custo.module */ "./src/controllers/centro_custo/centro_custo.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -50,6 +52,8 @@ exports.AppModule = AppModule = __decorate([
             orgaos_module_1.OrgaosModule,
             caixas_module_1.CaixasModule,
             prateleira_module_1.PrateleiraModule,
+            contas_extras_module_1.ContasExtrasModule,
+            centro_custo_module_1.CentroCustoModule,
         ],
         controllers: [],
         providers: [
@@ -1165,6 +1169,487 @@ exports.UpdateCaixasDTO = void 0;
 class UpdateCaixasDTO {
 }
 exports.UpdateCaixasDTO = UpdateCaixasDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.controller.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.controller.ts ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const centro_custo_service_1 = __webpack_require__(/*! ./centro_custo.service */ "./src/controllers/centro_custo/centro_custo.service.ts");
+const create_centro_custo_dto_1 = __webpack_require__(/*! ./dto/create-centro-custo.dto */ "./src/controllers/centro_custo/dto/create-centro-custo.dto.ts");
+const update_centro_custo_dto_1 = __webpack_require__(/*! ./dto/update-centro-custo.dto */ "./src/controllers/centro_custo/dto/update-centro-custo.dto.ts");
+let CentroCustoController = class CentroCustoController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.CentroCustoController = CentroCustoController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_centro_custo_dto_1.CreateCentroCustoDTO !== "undefined" && create_centro_custo_dto_1.CreateCentroCustoDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_centro_custo_dto_1.UpdateCentroCusto !== "undefined" && update_centro_custo_dto_1.UpdateCentroCusto) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "remove", null);
+exports.CentroCustoController = CentroCustoController = __decorate([
+    (0, common_1.Controller)('api/v1/centro-custo'),
+    __metadata("design:paramtypes", [typeof (_a = typeof centro_custo_service_1.CentroCustoService !== "undefined" && centro_custo_service_1.CentroCustoService) === "function" ? _a : Object])
+], CentroCustoController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.module.ts ***!
+  \*************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const centro_custo_controller_1 = __webpack_require__(/*! ./centro_custo.controller */ "./src/controllers/centro_custo/centro_custo.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const centro_custo_service_1 = __webpack_require__(/*! ./centro_custo.service */ "./src/controllers/centro_custo/centro_custo.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CentroCustoModule = class CentroCustoModule {
+};
+exports.CentroCustoModule = CentroCustoModule;
+exports.CentroCustoModule = CentroCustoModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [centro_custo_controller_1.CentroCustoController],
+        providers: [prisma_service_1.PrismaService, centro_custo_service_1.CentroCustoService, response_message_1.ResponseService],
+    })
+], CentroCustoModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.service.ts":
+/*!**************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.service.ts ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CentroCustoService = class CentroCustoService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.centroCusto.findMany();
+    }
+    find(id) {
+        return this.db.centroCusto.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.centroCusto.create({
+                data: {
+                    cod_entidade: data.cod_entidade,
+                    cod_centro_custo: data.cod_centro_custo,
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
+        }
+        catch (error) {
+            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.centroCusto.update({
+                where: { id: data.id },
+                data: {
+                    cod_entidade: data.cod_entidade,
+                    cod_centro_custo: data.cod_centro_custo,
+                    descricao: data.descricao.toUpperCase(),
+                    ativo: data.ativo,
+                    alterado_em: new Date(),
+                    alterado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
+        }
+        catch (error) {
+            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
+        }
+    }
+    async remove(id) {
+        await this.db.centroCusto.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Registro Excluído com sucesso!');
+    }
+};
+exports.CentroCustoService = CentroCustoService;
+exports.CentroCustoService = CentroCustoService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], CentroCustoService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/dto/create-centro-custo.dto.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/centro_custo/dto/create-centro-custo.dto.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCentroCustoDTO = void 0;
+class CreateCentroCustoDTO {
+}
+exports.CreateCentroCustoDTO = CreateCentroCustoDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/dto/update-centro-custo.dto.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/centro_custo/dto/update-centro-custo.dto.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCentroCusto = void 0;
+class UpdateCentroCusto {
+}
+exports.UpdateCentroCusto = UpdateCentroCusto;
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.controller.ts":
+/*!*******************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.controller.ts ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const contas_extras_service_1 = __webpack_require__(/*! ./contas_extras.service */ "./src/controllers/contas_extras/contas_extras.service.ts");
+const create_conta_dto_1 = __webpack_require__(/*! ./dto/create-conta.dto */ "./src/controllers/contas_extras/dto/create-conta.dto.ts");
+const update_conta_dto_1 = __webpack_require__(/*! ./dto/update-conta.dto */ "./src/controllers/contas_extras/dto/update-conta.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let ContasExtrasController = class ContasExtrasController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.ContasExtrasController = ContasExtrasController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_conta_dto_1.CreateContaDTO !== "undefined" && create_conta_dto_1.CreateContaDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_conta_dto_1.UpdateContaDTO !== "undefined" && update_conta_dto_1.UpdateContaDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "remove", null);
+exports.ContasExtrasController = ContasExtrasController = __decorate([
+    (0, common_1.Controller)('api/v1/conta-extra'),
+    __metadata("design:paramtypes", [typeof (_a = typeof contas_extras_service_1.ContasExtrasService !== "undefined" && contas_extras_service_1.ContasExtrasService) === "function" ? _a : Object])
+], ContasExtrasController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.module.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const contas_extras_controller_1 = __webpack_require__(/*! ./contas_extras.controller */ "./src/controllers/contas_extras/contas_extras.controller.ts");
+const contas_extras_service_1 = __webpack_require__(/*! ./contas_extras.service */ "./src/controllers/contas_extras/contas_extras.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let ContasExtrasModule = class ContasExtrasModule {
+};
+exports.ContasExtrasModule = ContasExtrasModule;
+exports.ContasExtrasModule = ContasExtrasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [contas_extras_controller_1.ContasExtrasController],
+        providers: [contas_extras_service_1.ContasExtrasService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], ContasExtrasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.service.ts":
+/*!****************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.service.ts ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let ContasExtrasService = class ContasExtrasService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.contasExtras.findMany();
+    }
+    find(id) {
+        return this.db.contasExtras.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.contasExtras.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    codigo: data.codigo,
+                    exercicio: data.exercicio,
+                    orcamento: data.orcamento,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso!');
+        }
+        catch (err) {
+            this.responseService.error('Erro', err);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.contasExtras.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    codigo: data.codigo,
+                    exercicio: data.exercicio,
+                    orcamento: data.orcamento,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+        }
+        catch (err) {
+            this.responseService.error('Erro', err);
+        }
+    }
+    async remove(id) {
+        await this.db.contasExtras.delete({ where: { id: id } });
+        this.responseService.success({}, 'Registro Excluído com sucesso!');
+    }
+};
+exports.ContasExtrasService = ContasExtrasService;
+exports.ContasExtrasService = ContasExtrasService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], ContasExtrasService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/dto/create-conta.dto.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/dto/create-conta.dto.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateContaDTO = void 0;
+class CreateContaDTO {
+}
+exports.CreateContaDTO = CreateContaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/dto/update-conta.dto.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/dto/update-conta.dto.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateContaDTO = void 0;
+class UpdateContaDTO {
+}
+exports.UpdateContaDTO = UpdateContaDTO;
 
 
 /***/ }),
