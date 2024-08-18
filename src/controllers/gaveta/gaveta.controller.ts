@@ -12,7 +12,7 @@ import { GavetaService } from './gaveta.service';
 import { CreateGavetaDTO } from './dto/create-gaveta.dto';
 import { UpdateGavetaDTO } from './dto/update-gaveta.dto';
 
-@Controller('api/v1/gaveta')
+@Controller('/api/v1/gaveta')
 export class GavetaController {
   constructor(private readonly service: GavetaService) {}
 
@@ -23,7 +23,7 @@ export class GavetaController {
 
   @Get('pagination')
   findPagination(@Query('page') page: number, @Query('limit') limit: number) {
-    return this.service.findPagination(page, limit);
+    return this.service.findPagination(+page, +limit);
   }
 
   @Get(':id')

@@ -37,6 +37,7 @@ const prateleira_module_1 = __webpack_require__(/*! ./controllers/prateleira/pra
 const contas_extras_module_1 = __webpack_require__(/*! ./controllers/contas_extras/contas_extras.module */ "./src/controllers/contas_extras/contas_extras.module.ts");
 const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo/centro_custo.module */ "./src/controllers/centro_custo/centro_custo.module.ts");
 const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.module */ "./src/controllers/gaveta/gaveta.module.ts");
+const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimento/compartimento.module */ "./src/controllers/compartimento/compartimento.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -56,6 +57,7 @@ exports.AppModule = AppModule = __decorate([
             contas_extras_module_1.ContasExtrasModule,
             centro_custo_module_1.CentroCustoModule,
             gaveta_module_1.GavetaModule,
+            compartimento_module_1.CompartimentoModule,
         ],
         controllers: [],
         providers: [
@@ -1418,6 +1420,269 @@ exports.UpdateCentroCusto = UpdateCentroCusto;
 
 /***/ }),
 
+/***/ "./src/controllers/compartimento/compartimento.controller.ts":
+/*!*******************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.controller.ts ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const compartimento_service_1 = __webpack_require__(/*! ./compartimento.service */ "./src/controllers/compartimento/compartimento.service.ts");
+const create_compartimento_dto_1 = __webpack_require__(/*! ./dto/create-compartimento.dto */ "./src/controllers/compartimento/dto/create-compartimento.dto.ts");
+const update_compartimento_dto_1 = __webpack_require__(/*! ./dto/update-compartimento.dto */ "./src/controllers/compartimento/dto/update-compartimento.dto.ts");
+let CompartimentoController = class CompartimentoController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    findPagination(page = 1, limit = 10) {
+        return this.service.findPagination(+page, +limit);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.CompartimentoController = CompartimentoController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Get)('pagination'),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "findPagination", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_compartimento_dto_1.CreateCompartimentoDTO !== "undefined" && create_compartimento_dto_1.CreateCompartimentoDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_compartimento_dto_1.UpdateCompartimentoDTO !== "undefined" && update_compartimento_dto_1.UpdateCompartimentoDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "remove", null);
+exports.CompartimentoController = CompartimentoController = __decorate([
+    (0, common_1.Controller)('/api/v1/compartimento'),
+    __metadata("design:paramtypes", [typeof (_a = typeof compartimento_service_1.CompartimentoService !== "undefined" && compartimento_service_1.CompartimentoService) === "function" ? _a : Object])
+], CompartimentoController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/compartimento.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.module.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const compartimento_controller_1 = __webpack_require__(/*! ./compartimento.controller */ "./src/controllers/compartimento/compartimento.controller.ts");
+const compartimento_service_1 = __webpack_require__(/*! ./compartimento.service */ "./src/controllers/compartimento/compartimento.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
+let CompartimentoModule = class CompartimentoModule {
+};
+exports.CompartimentoModule = CompartimentoModule;
+exports.CompartimentoModule = CompartimentoModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [compartimento_controller_1.CompartimentoController],
+        providers: [
+            compartimento_service_1.CompartimentoService,
+            prisma_service_1.PrismaService,
+            response_message_1.ResponseService,
+            pagination_service_1.PaginationService,
+        ],
+    })
+], CompartimentoModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/compartimento.service.ts":
+/*!****************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.service.ts ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CompartimentoService = class CompartimentoService {
+    constructor(db, responseService, pagination) {
+        this.db = db;
+        this.responseService = responseService;
+        this.pagination = pagination;
+    }
+    findAll() {
+        return this.db.compartimento.findMany();
+    }
+    findPagination(page, limit) {
+        return this.pagination.paginate(this.db.compartimento, page, limit);
+    }
+    find(id) {
+        return this.db.compartimento.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.compartimento.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    gaveta_id: data.gaveta_id,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Compartimento cadastrado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao cadastrar compartimento', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.compartimento.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    gaveta_id: data.gaveta_id,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            return this.responseService.success({}, 'Compartimento atualizado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar atualizar compartimento', error);
+        }
+    }
+    remove(id) {
+        this.db.compartimento.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Compartimento excluído com sucesso!');
+    }
+};
+exports.CompartimentoService = CompartimentoService;
+exports.CompartimentoService = CompartimentoService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof pagination_service_1.PaginationService !== "undefined" && pagination_service_1.PaginationService) === "function" ? _c : Object])
+], CompartimentoService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/dto/create-compartimento.dto.ts":
+/*!***********************************************************************!*\
+  !*** ./src/controllers/compartimento/dto/create-compartimento.dto.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCompartimentoDTO = void 0;
+class CreateCompartimentoDTO {
+}
+exports.CreateCompartimentoDTO = CreateCompartimentoDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/dto/update-compartimento.dto.ts":
+/*!***********************************************************************!*\
+  !*** ./src/controllers/compartimento/dto/update-compartimento.dto.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCompartimentoDTO = void 0;
+class UpdateCompartimentoDTO {
+}
+exports.UpdateCompartimentoDTO = UpdateCompartimentoDTO;
+
+
+/***/ }),
+
 /***/ "./src/controllers/contas_extras/contas_extras.controller.ts":
 /*!*******************************************************************!*\
   !*** ./src/controllers/contas_extras/contas_extras.controller.ts ***!
@@ -2001,7 +2266,7 @@ let GavetaController = class GavetaController {
         return this.service.findAll();
     }
     findPagination(page, limit) {
-        return this.service.findPagination(page, limit);
+        return this.service.findPagination(+page, +limit);
     }
     findOne(id) {
         return this.service.find(+id);
@@ -2060,7 +2325,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], GavetaController.prototype, "remove", null);
 exports.GavetaController = GavetaController = __decorate([
-    (0, common_1.Controller)('api/v1/gaveta'),
+    (0, common_1.Controller)('/api/v1/gaveta'),
     __metadata("design:paramtypes", [typeof (_a = typeof gaveta_service_1.GavetaService !== "undefined" && gaveta_service_1.GavetaService) === "function" ? _a : Object])
 ], GavetaController);
 
