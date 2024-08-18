@@ -17,6 +17,7 @@ import { CaixasModule } from './controllers/caixas/caixas.module';
 import { PrateleiraModule } from './controllers/prateleira/prateleira.module';
 import { ContasExtrasModule } from './controllers/contas_extras/contas_extras.module';
 import { CentroCustoModule } from './controllers/centro_custo/centro_custo.module';
+import { GavetaModule } from './controllers/gaveta/gaveta.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CentroCustoModule } from './controllers/centro_custo/centro_custo.modul
     PrateleiraModule,
     ContasExtrasModule,
     CentroCustoModule,
+    GavetaModule,
   ],
   controllers: [],
   providers: [

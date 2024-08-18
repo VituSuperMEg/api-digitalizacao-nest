@@ -5,13 +5,18 @@ type PaginateType = {
   model: any;
   page: number;
   limit: number;
-  options: any;
+  options?: any;
 };
 @Injectable()
 export class PaginationService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async paginate({ model, page = 1, limit = 10, options }: PaginateType) {
+  async paginate(
+    model: any,
+    page: number = 1,
+    limit: number = 10,
+    options?: any,
+  ) {
     const offset = (page - 1) * limit;
 
     const [data, totalItems] = await Promise.all([

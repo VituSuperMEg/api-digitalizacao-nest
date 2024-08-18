@@ -36,6 +36,7 @@ const caixas_module_1 = __webpack_require__(/*! ./controllers/caixas/caixas.modu
 const prateleira_module_1 = __webpack_require__(/*! ./controllers/prateleira/prateleira.module */ "./src/controllers/prateleira/prateleira.module.ts");
 const contas_extras_module_1 = __webpack_require__(/*! ./controllers/contas_extras/contas_extras.module */ "./src/controllers/contas_extras/contas_extras.module.ts");
 const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo/centro_custo.module */ "./src/controllers/centro_custo/centro_custo.module.ts");
+const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.module */ "./src/controllers/gaveta/gaveta.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -54,6 +55,7 @@ exports.AppModule = AppModule = __decorate([
             prateleira_module_1.PrateleiraModule,
             contas_extras_module_1.ContasExtrasModule,
             centro_custo_module_1.CentroCustoModule,
+            gaveta_module_1.GavetaModule,
         ],
         controllers: [],
         providers: [
@@ -1199,6 +1201,7 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const centro_custo_service_1 = __webpack_require__(/*! ./centro_custo.service */ "./src/controllers/centro_custo/centro_custo.service.ts");
 const create_centro_custo_dto_1 = __webpack_require__(/*! ./dto/create-centro-custo.dto */ "./src/controllers/centro_custo/dto/create-centro-custo.dto.ts");
 const update_centro_custo_dto_1 = __webpack_require__(/*! ./dto/update-centro-custo.dto */ "./src/controllers/centro_custo/dto/update-centro-custo.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
 let CentroCustoController = class CentroCustoController {
     constructor(service) {
         this.service = service;
@@ -1235,6 +1238,7 @@ __decorate([
 ], CentroCustoController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [typeof (_b = typeof create_centro_custo_dto_1.CreateCentroCustoDTO !== "undefined" && create_centro_custo_dto_1.CreateCentroCustoDTO) === "function" ? _b : Object]),
@@ -1242,6 +1246,7 @@ __decorate([
 ], CentroCustoController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [typeof (_c = typeof update_centro_custo_dto_1.UpdateCentroCusto !== "undefined" && update_centro_custo_dto_1.UpdateCentroCusto) === "function" ? _c : Object]),
@@ -1926,6 +1931,262 @@ exports.UpdateCredorDTO = void 0;
 class UpdateCredorDTO {
 }
 exports.UpdateCredorDTO = UpdateCredorDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/dto/create-gaveta.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/gaveta/dto/create-gaveta.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateGavetaDTO = void 0;
+class CreateGavetaDTO {
+}
+exports.CreateGavetaDTO = CreateGavetaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/dto/update-gaveta.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/gaveta/dto/update-gaveta.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateGavetaDTO = void 0;
+class UpdateGavetaDTO {
+}
+exports.UpdateGavetaDTO = UpdateGavetaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/gaveta.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GavetaController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const gaveta_service_1 = __webpack_require__(/*! ./gaveta.service */ "./src/controllers/gaveta/gaveta.service.ts");
+const create_gaveta_dto_1 = __webpack_require__(/*! ./dto/create-gaveta.dto */ "./src/controllers/gaveta/dto/create-gaveta.dto.ts");
+const update_gaveta_dto_1 = __webpack_require__(/*! ./dto/update-gaveta.dto */ "./src/controllers/gaveta/dto/update-gaveta.dto.ts");
+let GavetaController = class GavetaController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findPagination(page, limit) {
+        return this.service.findPagination(page, limit);
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.GavetaController = GavetaController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('pagination'),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "findPagination", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_gaveta_dto_1.CreateGavetaDTO !== "undefined" && create_gaveta_dto_1.CreateGavetaDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_gaveta_dto_1.UpdateGavetaDTO !== "undefined" && update_gaveta_dto_1.UpdateGavetaDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "remove", null);
+exports.GavetaController = GavetaController = __decorate([
+    (0, common_1.Controller)('api/v1/gaveta'),
+    __metadata("design:paramtypes", [typeof (_a = typeof gaveta_service_1.GavetaService !== "undefined" && gaveta_service_1.GavetaService) === "function" ? _a : Object])
+], GavetaController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/gaveta.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GavetaModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const gaveta_controller_1 = __webpack_require__(/*! ./gaveta.controller */ "./src/controllers/gaveta/gaveta.controller.ts");
+const gaveta_service_1 = __webpack_require__(/*! ./gaveta.service */ "./src/controllers/gaveta/gaveta.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
+let GavetaModule = class GavetaModule {
+};
+exports.GavetaModule = GavetaModule;
+exports.GavetaModule = GavetaModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [gaveta_controller_1.GavetaController],
+        providers: [gaveta_service_1.GavetaService, prisma_service_1.PrismaService, response_message_1.ResponseService, pagination_service_1.PaginationService],
+    })
+], GavetaModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/gaveta.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GavetaService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
+let GavetaService = class GavetaService {
+    constructor(db, responseService, pagination) {
+        this.db = db;
+        this.responseService = responseService;
+        this.pagination = pagination;
+    }
+    findAll() {
+        return this.db.gaveta.findMany();
+    }
+    findPagination(page, limit) {
+        return this.pagination.paginate(this.db.compartimento, page, limit);
+    }
+    find(id) {
+        return this.db.gaveta.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.gaveta.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Gaveta criada com sucesso.');
+        }
+        catch (error) {
+            this.responseService.error('Falha ao tentar criar a gaveta.', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.gaveta.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Gaveta atualizada com sucesso.');
+        }
+        catch (error) {
+            this.responseService.error('Falha ao tentar criar a gaveta.', error);
+        }
+    }
+    remove(id) {
+        this.db.gaveta.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Gaveta excluída com sucesso.');
+    }
+};
+exports.GavetaService = GavetaService;
+exports.GavetaService = GavetaService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof pagination_service_1.PaginationService !== "undefined" && pagination_service_1.PaginationService) === "function" ? _c : Object])
+], GavetaService);
 
 
 /***/ }),
@@ -3260,6 +3521,58 @@ exports.AppUtil = AppUtil;
 exports.AppUtil = AppUtil = __decorate([
     (0, common_1.Injectable)()
 ], AppUtil);
+
+
+/***/ }),
+
+/***/ "./src/services/pagination.service.ts":
+/*!********************************************!*\
+  !*** ./src/services/pagination.service.ts ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PaginationService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! ./prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let PaginationService = class PaginationService {
+    constructor(prisma) {
+        this.prisma = prisma;
+    }
+    async paginate(model, page = 1, limit = 10, options) {
+        const offset = (page - 1) * limit;
+        const [data, totalItems] = await Promise.all([
+            model.findMany({
+                skip: offset,
+                take: limit,
+                ...options,
+            }),
+            model.count(options),
+        ]);
+        return {
+            data,
+            currentPage: page,
+            totalPages: Math.ceil(totalItems / limit),
+            totalItems,
+        };
+    }
+};
+exports.PaginationService = PaginationService;
+exports.PaginationService = PaginationService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+], PaginationService);
 
 
 /***/ }),
