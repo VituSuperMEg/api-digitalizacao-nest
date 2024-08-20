@@ -19,6 +19,7 @@ import { ContasExtrasModule } from './controllers/contas_extras/contas_extras.mo
 import { CentroCustoModule } from './controllers/centro_custo/centro_custo.module';
 import { GavetaModule } from './controllers/gaveta/gaveta.module';
 import { CompartimentoModule } from './controllers/compartimento/compartimento.module';
+import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/unidade-orcamentaria.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { CompartimentoModule } from './controllers/compartimento/compartimento.m
     CentroCustoModule,
     GavetaModule,
     CompartimentoModule,
+    UnidadeOrcamentariaModule,
   ],
   controllers: [],
   providers: [

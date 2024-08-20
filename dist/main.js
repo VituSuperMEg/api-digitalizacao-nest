@@ -38,6 +38,7 @@ const contas_extras_module_1 = __webpack_require__(/*! ./controllers/contas_extr
 const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo/centro_custo.module */ "./src/controllers/centro_custo/centro_custo.module.ts");
 const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.module */ "./src/controllers/gaveta/gaveta.module.ts");
 const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimento/compartimento.module */ "./src/controllers/compartimento/compartimento.module.ts");
+const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unidade_orcamentaria/unidade-orcamentaria.module */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -58,6 +59,7 @@ exports.AppModule = AppModule = __decorate([
             centro_custo_module_1.CentroCustoModule,
             gaveta_module_1.GavetaModule,
             compartimento_module_1.CompartimentoModule,
+            unidade_orcamentaria_module_1.UnidadeOrcamentariaModule,
         ],
         controllers: [],
         providers: [
@@ -3220,6 +3222,246 @@ exports.SalasServices = SalasServices = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
 ], SalasServices);
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateUnidadeOrcamentariaDTO = void 0;
+class CreateUnidadeOrcamentariaDTO {
+}
+exports.CreateUnidadeOrcamentariaDTO = CreateUnidadeOrcamentariaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateUnidadeOrcamentariaDTO = void 0;
+class UpdateUnidadeOrcamentariaDTO {
+}
+exports.UpdateUnidadeOrcamentariaDTO = UpdateUnidadeOrcamentariaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts ***!
+  \*********************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UnidadeOrcamentariaController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const unidade_orcamentaria_service_1 = __webpack_require__(/*! ./unidade-orcamentaria.service */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const create_unidade_orcamentaria_dto_1 = __webpack_require__(/*! ./dto/create-unidade-orcamentaria.dto */ "./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts");
+const update_unidade_orcamentaria_dto_1 = __webpack_require__(/*! ./dto/update-unidade-orcamentaria.dto */ "./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts");
+let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.UnidadeOrcamentariaController = UnidadeOrcamentariaController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_unidade_orcamentaria_dto_1.CreateUnidadeOrcamentariaDTO !== "undefined" && create_unidade_orcamentaria_dto_1.CreateUnidadeOrcamentariaDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_unidade_orcamentaria_dto_1.UpdateUnidadeOrcamentariaDTO !== "undefined" && update_unidade_orcamentaria_dto_1.UpdateUnidadeOrcamentariaDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "remove", null);
+exports.UnidadeOrcamentariaController = UnidadeOrcamentariaController = __decorate([
+    (0, common_1.Controller)('/api/v1/unidade-orcamentaria'),
+    __metadata("design:paramtypes", [typeof (_a = typeof unidade_orcamentaria_service_1.UnidadeOrcamentariaService !== "undefined" && unidade_orcamentaria_service_1.UnidadeOrcamentariaService) === "function" ? _a : Object])
+], UnidadeOrcamentariaController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UnidadeOrcamentariaModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const unidade_orcamentaria_controller_1 = __webpack_require__(/*! ./unidade-orcamentaria.controller */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const unidade_orcamentaria_service_1 = __webpack_require__(/*! ./unidade-orcamentaria.service */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts");
+let UnidadeOrcamentariaModule = class UnidadeOrcamentariaModule {
+};
+exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule;
+exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [unidade_orcamentaria_controller_1.UnidadeOrcamentariaController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, unidade_orcamentaria_service_1.UnidadeOrcamentariaService],
+    })
+], UnidadeOrcamentariaModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts":
+/*!******************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UnidadeOrcamentariaService = void 0;
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! ./../../services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.unidadeOrcamentaria.findMany();
+    }
+    find(id) {
+        return this.db.unidadeOrcamentaria.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.unidadeOrcamentaria.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    cnpj: data.cnpj,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success(null, 'Unidade Orçamentária criada com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar criar a Unidade Orçamentária', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.unidadeOrcamentaria.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    cnpj: data.cnpj,
+                    ativo: data.ativo,
+                    alterado_em: new Date(),
+                    alterado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success(null, 'Unidade Orçamentária atualizada com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar atualizar a Unidade Orçamentária', error);
+        }
+    }
+    remove(id) {
+        this.db.unidadeOrcamentaria.delete({
+            where: { id: id },
+        });
+        this.responseService.success(null, 'Unidade Orçamentária excluída com sucesso!');
+    }
+};
+exports.UnidadeOrcamentariaService = UnidadeOrcamentariaService;
+exports.UnidadeOrcamentariaService = UnidadeOrcamentariaService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], UnidadeOrcamentariaService);
 
 
 /***/ }),
