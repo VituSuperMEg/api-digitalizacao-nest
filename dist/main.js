@@ -920,6 +920,9 @@ let AuthService = class AuthService {
             return this.responseService.error('Este usuário não existe');
         }
         const cliente = clients_1.configuracoes.database[global.CLIENTE_ID];
+        global.SESSION = {
+            id: user.id,
+        };
         const payload = {
             sub: user.id,
             id: user.id,
@@ -3423,12 +3426,17 @@ let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
                 data: {
                     descricao: data.descricao.toUpperCase(),
                     cnpj: data.cnpj,
+                    cod_orgao: data.cod_orgao,
+                    cod_unidade_orcamentaria: data.cod_unidade_orcamentaria,
+                    responsavel: data.responsavel,
+                    ativo: 'S',
                     criado_por: global.SESSION.id,
                 },
             });
             this.responseService.success(null, 'Unidade Orçamentária criada com sucesso!');
         }
         catch (error) {
+            console.log(error);
             this.responseService.error('Erro ao tentar criar a Unidade Orçamentária', error);
         }
     }
@@ -4341,6 +4349,14 @@ const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/sess
 const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors({
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+        allowedHeaders: 'Content-Type, Authorization, Accept, x-cliente-id',
+        credentials: true,
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
+    });
     await app.listen(3333);
     app.useGlobalInterceptors(new session_interceptor_1.SessionInterceptor(new core_1.Reflector()));
     app.useGlobalPipes(new validation_pipe_1.ValidationPipe());

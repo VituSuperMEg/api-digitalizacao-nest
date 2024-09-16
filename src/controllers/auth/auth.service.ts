@@ -24,12 +24,10 @@ export class AuthService {
       return this.responseService.error('Este usuário não existe');
     }
 
-    // Verifique a senha (adapte para seu método de verificação)
-    // const decode = await compare(pass, user.senha);
-    // if (!decode) {
-    //   throw new UnauthorizedException();
-    // }
     const cliente = configuracoes.database[global.CLIENTE_ID];
+    global.SESSION = {
+      id: user.id,
+    };
     const payload = {
       sub: user.id,
       id: user.id,

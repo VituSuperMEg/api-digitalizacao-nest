@@ -27,6 +27,10 @@ export class UnidadeOrcamentariaService {
         data: {
           descricao: data.descricao.toUpperCase(),
           cnpj: data.cnpj,
+          cod_orgao: data.cod_orgao,
+          cod_unidade_orcamentaria: data.cod_unidade_orcamentaria,
+          responsavel: data.responsavel,
+          ativo: 'S',
           criado_por: global.SESSION.id,
         },
       });
@@ -35,6 +39,7 @@ export class UnidadeOrcamentariaService {
         'Unidade Orçamentária criada com sucesso!',
       );
     } catch (error) {
+      console.log(error)
       this.responseService.error(
         'Erro ao tentar criar a Unidade Orçamentária',
         error,

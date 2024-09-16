@@ -256,6 +256,9 @@ model UnidadeOrcamentaria {
   ativo                     String                      @default("S")
   criado_em                 DateTime                    @default(now())
   alterado_em               DateTime                    @default(now())
+  responsavel               String
+  cod_unidade_orcamentaria  String
+  cod_orgao                 String
   DespesaCategoriaEconomica DespesaCategoriaEconomica[]
   Destino                   Destino[]
   criado_por                Int?
@@ -339,6 +342,17 @@ model Destino {
   alterado_por         Int?
 
   @@map("destino")
+}
+
+model TiposDocumentos {
+  id        Int    @id @default(autoincrement())
+  descricao String
+  criado_em DateTime @default(now())
+  alterado_em DateTime @default(now())
+  criado_por  Int?
+  alterado_por Int?
+
+  @@map("tipo_documentos")
 }
 
 model DetDocumento {
