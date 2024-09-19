@@ -21,6 +21,11 @@ export class UnidadeOrcamentariaController {
     return this.service.findAll();
   }
 
+  @Get('/page')
+  findPage() {
+    return this.service.getPaginatedItems(1, 10);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.service.find(+id);

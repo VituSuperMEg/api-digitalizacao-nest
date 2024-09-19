@@ -39,6 +39,7 @@ const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo
 const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.module */ "./src/controllers/gaveta/gaveta.module.ts");
 const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimento/compartimento.module */ "./src/controllers/compartimento/compartimento.module.ts");
 const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unidade_orcamentaria/unidade-orcamentaria.module */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts");
+const tipos_documentos_module_1 = __webpack_require__(/*! ./controllers/tipos-documentos/tipos-documentos.module */ "./src/controllers/tipos-documentos/tipos-documentos.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -60,6 +61,7 @@ exports.AppModule = AppModule = __decorate([
             gaveta_module_1.GavetaModule,
             compartimento_module_1.CompartimentoModule,
             unidade_orcamentaria_module_1.UnidadeOrcamentariaModule,
+            tipos_documentos_module_1.TiposDocumentosModule,
         ],
         controllers: [],
         providers: [
@@ -3229,6 +3231,209 @@ exports.SalasServices = SalasServices = __decorate([
 
 /***/ }),
 
+/***/ "./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateTiposDocumentosDTO = void 0;
+class CreateTiposDocumentosDTO {
+}
+exports.CreateTiposDocumentosDTO = CreateTiposDocumentosDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.controller.ts":
+/*!*************************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.controller.ts ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TiposDocumentosController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const tipos_documentos_service_1 = __webpack_require__(/*! ./tipos-documentos.service */ "./src/controllers/tipos-documentos/tipos-documentos.service.ts");
+const create_tipos_documentos_dto_1 = __webpack_require__(/*! ./dto/create-tipos-documentos.dto */ "./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts");
+let TiposDocumentosController = class TiposDocumentosController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    delete(id) {
+        return this.service.delete(+id);
+    }
+};
+exports.TiposDocumentosController = TiposDocumentosController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "delete", null);
+exports.TiposDocumentosController = TiposDocumentosController = __decorate([
+    (0, common_1.Controller)('/api/v1/tipos-documentos'),
+    __metadata("design:paramtypes", [typeof (_a = typeof tipos_documentos_service_1.TiposDocumentosService !== "undefined" && tipos_documentos_service_1.TiposDocumentosService) === "function" ? _a : Object])
+], TiposDocumentosController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.module.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.module.ts ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TiposDocumentosModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const tipos_documentos_controller_1 = __webpack_require__(/*! ./tipos-documentos.controller */ "./src/controllers/tipos-documentos/tipos-documentos.controller.ts");
+const tipos_documentos_service_1 = __webpack_require__(/*! ./tipos-documentos.service */ "./src/controllers/tipos-documentos/tipos-documentos.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let TiposDocumentosModule = class TiposDocumentosModule {
+};
+exports.TiposDocumentosModule = TiposDocumentosModule;
+exports.TiposDocumentosModule = TiposDocumentosModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [tipos_documentos_controller_1.TiposDocumentosController],
+        providers: [tipos_documentos_service_1.TiposDocumentosService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], TiposDocumentosModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.service.ts":
+/*!**********************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.service.ts ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TiposDocumentosService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let TiposDocumentosService = class TiposDocumentosService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.tiposDocumentos.findMany();
+    }
+    find(id) {
+        return this.db.tiposDocumentos.findFirst({
+            where: { id: id },
+        });
+    }
+    create(data) {
+        return this.db.tiposDocumentos.create({
+            data: {
+                id: data.id,
+                descricao: data.descricao.toUpperCase(),
+            },
+        });
+    }
+    update(data) {
+        return this.db.tiposDocumentos.update({
+            where: { id: data.id },
+            data: {
+                descricao: data.descricao.toUpperCase(),
+            },
+        });
+    }
+    delete(id) {
+        return this.db.tiposDocumentos.delete({
+            where: { id: id },
+        });
+    }
+};
+exports.TiposDocumentosService = TiposDocumentosService;
+exports.TiposDocumentosService = TiposDocumentosService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], TiposDocumentosService);
+
+
+/***/ }),
+
 /***/ "./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts":
 /*!*************************************************************************************!*\
   !*** ./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts ***!
@@ -3295,6 +3500,9 @@ let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
     findAll() {
         return this.service.findAll();
     }
+    findPage() {
+        return this.service.getPaginatedItems(1, 10);
+    }
     findOne(id) {
         return this.service.find(+id);
     }
@@ -3315,6 +3523,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UnidadeOrcamentariaController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/page'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -3407,6 +3621,7 @@ exports.UnidadeOrcamentariaService = void 0;
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 const prisma_service_1 = __webpack_require__(/*! ./../../services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
     constructor(db, responseService) {
         this.db = db;
@@ -3436,7 +3651,6 @@ let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
             this.responseService.success(null, 'Unidade Orçamentária criada com sucesso!');
         }
         catch (error) {
-            console.log(error);
             this.responseService.error('Erro ao tentar criar a Unidade Orçamentária', error);
         }
     }
@@ -3463,6 +3677,9 @@ let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
             where: { id: id },
         });
         this.responseService.success(null, 'Unidade Orçamentária excluída com sucesso!');
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.unidadeOrcamentaria, { page, limit });
     }
 };
 exports.UnidadeOrcamentariaService = UnidadeOrcamentariaService;
@@ -3927,6 +4144,41 @@ exports.EntidadesModule = EntidadesModule = __decorate([
         providers: [prisma_service_1.PrismaService],
     })
 ], EntidadesModule);
+
+
+/***/ }),
+
+/***/ "./src/helpers/pagination.helper.ts":
+/*!******************************************!*\
+  !*** ./src/helpers/pagination.helper.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.paginate = paginate;
+async function paginate(prismaModel, paginationParams = { page: 1, limit: 10 }, whereClause = {}, orderBy = {}) {
+    const { page = 1, limit = 10 } = paginationParams;
+    const skip = (page - 1) * limit;
+    const [data, total] = await Promise.all([
+        prismaModel.findMany({
+            where: whereClause,
+            orderBy: orderBy,
+            skip: skip,
+            take: limit,
+        }),
+        prismaModel.count({
+            where: whereClause,
+        }),
+    ]);
+    return {
+        data,
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+    };
+}
 
 
 /***/ }),

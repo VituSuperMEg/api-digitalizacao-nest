@@ -3,6 +3,7 @@ import { PrismaService } from './../../services/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { CreateUnidadeOrcamentariaDTO } from './dto/create-unidade-orcamentaria.dto';
 import { UpdateUnidadeOrcamentariaDTO } from './dto/update-unidade-orcamentaria.dto';
+import { paginate } from 'src/helpers/pagination.helper';
 
 @Injectable()
 export class UnidadeOrcamentariaService {
@@ -39,7 +40,6 @@ export class UnidadeOrcamentariaService {
         'Unidade Orçamentária criada com sucesso!',
       );
     } catch (error) {
-      console.log(error)
       this.responseService.error(
         'Erro ao tentar criar a Unidade Orçamentária',
         error,
@@ -79,5 +79,9 @@ export class UnidadeOrcamentariaService {
       null,
       'Unidade Orçamentária excluída com sucesso!',
     );
+  }
+
+  async getPaginatedItems(page: number, limit: number) {
+    return await paginate(this.db.unidadeOrcamentaria, { page, limit });
   }
 }

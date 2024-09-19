@@ -20,6 +20,7 @@ import { CentroCustoModule } from './controllers/centro_custo/centro_custo.modul
 import { GavetaModule } from './controllers/gaveta/gaveta.module';
 import { CompartimentoModule } from './controllers/compartimento/compartimento.module';
 import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/unidade-orcamentaria.module';
+import { TiposDocumentosModule } from './controllers/tipos-documentos/tipos-documentos.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/un
     GavetaModule,
     CompartimentoModule,
     UnidadeOrcamentariaModule,
+    TiposDocumentosModule,
   ],
   controllers: [],
   providers: [
