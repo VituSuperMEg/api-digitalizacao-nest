@@ -1,22 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { ResponseService } from 'src/services/response-message';
-import { CreateTiposDocumentosDTO } from './dto/create-tipos-documentos.dto';
-import { PrismaService } from 'src/services/prisma/prisma.service';
 import { paginate } from 'src/helpers/pagination.helper';
+import { PrismaService } from 'src/services/prisma/prisma.service';
+import { CreateSetoresDTO } from './dto/create-setores.dto';
 
 @Injectable()
-export class TiposDocumentosService {
-  constructor(
-    private db: PrismaService,
-    private responseService: ResponseService,
-  ) {}
+export class SetoresServices {
+  constructor(private readonly db: PrismaService) {}
 
-  findAll() {
+  indAll() {
     return this.db.tiposDocumentos.findMany();
   }
 
   async getPaginatedItems(page: number, limit: number) {
-    return await paginate(this.db.tiposDocumentos, { page, limit });
+    return await paginate(this.db.setores, { page, limit });
   }
 
   find(id: number) {
@@ -25,8 +21,8 @@ export class TiposDocumentosService {
     });
   }
 
-  create(data: CreateTiposDocumentosDTO) {
-    return this.db.tiposDocumentos.create({
+  create(data: CreateSetoresDTO) {
+    return this.db.setores.create({
       data: {
         descricao: data.descricao.toUpperCase(),
       },
@@ -34,7 +30,7 @@ export class TiposDocumentosService {
   }
 
   update(data: CreateTiposDocumentosDTO) {
-    return this.db.tiposDocumentos.update({
+    return this.db.setores.update({
       where: { id: data.id },
       data: {
         descricao: data.descricao.toUpperCase(),

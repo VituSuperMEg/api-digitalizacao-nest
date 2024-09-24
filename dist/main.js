@@ -3279,6 +3279,10 @@ let TiposDocumentosController = class TiposDocumentosController {
     findAll() {
         return this.service.findAll();
     }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
+    }
     findOne(id) {
         return this.service.find(+id);
     }
@@ -3299,6 +3303,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], TiposDocumentosController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -3390,6 +3401,7 @@ exports.TiposDocumentosService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let TiposDocumentosService = class TiposDocumentosService {
     constructor(db, responseService) {
         this.db = db;
@@ -3397,6 +3409,9 @@ let TiposDocumentosService = class TiposDocumentosService {
     }
     findAll() {
         return this.db.tiposDocumentos.findMany();
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.tiposDocumentos, { page, limit });
     }
     find(id) {
         return this.db.tiposDocumentos.findFirst({
@@ -3406,7 +3421,6 @@ let TiposDocumentosService = class TiposDocumentosService {
     create(data) {
         return this.db.tiposDocumentos.create({
             data: {
-                id: data.id,
                 descricao: data.descricao.toUpperCase(),
             },
         });
@@ -3497,13 +3511,15 @@ let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
     constructor(service) {
         this.service = service;
     }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
+    }
     findAll() {
         return this.service.findAll();
     }
-    findPage() {
-        return this.service.getPaginatedItems(1, 10);
-    }
     findOne(id) {
+        console.log(id);
         return this.service.find(+id);
     }
     create(data) {
@@ -3518,17 +3534,18 @@ let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
 };
 exports.UnidadeOrcamentariaController = UnidadeOrcamentariaController;
 __decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "findPage", null);
+__decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UnidadeOrcamentariaController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('/page'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], UnidadeOrcamentariaController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

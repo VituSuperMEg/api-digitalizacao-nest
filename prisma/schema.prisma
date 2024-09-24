@@ -263,6 +263,7 @@ model UnidadeOrcamentaria {
   Destino                   Destino[]
   criado_por                Int?
   alterado_por              Int?
+  Setores                   Setores[]
 
   @@map("unidades_orcamentaria")
 }
@@ -345,11 +346,11 @@ model Destino {
 }
 
 model TiposDocumentos {
-  id        Int    @id @default(autoincrement())
-  descricao String
-  criado_em DateTime @default(now())
-  alterado_em DateTime @default(now())
-  criado_por  Int?
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
   alterado_por Int?
 
   @@map("tipo_documentos")
@@ -382,6 +383,19 @@ model Estante {
   alterado_por Int?
 
   @@map("estante")
+}
+
+model Setores {
+  id                      Int                 @id @default(autoincrement())
+  descricao               String
+  unidade_orcamentaria    UnidadeOrcamentaria @relation(fields: [unidade_orcamentaria_id], references: [id])
+  unidade_orcamentaria_id Int
+  criado_em               DateTime            @default(now())
+  alterado_em             DateTime            @default(now())
+  criado_por              Int?
+  alterado_por            Int?
+
+  @@map("setores")
 }
 
 model Grupo {

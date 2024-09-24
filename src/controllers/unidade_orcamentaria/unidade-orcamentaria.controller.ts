@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UnidadeOrcamentariaService } from './unidade-orcamentaria.service';
 import { Session } from 'src/customs/decorator/session.decorator';
@@ -16,18 +17,19 @@ import { UpdateUnidadeOrcamentariaDTO } from './dto/update-unidade-orcamentaria.
 export class UnidadeOrcamentariaController {
   constructor(private readonly service: UnidadeOrcamentariaService) {}
 
+  @Get('/page')
+  findPage(@Query('page') page: string) {
+    const pageNumber = parseInt(page, 10);
+    return this.service.getPaginatedItems(pageNumber, 10);
+  }
   @Get()
   findAll() {
     return this.service.findAll();
   }
 
-  @Get('/page')
-  findPage() {
-    return this.service.getPaginatedItems(1, 10);
-  }
-
   @Get(':id')
   findOne(@Param('id') id: number) {
+    console.log(id);
     return this.service.find(+id);
   }
 

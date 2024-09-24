@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { TiposDocumentosService } from './tipos-documentos.service';
 import { CreateTiposDocumentosDTO } from './dto/create-tipos-documentos.dto';
@@ -17,6 +18,11 @@ export class TiposDocumentosController {
   @Get()
   findAll() {
     return this.service.findAll();
+  }
+  @Get('/page')
+  findPage(@Query('page') page: string) {
+    const pageNumber = parseInt(page, 10);
+    return this.service.getPaginatedItems(pageNumber, 10);
   }
 
   @Get(':id')
