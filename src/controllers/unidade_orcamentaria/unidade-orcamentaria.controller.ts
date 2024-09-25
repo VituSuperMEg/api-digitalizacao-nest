@@ -27,6 +27,11 @@ export class UnidadeOrcamentariaController {
     return this.service.findAll();
   }
 
+  @Get('/options')
+  listOptions(@Query('descricao') descricao: string) {
+    return this.service.listOptions(descricao);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     console.log(id);

@@ -22,6 +22,13 @@ export class UnidadeOrcamentariaService {
     });
   }
 
+  listOptions(descricao: string) {
+    return this.db.unidadeOrcamentaria.findMany({
+      where: { descricao: { contains: descricao, mode: 'insensitive' } },
+      take: 10,
+    });
+  }
+
   async create(data: CreateUnidadeOrcamentariaDTO) {
     try {
       await this.db.unidadeOrcamentaria.create({

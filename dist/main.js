@@ -40,6 +40,7 @@ const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.modu
 const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimento/compartimento.module */ "./src/controllers/compartimento/compartimento.module.ts");
 const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unidade_orcamentaria/unidade-orcamentaria.module */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts");
 const tipos_documentos_module_1 = __webpack_require__(/*! ./controllers/tipos-documentos/tipos-documentos.module */ "./src/controllers/tipos-documentos/tipos-documentos.module.ts");
+const setores_module_1 = __webpack_require__(/*! ./controllers/setores/setores.module */ "./src/controllers/setores/setores.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -62,6 +63,7 @@ exports.AppModule = AppModule = __decorate([
             compartimento_module_1.CompartimentoModule,
             unidade_orcamentaria_module_1.UnidadeOrcamentariaModule,
             tipos_documentos_module_1.TiposDocumentosModule,
+            setores_module_1.SetoresModule,
         ],
         controllers: [],
         providers: [
@@ -282,10 +284,11 @@ exports.DynamicDatabaseGuard = DynamicDatabaseGuard = __decorate([
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.jwtConstants = void 0;
+exports.APIV1 = exports.jwtConstants = void 0;
 exports.jwtConstants = {
     secret: '5bfca4a1474397f842accb61211ab197',
 };
+exports.APIV1 = '/api/v1/';
 
 
 /***/ }),
@@ -3231,6 +3234,243 @@ exports.SalasServices = SalasServices = __decorate([
 
 /***/ }),
 
+/***/ "./src/controllers/setores/dto/create-setores.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/setores/dto/create-setores.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateSetoresDTO = void 0;
+class CreateSetoresDTO {
+}
+exports.CreateSetoresDTO = CreateSetoresDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/setores/dto/update-setores.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/setores/dto/update-setores.dto.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateSetoresDto = void 0;
+class UpdateSetoresDto {
+}
+exports.UpdateSetoresDto = UpdateSetoresDto;
+
+
+/***/ }),
+
+/***/ "./src/controllers/setores/setores.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/setores/setores.controller.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SetoresController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const constants_1 = __webpack_require__(/*! src/constants/constants */ "./src/constants/constants.ts");
+const setores_service_1 = __webpack_require__(/*! ./setores.service */ "./src/controllers/setores/setores.service.ts");
+const create_setores_dto_1 = __webpack_require__(/*! ./dto/create-setores.dto */ "./src/controllers/setores/dto/create-setores.dto.ts");
+const update_setores_dto_1 = __webpack_require__(/*! ./dto/update-setores.dto */ "./src/controllers/setores/dto/update-setores.dto.ts");
+let SetoresController = class SetoresController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.indAll();
+    }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.delete(+id);
+    }
+};
+exports.SetoresController = SetoresController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "findPage", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_setores_dto_1.CreateSetoresDTO !== "undefined" && create_setores_dto_1.CreateSetoresDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_setores_dto_1.UpdateSetoresDto !== "undefined" && update_setores_dto_1.UpdateSetoresDto) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "remove", null);
+exports.SetoresController = SetoresController = __decorate([
+    (0, common_1.Controller)(constants_1.APIV1 + 'setores'),
+    __metadata("design:paramtypes", [typeof (_a = typeof setores_service_1.SetoresServices !== "undefined" && setores_service_1.SetoresServices) === "function" ? _a : Object])
+], SetoresController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/setores/setores.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/setores/setores.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SetoresModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const setores_controller_1 = __webpack_require__(/*! ./setores.controller */ "./src/controllers/setores/setores.controller.ts");
+const setores_service_1 = __webpack_require__(/*! ./setores.service */ "./src/controllers/setores/setores.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SetoresModule = class SetoresModule {
+};
+exports.SetoresModule = SetoresModule;
+exports.SetoresModule = SetoresModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [setores_controller_1.SetoresController],
+        providers: [setores_service_1.SetoresServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], SetoresModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/setores/setores.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/setores/setores.service.ts ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SetoresServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SetoresServices = class SetoresServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    indAll() {
+        return this.db.tiposDocumentos.findMany();
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.setores, { page, limit });
+    }
+    find(id) {
+        return this.db.tiposDocumentos.findFirst({
+            where: { id: id },
+        });
+    }
+    create(data) {
+        return this.db.setores.create({
+            data: {
+                descricao: data.descricao.toUpperCase(),
+                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
+            },
+        });
+    }
+    update(data) {
+        return this.db.setores.update({
+            where: { id: data.id },
+            data: {
+                descricao: data.descricao.toUpperCase(),
+                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
+            },
+        });
+    }
+    delete(id) {
+        return this.db.tiposDocumentos.delete({
+            where: { id: id },
+        });
+    }
+};
+exports.SetoresServices = SetoresServices;
+exports.SetoresServices = SetoresServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], SetoresServices);
+
+
+/***/ }),
+
 /***/ "./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts":
 /*!*****************************************************************************!*\
   !*** ./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts ***!
@@ -3518,6 +3758,9 @@ let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
     findAll() {
         return this.service.findAll();
     }
+    listOptions(descricao) {
+        return this.service.listOptions(descricao);
+    }
     findOne(id) {
         console.log(id);
         return this.service.find(+id);
@@ -3546,6 +3789,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UnidadeOrcamentariaController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/options'),
+    __param(0, (0, common_1.Query)('descricao')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], UnidadeOrcamentariaController.prototype, "listOptions", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -3650,6 +3900,12 @@ let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
     find(id) {
         return this.db.unidadeOrcamentaria.findFirst({
             where: { id: id },
+        });
+    }
+    listOptions(descricao) {
+        return this.db.unidadeOrcamentaria.findMany({
+            where: { descricao: { contains: descricao, mode: 'insensitive' } },
+            take: 10,
         });
     }
     async create(data) {

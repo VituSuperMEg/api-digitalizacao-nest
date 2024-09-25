@@ -21,6 +21,7 @@ import { GavetaModule } from './controllers/gaveta/gaveta.module';
 import { CompartimentoModule } from './controllers/compartimento/compartimento.module';
 import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/unidade-orcamentaria.module';
 import { TiposDocumentosModule } from './controllers/tipos-documentos/tipos-documentos.module';
+import { SetoresModule } from './controllers/setores/setores.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { TiposDocumentosModule } from './controllers/tipos-documentos/tipos-docu
     CompartimentoModule,
     UnidadeOrcamentariaModule,
     TiposDocumentosModule,
+    SetoresModule,
   ],
   controllers: [],
   providers: [
