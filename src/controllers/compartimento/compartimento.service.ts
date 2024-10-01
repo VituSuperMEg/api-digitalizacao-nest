@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { PaginationService } from 'src/services/pagination.service';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 import { CreateCompartimentoDTO } from './dto/create-compartimento.dto';
@@ -10,15 +9,10 @@ export class CompartimentoService {
   constructor(
     private readonly db: PrismaService,
     private readonly responseService: ResponseService,
-    private readonly pagination: PaginationService,
   ) {}
 
   findAll() {
     return this.db.compartimento.findMany();
-  }
-
-  findPagination(page: number, limit: number) {
-    return this.pagination.paginate(this.db.compartimento, page, limit);
   }
 
   find(id: number) {

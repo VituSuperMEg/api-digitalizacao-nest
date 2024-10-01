@@ -6,7 +6,6 @@ import {
   Param,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { CompartimentoService } from './compartimento.service';
 import { CreateCompartimentoDTO } from './dto/create-compartimento.dto';
@@ -24,11 +23,6 @@ export class CompartimentoController {
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.service.find(+id);
-  }
-
-  @Get('pagination')
-  findPagination(@Query('page') page = 1, @Query('limit') limit = 10) {
-    return this.service.findPagination(+page, +limit);
   }
 
   @Post()

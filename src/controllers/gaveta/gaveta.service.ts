@@ -3,22 +3,16 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 import { CreateGavetaDTO } from './dto/create-gaveta.dto';
 import { UpdateGavetaDTO } from './dto/update-gaveta.dto';
-import { PaginationService } from 'src/services/pagination.service';
 
 @Injectable()
 export class GavetaService {
   constructor(
     private readonly db: PrismaService,
     private readonly responseService: ResponseService,
-    private readonly pagination: PaginationService,
   ) {}
 
   findAll() {
     return this.db.gaveta.findMany();
-  }
-
-  findPagination(page: number, limit: number) {
-    return this.pagination.paginate(this.db.compartimento, page, limit);
   }
 
   find(id: number) {

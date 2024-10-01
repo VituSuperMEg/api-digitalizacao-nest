@@ -1466,9 +1466,6 @@ let CompartimentoController = class CompartimentoController {
     findOne(id) {
         return this.service.find(+id);
     }
-    findPagination(page = 1, limit = 10) {
-        return this.service.findPagination(+page, +limit);
-    }
     create(data) {
         return this.service.create(data);
     }
@@ -1493,14 +1490,6 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], CompartimentoController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Get)('pagination'),
-    __param(0, (0, common_1.Query)('page')),
-    __param(1, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "findPagination", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
@@ -1550,19 +1539,13 @@ const compartimento_controller_1 = __webpack_require__(/*! ./compartimento.contr
 const compartimento_service_1 = __webpack_require__(/*! ./compartimento.service */ "./src/controllers/compartimento/compartimento.service.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
-const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
 let CompartimentoModule = class CompartimentoModule {
 };
 exports.CompartimentoModule = CompartimentoModule;
 exports.CompartimentoModule = CompartimentoModule = __decorate([
     (0, common_1.Module)({
         controllers: [compartimento_controller_1.CompartimentoController],
-        providers: [
-            compartimento_service_1.CompartimentoService,
-            prisma_service_1.PrismaService,
-            response_message_1.ResponseService,
-            pagination_service_1.PaginationService,
-        ],
+        providers: [compartimento_service_1.CompartimentoService, prisma_service_1.PrismaService, response_message_1.ResponseService],
     })
 ], CompartimentoModule);
 
@@ -1585,24 +1568,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CompartimentoService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let CompartimentoService = class CompartimentoService {
-    constructor(db, responseService, pagination) {
+    constructor(db, responseService) {
         this.db = db;
         this.responseService = responseService;
-        this.pagination = pagination;
     }
     findAll() {
         return this.db.compartimento.findMany();
-    }
-    findPagination(page, limit) {
-        return this.pagination.paginate(this.db.compartimento, page, limit);
     }
     find(id) {
         return this.db.compartimento.findFirst({
@@ -1655,7 +1633,7 @@ let CompartimentoService = class CompartimentoService {
 exports.CompartimentoService = CompartimentoService;
 exports.CompartimentoService = CompartimentoService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof pagination_service_1.PaginationService !== "undefined" && pagination_service_1.PaginationService) === "function" ? _c : Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
 ], CompartimentoService);
 
 
@@ -2275,9 +2253,6 @@ let GavetaController = class GavetaController {
     findAll() {
         return this.service.findAll();
     }
-    findPagination(page, limit) {
-        return this.service.findPagination(+page, +limit);
-    }
     findOne(id) {
         return this.service.find(+id);
     }
@@ -2298,14 +2273,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], GavetaController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('pagination'),
-    __param(0, (0, common_1.Query)('page')),
-    __param(1, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", void 0)
-], GavetaController.prototype, "findPagination", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -2362,14 +2329,13 @@ const gaveta_controller_1 = __webpack_require__(/*! ./gaveta.controller */ "./sr
 const gaveta_service_1 = __webpack_require__(/*! ./gaveta.service */ "./src/controllers/gaveta/gaveta.service.ts");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
-const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
 let GavetaModule = class GavetaModule {
 };
 exports.GavetaModule = GavetaModule;
 exports.GavetaModule = GavetaModule = __decorate([
     (0, common_1.Module)({
         controllers: [gaveta_controller_1.GavetaController],
-        providers: [gaveta_service_1.GavetaService, prisma_service_1.PrismaService, response_message_1.ResponseService, pagination_service_1.PaginationService],
+        providers: [gaveta_service_1.GavetaService, prisma_service_1.PrismaService, response_message_1.ResponseService],
     })
 ], GavetaModule);
 
@@ -2392,24 +2358,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GavetaService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
-const pagination_service_1 = __webpack_require__(/*! src/services/pagination.service */ "./src/services/pagination.service.ts");
 let GavetaService = class GavetaService {
-    constructor(db, responseService, pagination) {
+    constructor(db, responseService) {
         this.db = db;
         this.responseService = responseService;
-        this.pagination = pagination;
     }
     findAll() {
         return this.db.gaveta.findMany();
-    }
-    findPagination(page, limit) {
-        return this.pagination.paginate(this.db.compartimento, page, limit);
     }
     find(id) {
         return this.db.gaveta.findFirst({
@@ -2460,7 +2421,7 @@ let GavetaService = class GavetaService {
 exports.GavetaService = GavetaService;
 exports.GavetaService = GavetaService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object, typeof (_c = typeof pagination_service_1.PaginationService !== "undefined" && pagination_service_1.PaginationService) === "function" ? _c : Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
 ], GavetaService);
 
 
@@ -4561,58 +4522,6 @@ exports.AppUtil = AppUtil;
 exports.AppUtil = AppUtil = __decorate([
     (0, common_1.Injectable)()
 ], AppUtil);
-
-
-/***/ }),
-
-/***/ "./src/services/pagination.service.ts":
-/*!********************************************!*\
-  !*** ./src/services/pagination.service.ts ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PaginationService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const prisma_service_1 = __webpack_require__(/*! ./prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
-let PaginationService = class PaginationService {
-    constructor(prisma) {
-        this.prisma = prisma;
-    }
-    async paginate(model, page = 1, limit = 10, options) {
-        const offset = (page - 1) * limit;
-        const [data, totalItems] = await Promise.all([
-            model.findMany({
-                skip: offset,
-                take: limit,
-                ...options,
-            }),
-            model.count(options),
-        ]);
-        return {
-            data,
-            currentPage: page,
-            totalPages: Math.ceil(totalItems / limit),
-            totalItems,
-        };
-    }
-};
-exports.PaginationService = PaginationService;
-exports.PaginationService = PaginationService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
-], PaginationService);
 
 
 /***/ }),

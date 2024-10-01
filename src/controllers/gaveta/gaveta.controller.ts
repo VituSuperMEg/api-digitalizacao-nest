@@ -6,7 +6,6 @@ import {
   Param,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { GavetaService } from './gaveta.service';
 import { CreateGavetaDTO } from './dto/create-gaveta.dto';
@@ -19,11 +18,6 @@ export class GavetaController {
   @Get()
   findAll() {
     return this.service.findAll();
-  }
-
-  @Get('pagination')
-  findPagination(@Query('page') page: number, @Query('limit') limit: number) {
-    return this.service.findPagination(+page, +limit);
   }
 
   @Get(':id')
