@@ -42,12 +42,19 @@ export const clientes = {
 
 export const configuracoes = {
   database: {
+    // 0: {
+    //   host: 'localhost',
+    //   port: '5432',
+    //   username: 'postgres',
+    //   database: 'wilton-digitalizacao',
+    //   password: '3640',
+    // },
     0: {
-      host: 'localhost',
+      host: 'ep-delicate-sun-a4o7w5bi-pooler.us-east-1.aws.neon.tech',
       port: '5432',
-      username: 'postgres',
-      database: 'wilton-digitalizacao',
-      password: '3640',
+      username: 'default',
+      database: 'verceldb',
+      password: 'qu0jco1wiMCt',
     },
     230380801: {
       type: 'postgres',
