@@ -28,6 +28,7 @@ export class AuthService {
     global.SESSION = {
       id: user.id,
     };
+
     const payload = {
       sub: user.id,
       id: user.id,

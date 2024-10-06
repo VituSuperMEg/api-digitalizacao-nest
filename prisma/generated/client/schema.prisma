@@ -1,0 +1,420 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+model Users {
+  id           Int      @id @default(autoincrement())
+  login        String
+  senha        String
+  nome         String?
+  ativo        String
+  email        String   @unique
+  telefone     String   @unique
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("users")
+}
+
+model AnoMes {
+  id           Int      @id @default(autoincrement())
+  ano          String
+  mes          String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("ano_mes")
+}
+
+model Salas {
+  id            Int             @id @default(autoincrement())
+  descricao     String
+  criado_em     DateTime        @default(now())
+  alterado_em   DateTime        @default(now())
+  Armario       Armario[]
+  Gaveta        Gaveta[]
+  Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
+
+  @@map("salas")
+}
+
+model Armario {
+  id            Int             @id @default(autoincrement())
+  descricao     String
+  criado_em     DateTime        @default(now())
+  alterado_em   DateTime        @default(now())
+  salas         Salas           @relation(fields: [salas_id], references: [id])
+  salas_id      Int
+  Gaveta        Gaveta[]
+  Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
+
+  @@map("armarios")
+}
+
+model Credores {
+  id                    Int            @id @default(autoincrement())
+  nome                  String
+  tipo_documento        String
+  cpf                   String         @unique
+  logradouro            String?
+  numero                String?
+  cep                   String
+  email                 String         @unique
+  cidade                String?
+  telefone              String
+  telefone_complementar String?
+  banco                 String
+  agencia               String
+  conta                 String
+  observacoes           String?
+  criado_em             DateTime       @default(now())
+  alterado_em           DateTime       @default(now())
+  CabDocumento          CabDocumento[]
+  DetDocumento          DetDocumento[]
+
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("credores")
+}
+
+model Caixas {
+  id           Int            @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
+  CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("caixas")
+}
+
+model Prateleira {
+  id           Int            @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
+  CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("prateleira")
+}
+
+model ContasExtras {
+  id           Int            @id @default(autoincrement())
+  descricao    String
+  codigo       Int
+  exercicio    String
+  orcamento    String
+  CabDocumento CabDocumento[]
+  criado_por   Int?
+  alterado_por Int?
+  criado_em    DateTime       @default(now())
+  alterado_em  DateTime       @default(now())
+
+  @@map("contas_extras")
+}
+
+model CabDocumento {
+  id                      Int           @id @default(autoincrement())
+  cod_ent                 String?
+  cod_cc                  String?
+  cod_seq                 String?
+  cod_destino             String?
+  cod_setor               String?
+  cod_grupo               String?
+  cod_subgrupo            String?
+  dta_doc                 DateTime?
+  path_doc                String?
+  obs_doc                 String?
+  ano_doc                 String?
+  mes_doc                 String?
+  nome_usuario            String?
+  dta_digita              DateTime?
+  qtde_folhas             String?
+  cod_suborgao            String?
+  credor                  Credores      @relation(fields: [credor_id], references: [id])
+  credor_id               Int
+  num_processo            String?
+  num_empenho             String?
+  dta_pagamento           DateTime?
+  valor_pagamento         String?
+  digitalizado            String?
+  modalidade_licitacao    String?
+  tipo_licitacao          String?
+  classificacao_economica String?
+  doc_caixa               String?
+  num_contrato            String?
+  num_contrato_original   String?
+  tipo_contrato           String?
+  modalidade_contrato     String?
+  data_empenho            DateTime?
+  caixas                  Caixas?       @relation(fields: [caixa_id], references: [id])
+  caixa_id                Int?
+  prateleria              Prateleira?   @relation(fields: [prateleria_id], references: [id])
+  prateleria_id           Int?
+  contas_extras           ContasExtras? @relation(fields: [contas_extra_id], references: [id])
+  contas_extra_id         Int?
+  criado_em               DateTime      @default(now())
+  alterado_em             DateTime      @default(now())
+  criado_por              Int?
+  alterado_por            Int?
+
+  @@map("cab_documento")
+}
+
+model CentroCusto {
+  id               Int       @id @default(autoincrement())
+  descricao        String
+  cod_entidade     String?
+  cod_centro_custo String?
+  ativo            String?   @default("S")
+  criado_em        DateTime  @default(now())
+  alterado_em      DateTime  @default(now())
+  Destino          Destino[]
+  criado_por       Int?
+  alterado_por     Int?
+
+  @@map("centro_custo")
+}
+
+model Gaveta {
+  id            Int             @id @default(autoincrement())
+  descricao     String
+  salas         Salas           @relation(fields: [sala_id], references: [id])
+  sala_id       Int
+  armarios      Armario         @relation(fields: [armario_id], references: [id])
+  armario_id    Int
+  Compartimento Compartimento[]
+  criado_por    Int?
+  alterado_por  Int?
+  criado_em     DateTime        @default(now())
+  alterado_em   DateTime        @default(now())
+
+  @@map("gaveta")
+}
+
+model Compartimento {
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  salas        Salas    @relation(fields: [sala_id], references: [id])
+  sala_id      Int
+  armarios     Armario  @relation(fields: [armario_id], references: [id])
+  armario_id   Int
+  gavetas      Gaveta   @relation(fields: [gaveta_id], references: [id])
+  gaveta_id    Int
+  criado_por   Int?
+  alterado_por Int?
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+
+  @@map("compartimento")
+}
+
+model Orgaos {
+  id                        Int                         @id @default(autoincrement())
+  sigla                     String
+  descricao                 String
+  cpf                       String                      @unique
+  responsavel               String
+  num_expediente            String
+  criado_em                 DateTime                    @default(now())
+  alterado_em               DateTime                    @default(now())
+  DespesaCategoriaEconomica DespesaCategoriaEconomica[]
+  Destino                   Destino[]
+  criado_por                Int?
+  alterado_por              Int?
+
+  @@map("orgaos")
+}
+
+model UnidadeOrcamentaria {
+  id                        Int                         @id @default(autoincrement())
+  descricao                 String
+  cnpj                      String                      @unique
+  ativo                     String                      @default("S")
+  criado_em                 DateTime                    @default(now())
+  alterado_em               DateTime                    @default(now())
+  responsavel               String
+  cod_unidade_orcamentaria  String
+  cod_orgao                 String
+  DespesaCategoriaEconomica DespesaCategoriaEconomica[]
+  Destino                   Destino[]
+  criado_por                Int?
+  alterado_por              Int?
+  Setores                   Setores[]
+
+  @@map("unidades_orcamentaria")
+}
+
+model DespesaCategoriaEconomica {
+  id                    Int                 @id @default(autoincrement())
+  descricao             String
+  cod_municipio         String
+  exercicio             String
+  orgaos                Orgaos              @relation(fields: [cod_orgao], references: [id])
+  cod_orgao             Int
+  unidades_orcamentaria UnidadeOrcamentaria @relation(fields: [cod_unid_orc], references: [id])
+  cod_unid_orc          Int
+  codigo_elmento        String
+  criado_em             DateTime            @default(now())
+  alterado_em           DateTime            @default(now())
+  criado_por            Int?
+  alterado_por          Int?
+
+  @@map("despesa_categoria_economica")
+}
+
+model Entidade {
+  id                    Int       @id @default(autoincrement())
+  cod_ent               Int
+  sigla                 String
+  nome                  String
+  razao_social          String
+  cnpj                  String    @unique
+  endereco              String
+  bairro                String
+  cod_ibge              String
+  telefone              String
+  telefone_complementar String?
+  fax                   String?
+  responsavel           String
+  email                 String    @unique
+  site                  String?
+  perc_pmss             String
+  inst_prev             String
+  fgts                  String
+  criado_em             DateTime  @default(now())
+  alterado_em           DateTime  @default(now())
+  Destino               Destino[]
+  criado_por            Int?
+  alterado_por          Int?
+
+  @@map("entidade")
+}
+
+model Destino {
+  id                   Int                 @id @default(autoincrement())
+  entidades            Entidade            @relation(fields: [cod_ent], references: [id])
+  cod_ent              Int
+  centro_custo         CentroCusto         @relation(fields: [cod_cc], references: [id])
+  cod_cc               Int
+  unidade_orcamenteria UnidadeOrcamentaria @relation(fields: [cod_und_ormt], references: [id])
+  cod_und_ormt         Int
+  desc_destino         String
+  responsavel_destino  String
+  orgaos               Orgaos              @relation(fields: [cod_orgao], references: [id])
+  cod_orgao            Int
+  cd_unid              String
+  exercicio            String
+  ativo                String              @default("S")
+  cpf_gestor           String
+  nome_gestor          String
+  forma_ingresso       String
+  tipo_relacao         String
+  numero_expediente    String
+  data_inicio_gestao   DateTime
+  data_fim_gestao      DateTime
+  competencia          String
+  criado_em            DateTime            @default(now())
+  alterado_em          DateTime            @default(now())
+  criado_por           Int?
+  alterado_por         Int?
+
+  @@map("destino")
+}
+
+model TiposDocumentos {
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("tipo_documentos")
+}
+
+model DetDocumento {
+  id                 Int      @id @default(autoincrement())
+  cod_doc            String
+  path_doc           String
+  qtde_paginas       String
+  credor             Credores @relation(fields: [credor_id], references: [id])
+  credor_id          Int
+  tipo_documento     String
+  data_digitalizacao DateTime
+  nome_arquivo       String
+  criado_em          DateTime @default(now())
+  alterado_em        DateTime @default(now())
+  criado_por         Int?
+  alterado_por       Int?
+
+  @@map("det_documento")
+}
+
+model Estante {
+  id           Int      @id @default(autoincrement())
+  descricao    String
+  criado_em    DateTime @default(now())
+  alterado_em  DateTime @default(now())
+  criado_por   Int?
+  alterado_por Int?
+
+  @@map("estante")
+}
+
+model Setores {
+  id                      Int                 @id @default(autoincrement())
+  descricao               String
+  unidade_orcamentaria    UnidadeOrcamentaria @relation(fields: [unidade_orcamentaria_id], references: [id])
+  unidade_orcamentaria_id Int
+  criado_em               DateTime            @default(now())
+  alterado_em             DateTime            @default(now())
+  criado_por              Int?
+  alterado_por            Int?
+
+  @@map("setores")
+}
+
+model Grupo {
+  id            Int      @id @default(autoincrement())
+  cod_grupo     String
+  descricao     String
+  loteval_grupo String
+  patrimonio    String
+  criado_em     DateTime @default(now())
+  alterado_em   DateTime @default(now())
+  criado_por    Int?
+  alterado_por  Int?
+
+  @@map("grupo")
+}
