@@ -22,9 +22,15 @@ export class UnidadeOrcamentariaController {
     const pageNumber = parseInt(page, 10);
     return this.service.getPaginatedItems(pageNumber, 10);
   }
+
   @Get()
   findAll() {
     return this.service.findAll();
+  }
+
+  @Get('/find')
+  find(@Query('id') id: number) {
+    return this.service.find(+id);
   }
 
   @Get('/options')
@@ -34,7 +40,6 @@ export class UnidadeOrcamentariaController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    console.log(id);
     return this.service.find(+id);
   }
 
