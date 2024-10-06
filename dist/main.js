@@ -4397,9 +4397,9 @@ async function bootstrap() {
         preflightContinue: false,
         optionsSuccessStatus: 204,
     });
-    await app.listen(3333);
     app.useGlobalInterceptors(new session_interceptor_1.SessionInterceptor(new core_1.Reflector()));
     app.useGlobalPipes(new validation_pipe_1.ValidationPipe());
+    await app.listen(3333);
 }
 bootstrap();
 
