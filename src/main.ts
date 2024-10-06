@@ -15,9 +15,9 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   });
 
-  await app.listen(3333);
-
   app.useGlobalInterceptors(new SessionInterceptor(new Reflector()));
   app.useGlobalPipes(new ValidationPipe());
+
+  await app.listen(3333);
 }
 bootstrap();
