@@ -255,11 +255,11 @@ exports.clientes = {
 exports.configuracoes = {
     database: {
         0: {
-            host: 'localhost',
+            host: 'ep-delicate-sun-a4o7w5bi-pooler.us-east-1.aws.neon.tech',
             port: '5432',
-            username: 'postgres',
-            database: 'wilton-digitalizacao',
-            password: '3640',
+            username: 'default',
+            database: 'verceldb',
+            password: 'qu0jco1wiMCt',
         },
         230380801: {
             type: 'postgres',
@@ -3882,7 +3882,7 @@ exports.UnidadeOrcamentariaService = UnidadeOrcamentariaService = __decorate([
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.paginate = paginate;
+exports.paginate = void 0;
 async function paginate(prismaModel, paginationParams = { page: 1, limit: 10 }, whereClause = {}, orderBy = {}) {
     const { page = 1, limit = 10 } = paginationParams;
     const skip = (page - 1) * limit;
@@ -3905,6 +3905,7 @@ async function paginate(prismaModel, paginationParams = { page: 1, limit: 10 }, 
         totalPages: Math.ceil(total / limit),
     };
 }
+exports.paginate = paginate;
 
 
 /***/ }),
@@ -4378,7 +4379,7 @@ exports.UpdateSetoresDto = UpdateSetoresDto;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it uses a non-standard name for the exports (exports).
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
 
