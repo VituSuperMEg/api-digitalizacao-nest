@@ -78,14 +78,31 @@ export class UnidadeOrcamentariaService {
     }
   }
 
-  remove(id: number) {
-    this.db.unidadeOrcamentaria.delete({
-      where: { id: id },
-    });
-    this.responseService.success(
-      null,
-      'Unidade Orçamentária excluída com sucesso!',
-    );
+  async remove(id: number) {
+    try {
+      const unidadeOrcamentaria = await this.db.unidadeOrcamentaria.findUnique({
+        where: { id: id },
+      });
+
+      if (!unidadeOrcamentaria) {
+        return this.responseService.error(
+          'Unidade Orçamentária não encontrada!',
+        );
+      }
+      await this.db.unidadeOrcamentaria.delete({
+        where: { id: id },
+      });
+
+      return this.responseService.success(
+        null,
+        'Unidade Orçamentária excluída com sucesso!',
+      );
+    } catch (error) {
+      return this.responseService.error(
+        'Erro ao excluir a Unidade Orçamentária!',
+        error.message,
+      );
+    }
   }
 
   async getPaginatedItems(page: number, limit: number) {

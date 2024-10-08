@@ -1,14 +1,11 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
-/***/ ((module) => {
+/******/ 	var __webpack_modules__ = ({
 
-module.exports = require("@nestjs/core");
-
-/***/ }),
-/* 2 */
+/***/ "./src/app.module.ts":
+/*!***************************!*\
+  !*** ./src/app.module.ts ***!
+  \***************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -20,30 +17,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppModule = void 0;
-__webpack_require__(3);
-const common_1 = __webpack_require__(4);
-const entidades_module_1 = __webpack_require__(5);
-const auth_module_1 = __webpack_require__(11);
-const prisma_service_1 = __webpack_require__(9);
-const database_guard_1 = __webpack_require__(8);
-const users_module_1 = __webpack_require__(17);
-const ano_mes_module_1 = __webpack_require__(24);
-const salas_module_1 = __webpack_require__(29);
-const armario_module_1 = __webpack_require__(35);
-const core_1 = __webpack_require__(1);
-const session_interceptor_1 = __webpack_require__(40);
-const credores_module_1 = __webpack_require__(42);
-const orgaos_module_1 = __webpack_require__(47);
-const validation_pipe_1 = __webpack_require__(54);
-const caixas_module_1 = __webpack_require__(56);
-const prateleira_module_1 = __webpack_require__(61);
-const contas_extras_module_1 = __webpack_require__(66);
-const centro_custo_module_1 = __webpack_require__(71);
-const gaveta_module_1 = __webpack_require__(76);
-const compartimento_module_1 = __webpack_require__(81);
-const unidade_orcamentaria_module_1 = __webpack_require__(86);
-const tipos_documentos_module_1 = __webpack_require__(92);
-const setores_module_1 = __webpack_require__(96);
+__webpack_require__(/*! dotenv/config */ "dotenv/config");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const entidades_module_1 = __webpack_require__(/*! ./entidades/entidades.module */ "./src/entidades/entidades.module.ts");
+const auth_module_1 = __webpack_require__(/*! ./controllers/auth/auth.module */ "./src/controllers/auth/auth.module.ts");
+const prisma_service_1 = __webpack_require__(/*! ./services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const database_guard_1 = __webpack_require__(/*! ./config/guards/database.guard */ "./src/config/guards/database.guard.ts");
+const users_module_1 = __webpack_require__(/*! ./controllers/users/users.module */ "./src/controllers/users/users.module.ts");
+const ano_mes_module_1 = __webpack_require__(/*! ./controllers/ano_mes/ano_mes.module */ "./src/controllers/ano_mes/ano_mes.module.ts");
+const salas_module_1 = __webpack_require__(/*! ./controllers/salas/salas.module */ "./src/controllers/salas/salas.module.ts");
+const armario_module_1 = __webpack_require__(/*! ./controllers/armario/armario.module */ "./src/controllers/armario/armario.module.ts");
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
+const credores_module_1 = __webpack_require__(/*! ./controllers/credores/credores.module */ "./src/controllers/credores/credores.module.ts");
+const orgaos_module_1 = __webpack_require__(/*! ./controllers/orgaos/orgaos.module */ "./src/controllers/orgaos/orgaos.module.ts");
+const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
+const caixas_module_1 = __webpack_require__(/*! ./controllers/caixas/caixas.module */ "./src/controllers/caixas/caixas.module.ts");
+const prateleira_module_1 = __webpack_require__(/*! ./controllers/prateleira/prateleira.module */ "./src/controllers/prateleira/prateleira.module.ts");
+const contas_extras_module_1 = __webpack_require__(/*! ./controllers/contas_extras/contas_extras.module */ "./src/controllers/contas_extras/contas_extras.module.ts");
+const centro_custo_module_1 = __webpack_require__(/*! ./controllers/centro_custo/centro_custo.module */ "./src/controllers/centro_custo/centro_custo.module.ts");
+const gaveta_module_1 = __webpack_require__(/*! ./controllers/gaveta/gaveta.module */ "./src/controllers/gaveta/gaveta.module.ts");
+const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimento/compartimento.module */ "./src/controllers/compartimento/compartimento.module.ts");
+const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unidade_orcamentaria/unidade-orcamentaria.module */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts");
+const tipos_documentos_module_1 = __webpack_require__(/*! ./controllers/tipos-documentos/tipos-documentos.module */ "./src/controllers/tipos-documentos/tipos-documentos.module.ts");
+const setores_module_1 = __webpack_require__(/*! ./controllers/setores/setores.module */ "./src/controllers/setores/setores.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -86,126 +83,11 @@ exports.AppModule = AppModule = __decorate([
 
 
 /***/ }),
-/* 3 */
-/***/ ((module) => {
 
-module.exports = require("dotenv/config");
-
-/***/ }),
-/* 4 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/common");
-
-/***/ }),
-/* 5 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EntidadesModule = void 0;
-const common_1 = __webpack_require__(4);
-const entidades_controller_1 = __webpack_require__(6);
-const prisma_service_1 = __webpack_require__(9);
-let EntidadesModule = class EntidadesModule {
-};
-exports.EntidadesModule = EntidadesModule;
-exports.EntidadesModule = EntidadesModule = __decorate([
-    (0, common_1.Module)({
-        imports: [],
-        controllers: [entidades_controller_1.EntidadesController],
-        providers: [prisma_service_1.PrismaService],
-    })
-], EntidadesModule);
-
-
-/***/ }),
-/* 6 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EntidadesController = void 0;
-const common_1 = __webpack_require__(4);
-const clients_1 = __webpack_require__(7);
-const database_guard_1 = __webpack_require__(8);
-const prisma_service_1 = __webpack_require__(9);
-let EntidadesController = class EntidadesController {
-    constructor(connectionService) {
-        this.connectionService = connectionService;
-    }
-    getEstados() {
-        return clients_1.clientes.estados;
-    }
-    getMunicipios(uf) {
-        return clients_1.clientes.municipios[uf];
-    }
-    getEntidade(ibge) {
-        return clients_1.clientes.entidades[ibge];
-    }
-    async getConectarBanco(cliente, req) {
-        const prisma = req.dbConnection;
-        const result = await prisma.caixas.findMany();
-        return result;
-    }
-};
-exports.EntidadesController = EntidadesController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], EntidadesController.prototype, "getEstados", null);
-__decorate([
-    (0, common_1.Get)('municipios/:uf'),
-    __param(0, (0, common_1.Param)('uf')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], EntidadesController.prototype, "getMunicipios", null);
-__decorate([
-    (0, common_1.Get)('entidades/:ibge'),
-    __param(0, (0, common_1.Param)('ibge')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], EntidadesController.prototype, "getEntidade", null);
-__decorate([
-    (0, common_1.UseGuards)(database_guard_1.DynamicDatabaseGuard),
-    (0, common_1.Get)('/:cliente'),
-    __param(0, (0, common_1.Param)('cliente')),
-    __param(1, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", Promise)
-], EntidadesController.prototype, "getConectarBanco", null);
-exports.EntidadesController = EntidadesController = __decorate([
-    (0, common_1.Controller)('/api/v1/entidades'),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
-], EntidadesController);
-
-
-/***/ }),
-/* 7 */
+/***/ "./src/config/clients.ts":
+/*!*******************************!*\
+  !*** ./src/config/clients.ts ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -274,536 +156,11 @@ exports.configuracoes = {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DynamicDatabaseGuard = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-let DynamicDatabaseGuard = class DynamicDatabaseGuard {
-    constructor(prismaService) {
-        this.prismaService = prismaService;
-    }
-    async canActivate(context) {
-        const request = context.switchToHttp().getRequest();
-        const clientId = request.headers['x-cliente-id'];
-        global.CLIENTE_ID = String(clientId);
-        if (!clientId) {
-            throw new Error('O CÓDIGO DO CLIENTE NÃO FOI INFORMADO');
-        }
-        await this.prismaService.setConnectionUrl(clientId);
-        request.dbConnection = this.prismaService.getPrismaClient();
-        return true;
-    }
-};
-exports.DynamicDatabaseGuard = DynamicDatabaseGuard;
-exports.DynamicDatabaseGuard = DynamicDatabaseGuard = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
-], DynamicDatabaseGuard);
-
-
-/***/ }),
-/* 9 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PrismaService = void 0;
-const common_1 = __webpack_require__(4);
-const client_1 = __webpack_require__(10);
-const clients_1 = __webpack_require__(7);
-let PrismaService = class PrismaService extends client_1.PrismaClient {
-    constructor() {
-        super();
-        this.prisma = this;
-    }
-    async onModuleInit() {
-        await this.$connect();
-    }
-    async onModuleDestroy() {
-        await this.$disconnect();
-    }
-    async setConnectionUrl(clientId) {
-        const cliente = clients_1.configuracoes.database[+clientId];
-        const url = `postgresql://${cliente.username}:${cliente.password}@${cliente.host}:${cliente.port}/${cliente.database}?schema=public`;
-        await this.prisma.$disconnect();
-        this.prisma = new client_1.PrismaClient({
-            datasources: {
-                db: {
-                    url,
-                },
-            },
-        });
-        await this.prisma.$connect();
-    }
-    getPrismaClient() {
-        return this.prisma;
-    }
-};
-exports.PrismaService = PrismaService;
-exports.PrismaService = PrismaService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
-], PrismaService);
-
-
-/***/ }),
-/* 10 */
-/***/ ((module) => {
-
-module.exports = require("@prisma/client");
-
-/***/ }),
-/* 11 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthModule = void 0;
-const common_1 = __webpack_require__(4);
-const auth_controller_1 = __webpack_require__(12);
-const auth_service_1 = __webpack_require__(13);
-const jwt_1 = __webpack_require__(14);
-const constants_1 = __webpack_require__(16);
-const response_message_1 = __webpack_require__(15);
-const prisma_service_1 = __webpack_require__(9);
-let AuthModule = class AuthModule {
-};
-exports.AuthModule = AuthModule;
-exports.AuthModule = AuthModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            jwt_1.JwtModule.register({
-                global: true,
-                secret: constants_1.jwtConstants.secret,
-                signOptions: { expiresIn: '3600s' },
-            }),
-        ],
-        controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_1.AuthService, response_message_1.ResponseService, prisma_service_1.PrismaService],
-    })
-], AuthModule);
-
-
-/***/ }),
-/* 12 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthController = void 0;
-const common_1 = __webpack_require__(4);
-const auth_service_1 = __webpack_require__(13);
-const database_guard_1 = __webpack_require__(8);
-let AuthController = class AuthController {
-    constructor(service) {
-        this.service = service;
-    }
-    async login(data) {
-        const { login, pass } = data;
-        return this.service.signIn(login, pass);
-    }
-};
-exports.AuthController = AuthController;
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
-], AuthController.prototype, "login", null);
-exports.AuthController = AuthController = __decorate([
-    (0, common_1.Controller)('login'),
-    (0, common_1.UseGuards)(database_guard_1.DynamicDatabaseGuard),
-    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
-], AuthController);
-
-
-/***/ }),
-/* 13 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthService = void 0;
-const common_1 = __webpack_require__(4);
-const jwt_1 = __webpack_require__(14);
-const clients_1 = __webpack_require__(7);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let AuthService = class AuthService {
-    constructor(prismaService, jwtService, responseService) {
-        this.prismaService = prismaService;
-        this.jwtService = jwtService;
-        this.responseService = responseService;
-    }
-    async signIn(login, pass) {
-        const prisma = this.prismaService.getPrismaClient();
-        const user = await prisma.users.findFirst({
-            where: { login: login },
-        });
-        if (!user) {
-            return this.responseService.error('Este usuário não existe');
-        }
-        const cliente = clients_1.configuracoes.database[global.CLIENTE_ID];
-        global.SESSION = {
-            id: user.id,
-        };
-        const payload = {
-            sub: user.id,
-            id: user.id,
-            email: user.email,
-            ativo: user.ativo,
-            username: user.login,
-            cliente_id: global.CLIENTE_ID,
-            cliente: {
-                database: cliente.database,
-            },
-        };
-        return {
-            session: await this.jwtService.signAsync(payload),
-        };
-    }
-};
-exports.AuthService = AuthService;
-exports.AuthService = AuthService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
-], AuthService);
-
-
-/***/ }),
-/* 14 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/jwt");
-
-/***/ }),
-/* 15 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ResponseService = void 0;
-const common_1 = __webpack_require__(4);
-let ResponseService = class ResponseService {
-    success(data, message = 'Success') {
-        return {
-            status: common_1.HttpStatus.OK,
-            message,
-            data,
-        };
-    }
-    error(title, err) {
-        throw new common_1.HttpException({
-            status: common_1.HttpStatus.BAD_REQUEST,
-            error: title,
-            message_erro: err,
-        }, common_1.HttpStatus.BAD_REQUEST);
-    }
-};
-exports.ResponseService = ResponseService;
-exports.ResponseService = ResponseService = __decorate([
-    (0, common_1.Injectable)()
-], ResponseService);
-
-
-/***/ }),
-/* 16 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.APIV1 = exports.jwtConstants = void 0;
-exports.jwtConstants = {
-    secret: '5bfca4a1474397f842accb61211ab197',
-};
-exports.APIV1 = '/api/v1/';
-
-
-/***/ }),
-/* 17 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersModule = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const users_controller_1 = __webpack_require__(18);
-const users_service_1 = __webpack_require__(19);
-const response_message_1 = __webpack_require__(15);
-let UsersModule = class UsersModule {
-};
-exports.UsersModule = UsersModule;
-exports.UsersModule = UsersModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [users_controller_1.UsersController],
-        providers: [prisma_service_1.PrismaService, users_service_1.UsersServices, response_message_1.ResponseService],
-    })
-], UsersModule);
-
-
-/***/ }),
-/* 18 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersController = void 0;
-const common_1 = __webpack_require__(4);
-const users_service_1 = __webpack_require__(19);
-const auth_guards_1 = __webpack_require__(21);
-const create_users_dto_1 = __webpack_require__(22);
-const update_users_dto_1 = __webpack_require__(23);
-let UsersController = class UsersController {
-    constructor(services) {
-        this.services = services;
-    }
-    async findAll() {
-        return await this.services.findAll();
-    }
-    async find(id) {
-        return await this.services.find(+id);
-    }
-    async create(data) {
-        return this.services.create(data);
-    }
-    async update(data) {
-        return this.services.update(data);
-    }
-    async remove(id) {
-        return this.services.remove(+id);
-    }
-};
-exports.UsersController = UsersController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "find", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_users_dto_1.CreateUsersDTO !== "undefined" && create_users_dto_1.CreateUsersDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_users_dto_1.UpdateUsersDto !== "undefined" && update_users_dto_1.UpdateUsersDto) === "function" ? _c : Object]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)('remove/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "remove", null);
-exports.UsersController = UsersController = __decorate([
-    (0, common_1.Controller)('/api/v1/users'),
-    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
-    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersServices !== "undefined" && users_service_1.UsersServices) === "function" ? _a : Object])
-], UsersController);
-
-
-/***/ }),
-/* 19 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersServices = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const bcrypt_1 = __webpack_require__(20);
-const response_message_1 = __webpack_require__(15);
-let UsersServices = class UsersServices {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    findAll() {
-        return this.db.users.findMany();
-    }
-    find(id) {
-        return this.db.users.findFirst({
-            where: { id: id },
-        });
-    }
-    async create(data) {
-        try {
-            const { nome, login, senha, email, telefone } = data;
-            const hashPassword = await (0, bcrypt_1.hash)(senha, 10);
-            const user = await this.db.users.findFirst({
-                where: { email: email },
-            });
-            if (user) {
-                return this.responseService.error('Já existe um usuário com este e-mail!');
-            }
-            await this.db.users.create({
-                data: {
-                    nome: nome,
-                    email: email,
-                    login: login,
-                    senha: hashPassword,
-                    ativo: 'S',
-                    telefone: telefone,
-                },
-            });
-            return this.responseService.success({}, 'Usuário cadastrado com sucesso!');
-        }
-        catch (err) {
-            return this.responseService.error('Erro', err);
-        }
-    }
-    async update(data) {
-        const { id, nome, email, telefone, ativo, login, senha } = data;
-        const user = await this.db.users.findFirst({
-            where: { email: email, id: id },
-        });
-        if (!user) {
-            return this.responseService.error('Já existe um usuário com este e-mail!');
-        }
-        const newPasswordHash = await (0, bcrypt_1.hash)(senha, 10);
-        await this.db.users.update({
-            where: { id: id },
-            data: {
-                nome: nome,
-                email: email,
-                telefone: telefone,
-                ativo: ativo,
-                login: login,
-                senha: newPasswordHash,
-            },
-        });
-        return this.responseService.success({}, 'Registro Alterado com Sucesso!');
-    }
-    async remove(id) {
-        const user = await this.db.users.findFirst({
-            where: { id: id },
-        });
-        if (!user) {
-            this.responseService.error('Este usuário não existe em nossa base de dados. Por favor entre em contato com operador do sistema!');
-        }
-        await this.db.users.delete({
-            where: { id: id },
-        });
-        return this.responseService.success({}, 'Regristo excluído com sucesso!');
-    }
-};
-exports.UsersServices = UsersServices;
-exports.UsersServices = UsersServices = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], UsersServices);
-
-
-/***/ }),
-/* 20 */
-/***/ ((module) => {
-
-module.exports = require("bcrypt");
-
-/***/ }),
-/* 21 */
+/***/ "./src/config/guards/auth.guards.ts":
+/*!******************************************!*\
+  !*** ./src/config/guards/auth.guards.ts ***!
+  \******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -819,10 +176,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthAndDatabaseGuard = void 0;
-const common_1 = __webpack_require__(4);
-const jwt_1 = __webpack_require__(14);
-const constants_1 = __webpack_require__(16);
-const prisma_service_1 = __webpack_require__(9);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
+const constants_1 = __webpack_require__(/*! src/constants/constants */ "./src/constants/constants.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 let AuthAndDatabaseGuard = class AuthAndDatabaseGuard {
     constructor(jwtService, prismaService) {
         this.jwtService = jwtService;
@@ -872,31 +229,11 @@ exports.AuthAndDatabaseGuard = AuthAndDatabaseGuard = __decorate([
 
 
 /***/ }),
-/* 22 */
-/***/ ((__unused_webpack_module, exports) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateUsersDTO = void 0;
-class CreateUsersDTO {
-}
-exports.CreateUsersDTO = CreateUsersDTO;
-
-
-/***/ }),
-/* 23 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateUsersDto = void 0;
-class UpdateUsersDto {
-}
-exports.UpdateUsersDto = UpdateUsersDto;
-
-
-/***/ }),
-/* 24 */
+/***/ "./src/config/guards/database.guard.ts":
+/*!*********************************************!*\
+  !*** ./src/config/guards/database.guard.ts ***!
+  \*********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -906,27 +243,60 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AnoMesModule = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const ano_mes_controller_1 = __webpack_require__(25);
-const ano_mes_service_1 = __webpack_require__(26);
-const app_util_1 = __webpack_require__(27);
-let AnoMesModule = class AnoMesModule {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-exports.AnoMesModule = AnoMesModule;
-exports.AnoMesModule = AnoMesModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [ano_mes_controller_1.AnoMesController],
-        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, ano_mes_service_1.AnoMesService, app_util_1.AppUtil],
-    })
-], AnoMesModule);
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DynamicDatabaseGuard = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let DynamicDatabaseGuard = class DynamicDatabaseGuard {
+    constructor(prismaService) {
+        this.prismaService = prismaService;
+    }
+    async canActivate(context) {
+        const request = context.switchToHttp().getRequest();
+        const clientId = request.headers['x-cliente-id'];
+        global.CLIENTE_ID = String(clientId);
+        if (!clientId) {
+            throw new Error('O CÓDIGO DO CLIENTE NÃO FOI INFORMADO');
+        }
+        await this.prismaService.setConnectionUrl(clientId);
+        request.dbConnection = this.prismaService.getPrismaClient();
+        return true;
+    }
+};
+exports.DynamicDatabaseGuard = DynamicDatabaseGuard;
+exports.DynamicDatabaseGuard = DynamicDatabaseGuard = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+], DynamicDatabaseGuard);
 
 
 /***/ }),
-/* 25 */
+
+/***/ "./src/constants/constants.ts":
+/*!************************************!*\
+  !*** ./src/constants/constants.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.APIV1 = exports.jwtConstants = void 0;
+exports.jwtConstants = {
+    secret: '5bfca4a1474397f842accb61211ab197',
+};
+exports.APIV1 = '/api/v1/';
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/ano_mes.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.controller.ts ***!
+  \*******************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -945,9 +315,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AnoMesController = void 0;
-const common_1 = __webpack_require__(4);
-const ano_mes_service_1 = __webpack_require__(26);
-const create_ano_mes_dto_1 = __webpack_require__(28);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const ano_mes_service_1 = __webpack_require__(/*! ./ano_mes.service */ "./src/controllers/ano_mes/ano_mes.service.ts");
+const create_ano_mes_dto_1 = __webpack_require__(/*! ./dto/create.ano_mes.dto */ "./src/controllers/ano_mes/dto/create.ano_mes.dto.ts");
 let AnoMesController = class AnoMesController {
     constructor(service) {
         this.service = service;
@@ -1000,7 +370,45 @@ exports.AnoMesController = AnoMesController = __decorate([
 
 
 /***/ }),
-/* 26 */
+
+/***/ "./src/controllers/ano_mes/ano_mes.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AnoMesModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const ano_mes_controller_1 = __webpack_require__(/*! ./ano_mes.controller */ "./src/controllers/ano_mes/ano_mes.controller.ts");
+const ano_mes_service_1 = __webpack_require__(/*! ./ano_mes.service */ "./src/controllers/ano_mes/ano_mes.service.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let AnoMesModule = class AnoMesModule {
+};
+exports.AnoMesModule = AnoMesModule;
+exports.AnoMesModule = AnoMesModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [ano_mes_controller_1.AnoMesController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, ano_mes_service_1.AnoMesService, app_util_1.AppUtil],
+    })
+], AnoMesModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/ano_mes/ano_mes.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/ano_mes/ano_mes.service.ts ***!
+  \****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1016,10 +424,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AnoMesService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const app_util_1 = __webpack_require__(27);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
 let AnoMesService = class AnoMesService {
     constructor(db, responseService, appUtil) {
         this.db = db;
@@ -1090,62 +498,11 @@ exports.AnoMesService = AnoMesService = __decorate([
 
 
 /***/ }),
-/* 27 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppUtil = void 0;
-const common_1 = __webpack_require__(4);
-let AppUtil = class AppUtil {
-    formatarMes(mes) {
-        switch (mes) {
-            case '1':
-                return 'Janeiro';
-            case '2':
-                return 'Fevereiro';
-            case '3':
-                return 'Março';
-            case '4':
-                return 'Abril';
-            case '5':
-                return 'Maio';
-            case '6':
-                return 'Junho';
-            case '7':
-                return 'Julho';
-            case '8':
-                return 'Agosto';
-            case '9':
-                return 'Setembro';
-            case '10':
-                return 'Outubro';
-            case '11':
-                return 'Novembro';
-            case '12':
-                return 'Dezembro';
-            default:
-                return 'Mês inválido';
-        }
-    }
-    clearMask(value) {
-        return value?.replace(/\D/g, '');
-    }
-};
-exports.AppUtil = AppUtil;
-exports.AppUtil = AppUtil = __decorate([
-    (0, common_1.Injectable)()
-], AppUtil);
-
-
-/***/ }),
-/* 28 */
+/***/ "./src/controllers/ano_mes/dto/create.ano_mes.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/ano_mes/dto/create.ano_mes.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1157,285 +514,11 @@ exports.CreateAnoMesDTO = CreateAnoMesDTO;
 
 
 /***/ }),
-/* 29 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SalasModule = void 0;
-const common_1 = __webpack_require__(4);
-const salas_service_1 = __webpack_require__(30);
-const salas_controller_1 = __webpack_require__(31);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let SalasModule = class SalasModule {
-};
-exports.SalasModule = SalasModule;
-exports.SalasModule = SalasModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [salas_controller_1.SalasController],
-        providers: [salas_service_1.SalasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], SalasModule);
-
-
-/***/ }),
-/* 30 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SalasServices = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let SalasServices = class SalasServices {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    async findAll() {
-        return this.db.salas.findMany();
-    }
-    async find(id) {
-        return this.db.salas.findFirst({
-            where: { id: id },
-        });
-    }
-    async create(data) {
-        try {
-            await this.db.salas.create({
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    criado_por: global.SESSION.id,
-                },
-            });
-            return this.responseService.success({}, 'Registro criado com sucesso!');
-        }
-        catch (error) {
-            this.responseService.error('Erro ao tentar criar a sala', error);
-        }
-    }
-    async update(data) {
-        try {
-            const exists = await this.db.salas.findFirst({
-                where: { id: data.id },
-            });
-            if (!exists) {
-                return this.responseService.error('Este registro não existe!');
-            }
-            await this.db.salas.update({
-                where: { id: data.id },
-                data: {
-                    descricao: data.descricao,
-                    alterado_por: global.SESSION.id,
-                    alterado_em: new Date(),
-                },
-            });
-            return this.responseService.success({}, 'Registro atualizado com sucesso!');
-        }
-        catch (error) {
-            this.responseService.error('Erro ao tentar atualizar a sala', error);
-        }
-    }
-    async remove(id) {
-        try {
-            await this.db.salas.delete({
-                where: { id: id },
-            });
-            return this.responseService.success({}, 'Registro excluído com sucesso!');
-        }
-        catch (error) {
-            this.responseService.error('Erro ao tentar excluir a sala', error);
-        }
-    }
-};
-exports.SalasServices = SalasServices;
-exports.SalasServices = SalasServices = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], SalasServices);
-
-
-/***/ }),
-/* 31 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SalasController = void 0;
-const common_1 = __webpack_require__(4);
-const salas_service_1 = __webpack_require__(30);
-const auth_guards_1 = __webpack_require__(21);
-const update_salas_dto_1 = __webpack_require__(32);
-const create_salas_dto_1 = __webpack_require__(33);
-const session_decorator_1 = __webpack_require__(34);
-let SalasController = class SalasController {
-    constructor(service) {
-        this.service = service;
-    }
-    findAll() {
-        return this.service.findAll();
-    }
-    find(id) {
-        return this.service.find(+id);
-    }
-    create(data) {
-        return this.service.create(data);
-    }
-    update(data) {
-        return this.service.update(data);
-    }
-    remove(id) {
-        return this.service.remove(+id);
-    }
-};
-exports.SalasController = SalasController;
-__decorate([
-    (0, common_1.Get)(),
-    (0, session_decorator_1.Session)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], SalasController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], SalasController.prototype, "find", null);
-__decorate([
-    (0, common_1.Post)(),
-    (0, session_decorator_1.Session)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_salas_dto_1.CreateSalasDTO !== "undefined" && create_salas_dto_1.CreateSalasDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
-], SalasController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    (0, session_decorator_1.Session)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_salas_dto_1.UpdateSalasDTO !== "undefined" && update_salas_dto_1.UpdateSalasDTO) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], SalasController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)('remove/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], SalasController.prototype, "remove", null);
-exports.SalasController = SalasController = __decorate([
-    (0, common_1.Controller)('api/v1/salas'),
-    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
-    __metadata("design:paramtypes", [typeof (_a = typeof salas_service_1.SalasServices !== "undefined" && salas_service_1.SalasServices) === "function" ? _a : Object])
-], SalasController);
-
-
-/***/ }),
-/* 32 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateSalasDTO = void 0;
-class UpdateSalasDTO {
-}
-exports.UpdateSalasDTO = UpdateSalasDTO;
-
-
-/***/ }),
-/* 33 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateSalasDTO = void 0;
-class CreateSalasDTO {
-}
-exports.CreateSalasDTO = CreateSalasDTO;
-
-
-/***/ }),
-/* 34 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GetSession = exports.Session = exports.SESSION_KEY = void 0;
-const common_1 = __webpack_require__(4);
-exports.SESSION_KEY = 'session';
-const Session = () => (0, common_1.SetMetadata)(exports.SESSION_KEY, true);
-exports.Session = Session;
-exports.GetSession = (0, common_1.createParamDecorator)((data, ctx) => {
-    const request = ctx.switchToHttp().getRequest();
-    return request.session;
-});
-
-
-/***/ }),
-/* 35 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ArmarioModule = void 0;
-const common_1 = __webpack_require__(4);
-const armario_controller_1 = __webpack_require__(36);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const armario_service_1 = __webpack_require__(37);
-let ArmarioModule = class ArmarioModule {
-};
-exports.ArmarioModule = ArmarioModule;
-exports.ArmarioModule = ArmarioModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [armario_controller_1.ArmarioController],
-        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, armario_service_1.ArmarioService],
-    })
-], ArmarioModule);
-
-
-/***/ }),
-/* 36 */
+/***/ "./src/controllers/armario/armario.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/armario/armario.controller.ts ***!
+  \*******************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1454,12 +537,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ArmarioController = void 0;
-const common_1 = __webpack_require__(4);
-const auth_guards_1 = __webpack_require__(21);
-const armario_service_1 = __webpack_require__(37);
-const create_armario_dto_1 = __webpack_require__(38);
-const update_armario_dto_1 = __webpack_require__(39);
-const session_decorator_1 = __webpack_require__(34);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const armario_service_1 = __webpack_require__(/*! ./armario.service */ "./src/controllers/armario/armario.service.ts");
+const create_armario_dto_1 = __webpack_require__(/*! ./dto/create-armario.dto */ "./src/controllers/armario/dto/create-armario.dto.ts");
+const update_armario_dto_1 = __webpack_require__(/*! ./dto/update-armario.dto */ "./src/controllers/armario/dto/update-armario.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
 let ArmarioController = class ArmarioController {
     constructor(service) {
         this.service = service;
@@ -1525,7 +608,44 @@ exports.ArmarioController = ArmarioController = __decorate([
 
 
 /***/ }),
-/* 37 */
+
+/***/ "./src/controllers/armario/armario.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/armario/armario.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ArmarioModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const armario_controller_1 = __webpack_require__(/*! ./armario.controller */ "./src/controllers/armario/armario.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const armario_service_1 = __webpack_require__(/*! ./armario.service */ "./src/controllers/armario/armario.service.ts");
+let ArmarioModule = class ArmarioModule {
+};
+exports.ArmarioModule = ArmarioModule;
+exports.ArmarioModule = ArmarioModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [armario_controller_1.ArmarioController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, armario_service_1.ArmarioService],
+    })
+], ArmarioModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/armario/armario.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/armario/armario.service.ts ***!
+  \****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1541,9 +661,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ArmarioService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let ArmarioService = class ArmarioService {
     constructor(db, responseService) {
         this.db = db;
@@ -1640,7 +760,11 @@ exports.ArmarioService = ArmarioService = __decorate([
 
 
 /***/ }),
-/* 38 */
+
+/***/ "./src/controllers/armario/dto/create-armario.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/armario/dto/create-armario.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1652,7 +776,11 @@ exports.CreateArmaroDTO = CreateArmaroDTO;
 
 
 /***/ }),
-/* 39 */
+
+/***/ "./src/controllers/armario/dto/update-armario.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/armario/dto/update-armario.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1664,7 +792,11 @@ exports.UpdateArmarioDTO = UpdateArmarioDTO;
 
 
 /***/ }),
-/* 40 */
+
+/***/ "./src/controllers/auth/auth.controller.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/auth/auth.controller.ts ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1677,55 +809,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SessionInterceptor = void 0;
-const common_1 = __webpack_require__(4);
-const core_1 = __webpack_require__(1);
-const session_decorator_1 = __webpack_require__(34);
-const jwt = __webpack_require__(41);
-let SessionInterceptor = class SessionInterceptor {
-    constructor(reflector) {
-        this.reflector = reflector;
+exports.AuthController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/controllers/auth/auth.service.ts");
+const database_guard_1 = __webpack_require__(/*! src/config/guards/database.guard */ "./src/config/guards/database.guard.ts");
+let AuthController = class AuthController {
+    constructor(service) {
+        this.service = service;
     }
-    intercept(context, next) {
-        const isSessionEnabled = this.reflector.get(session_decorator_1.SESSION_KEY, context.getHandler());
-        if (isSessionEnabled) {
-            const request = context.switchToHttp().getRequest();
-            const authHeader = request.headers['authorization'];
-            if (authHeader) {
-                const token = authHeader.replace('Bearer ', '');
-                try {
-                    const decoded = jwt.decode(token, { complete: true });
-                    request.sessionContext = decoded?.payload || {};
-                    global.SESSION = decoded?.payload;
-                }
-                catch (err) {
-                    console.error(err);
-                }
-            }
-            else {
-                request.sessionContext = {};
-            }
-        }
-        return next.handle();
+    async login(data) {
+        const { login, pass } = data;
+        return this.service.signIn(login, pass);
     }
 };
-exports.SessionInterceptor = SessionInterceptor;
-exports.SessionInterceptor = SessionInterceptor = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
-], SessionInterceptor);
+exports.AuthController = AuthController;
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
+], AuthController.prototype, "login", null);
+exports.AuthController = AuthController = __decorate([
+    (0, common_1.Controller)('login'),
+    (0, common_1.UseGuards)(database_guard_1.DynamicDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
+], AuthController);
 
 
 /***/ }),
-/* 41 */
-/***/ ((module) => {
 
-module.exports = require("jsonwebtoken");
-
-/***/ }),
-/* 42 */
+/***/ "./src/controllers/auth/auth.module.ts":
+/*!*********************************************!*\
+  !*** ./src/controllers/auth/auth.module.ts ***!
+  \*********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1736,26 +858,1064 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CredoresModule = void 0;
-const common_1 = __webpack_require__(4);
-const credores_controller_1 = __webpack_require__(43);
-const credores_service_1 = __webpack_require__(44);
-const response_message_1 = __webpack_require__(15);
-const prisma_service_1 = __webpack_require__(9);
-const app_util_1 = __webpack_require__(27);
-let CredoresModule = class CredoresModule {
+exports.AuthModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_controller_1 = __webpack_require__(/*! ./auth.controller */ "./src/controllers/auth/auth.controller.ts");
+const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/controllers/auth/auth.service.ts");
+const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
+const constants_1 = __webpack_require__(/*! src/constants/constants */ "./src/constants/constants.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let AuthModule = class AuthModule {
 };
-exports.CredoresModule = CredoresModule;
-exports.CredoresModule = CredoresModule = __decorate([
+exports.AuthModule = AuthModule;
+exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        controllers: [credores_controller_1.CredoresController],
-        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, credores_service_1.CredoresService, app_util_1.AppUtil],
+        imports: [
+            jwt_1.JwtModule.register({
+                global: true,
+                secret: constants_1.jwtConstants.secret,
+                signOptions: { expiresIn: '3600s' },
+            }),
+        ],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService, response_message_1.ResponseService, prisma_service_1.PrismaService],
     })
-], CredoresModule);
+], AuthModule);
 
 
 /***/ }),
-/* 43 */
+
+/***/ "./src/controllers/auth/auth.service.ts":
+/*!**********************************************!*\
+  !*** ./src/controllers/auth/auth.service.ts ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
+const clients_1 = __webpack_require__(/*! src/config/clients */ "./src/config/clients.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let AuthService = class AuthService {
+    constructor(prismaService, jwtService, responseService) {
+        this.prismaService = prismaService;
+        this.jwtService = jwtService;
+        this.responseService = responseService;
+    }
+    async signIn(login, pass) {
+        const prisma = this.prismaService.getPrismaClient();
+        const user = await prisma.users.findFirst({
+            where: { login: login },
+        });
+        if (!user) {
+            return this.responseService.error('Este usuário não existe');
+        }
+        const cliente = clients_1.configuracoes.database[global.CLIENTE_ID];
+        global.SESSION = {
+            id: user.id,
+        };
+        const payload = {
+            sub: user.id,
+            id: user.id,
+            email: user.email,
+            ativo: user.ativo,
+            username: user.login,
+            cliente_id: global.CLIENTE_ID,
+            cliente: {
+                database: cliente.database,
+            },
+        };
+        return {
+            session: await this.jwtService.signAsync(payload),
+        };
+    }
+};
+exports.AuthService = AuthService;
+exports.AuthService = AuthService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
+], AuthService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/caixas/caixas.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const caixas_service_1 = __webpack_require__(/*! ./caixas.service */ "./src/controllers/caixas/caixas.service.ts");
+const create_caixas_dto_1 = __webpack_require__(/*! ./dto/create-caixas.dto */ "./src/controllers/caixas/dto/create-caixas.dto.ts");
+const update_caixas_dto_1 = __webpack_require__(/*! ./dto/update-caixas.dto */ "./src/controllers/caixas/dto/update-caixas.dto.ts");
+let CaixasController = class CaixasController {
+    constructor(services) {
+        this.services = services;
+    }
+    findAll() {
+        return this.services.findAll();
+    }
+    find(id) {
+        return this.services.find(+id);
+    }
+    create(data) {
+        return this.services.create(data);
+    }
+    update(data) {
+        return this.services.update(data);
+    }
+    remove(id) {
+        return this.services.remove(+id);
+    }
+};
+exports.CaixasController = CaixasController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_caixas_dto_1.CreateCaixasDTO !== "undefined" && create_caixas_dto_1.CreateCaixasDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_caixas_dto_1.UpdateCaixasDTO !== "undefined" && update_caixas_dto_1.UpdateCaixasDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "remove", null);
+exports.CaixasController = CaixasController = __decorate([
+    (0, common_1.Controller)('api/v1/caixas'),
+    __metadata("design:paramtypes", [typeof (_a = typeof caixas_service_1.CaixasServices !== "undefined" && caixas_service_1.CaixasServices) === "function" ? _a : Object])
+], CaixasController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/caixas/caixas.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const caixas_controller_1 = __webpack_require__(/*! ./caixas.controller */ "./src/controllers/caixas/caixas.controller.ts");
+const caixas_service_1 = __webpack_require__(/*! ./caixas.service */ "./src/controllers/caixas/caixas.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CaixasModule = class CaixasModule {
+};
+exports.CaixasModule = CaixasModule;
+exports.CaixasModule = CaixasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [caixas_controller_1.CaixasController],
+        providers: [caixas_service_1.CaixasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], CaixasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/caixas.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/caixas/caixas.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CaixasServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CaixasServices = class CaixasServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.caixas.findMany();
+    }
+    find(id) {
+        return this.db.caixas.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.caixas.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível criar a caixa', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.caixas.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Registro Atualizado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível atualizar a caixa', error);
+        }
+    }
+    async remove(id) {
+        await this.db.caixas.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Registro Excluído com Sucesso');
+    }
+};
+exports.CaixasServices = CaixasServices;
+exports.CaixasServices = CaixasServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], CaixasServices);
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/dto/create-caixas.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/caixas/dto/create-caixas.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCaixasDTO = void 0;
+class CreateCaixasDTO {
+}
+exports.CreateCaixasDTO = CreateCaixasDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/caixas/dto/update-caixas.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/caixas/dto/update-caixas.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCaixasDTO = void 0;
+class UpdateCaixasDTO {
+}
+exports.UpdateCaixasDTO = UpdateCaixasDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.controller.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.controller.ts ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const centro_custo_service_1 = __webpack_require__(/*! ./centro_custo.service */ "./src/controllers/centro_custo/centro_custo.service.ts");
+const create_centro_custo_dto_1 = __webpack_require__(/*! ./dto/create-centro-custo.dto */ "./src/controllers/centro_custo/dto/create-centro-custo.dto.ts");
+const update_centro_custo_dto_1 = __webpack_require__(/*! ./dto/update-centro-custo.dto */ "./src/controllers/centro_custo/dto/update-centro-custo.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let CentroCustoController = class CentroCustoController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.CentroCustoController = CentroCustoController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_centro_custo_dto_1.CreateCentroCustoDTO !== "undefined" && create_centro_custo_dto_1.CreateCentroCustoDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_centro_custo_dto_1.UpdateCentroCusto !== "undefined" && update_centro_custo_dto_1.UpdateCentroCusto) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CentroCustoController.prototype, "remove", null);
+exports.CentroCustoController = CentroCustoController = __decorate([
+    (0, common_1.Controller)('api/v1/centro-custo'),
+    __metadata("design:paramtypes", [typeof (_a = typeof centro_custo_service_1.CentroCustoService !== "undefined" && centro_custo_service_1.CentroCustoService) === "function" ? _a : Object])
+], CentroCustoController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.module.ts ***!
+  \*************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const centro_custo_controller_1 = __webpack_require__(/*! ./centro_custo.controller */ "./src/controllers/centro_custo/centro_custo.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const centro_custo_service_1 = __webpack_require__(/*! ./centro_custo.service */ "./src/controllers/centro_custo/centro_custo.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CentroCustoModule = class CentroCustoModule {
+};
+exports.CentroCustoModule = CentroCustoModule;
+exports.CentroCustoModule = CentroCustoModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [centro_custo_controller_1.CentroCustoController],
+        providers: [prisma_service_1.PrismaService, centro_custo_service_1.CentroCustoService, response_message_1.ResponseService],
+    })
+], CentroCustoModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/centro_custo.service.ts":
+/*!**************************************************************!*\
+  !*** ./src/controllers/centro_custo/centro_custo.service.ts ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CentroCustoService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CentroCustoService = class CentroCustoService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.centroCusto.findMany();
+    }
+    find(id) {
+        return this.db.centroCusto.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.centroCusto.create({
+                data: {
+                    cod_entidade: data.cod_entidade,
+                    cod_centro_custo: data.cod_centro_custo,
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
+        }
+        catch (error) {
+            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.centroCusto.update({
+                where: { id: data.id },
+                data: {
+                    cod_entidade: data.cod_entidade,
+                    cod_centro_custo: data.cod_centro_custo,
+                    descricao: data.descricao.toUpperCase(),
+                    ativo: data.ativo,
+                    alterado_em: new Date(),
+                    alterado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
+        }
+        catch (error) {
+            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
+        }
+    }
+    async remove(id) {
+        await this.db.centroCusto.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Registro Excluído com sucesso!');
+    }
+};
+exports.CentroCustoService = CentroCustoService;
+exports.CentroCustoService = CentroCustoService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], CentroCustoService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/dto/create-centro-custo.dto.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/centro_custo/dto/create-centro-custo.dto.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCentroCustoDTO = void 0;
+class CreateCentroCustoDTO {
+}
+exports.CreateCentroCustoDTO = CreateCentroCustoDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/centro_custo/dto/update-centro-custo.dto.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/centro_custo/dto/update-centro-custo.dto.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCentroCusto = void 0;
+class UpdateCentroCusto {
+}
+exports.UpdateCentroCusto = UpdateCentroCusto;
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/compartimento.controller.ts":
+/*!*******************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.controller.ts ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const compartimento_service_1 = __webpack_require__(/*! ./compartimento.service */ "./src/controllers/compartimento/compartimento.service.ts");
+const create_compartimento_dto_1 = __webpack_require__(/*! ./dto/create-compartimento.dto */ "./src/controllers/compartimento/dto/create-compartimento.dto.ts");
+const update_compartimento_dto_1 = __webpack_require__(/*! ./dto/update-compartimento.dto */ "./src/controllers/compartimento/dto/update-compartimento.dto.ts");
+let CompartimentoController = class CompartimentoController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.CompartimentoController = CompartimentoController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_compartimento_dto_1.CreateCompartimentoDTO !== "undefined" && create_compartimento_dto_1.CreateCompartimentoDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_compartimento_dto_1.UpdateCompartimentoDTO !== "undefined" && update_compartimento_dto_1.UpdateCompartimentoDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], CompartimentoController.prototype, "remove", null);
+exports.CompartimentoController = CompartimentoController = __decorate([
+    (0, common_1.Controller)('/api/v1/compartimento'),
+    __metadata("design:paramtypes", [typeof (_a = typeof compartimento_service_1.CompartimentoService !== "undefined" && compartimento_service_1.CompartimentoService) === "function" ? _a : Object])
+], CompartimentoController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/compartimento.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.module.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const compartimento_controller_1 = __webpack_require__(/*! ./compartimento.controller */ "./src/controllers/compartimento/compartimento.controller.ts");
+const compartimento_service_1 = __webpack_require__(/*! ./compartimento.service */ "./src/controllers/compartimento/compartimento.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CompartimentoModule = class CompartimentoModule {
+};
+exports.CompartimentoModule = CompartimentoModule;
+exports.CompartimentoModule = CompartimentoModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [compartimento_controller_1.CompartimentoController],
+        providers: [compartimento_service_1.CompartimentoService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], CompartimentoModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/compartimento.service.ts":
+/*!****************************************************************!*\
+  !*** ./src/controllers/compartimento/compartimento.service.ts ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CompartimentoService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let CompartimentoService = class CompartimentoService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.compartimento.findMany();
+    }
+    find(id) {
+        return this.db.compartimento.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.compartimento.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    gaveta_id: data.gaveta_id,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            return this.responseService.success({}, 'Compartimento cadastrado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao cadastrar compartimento', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.compartimento.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    gaveta_id: data.gaveta_id,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            return this.responseService.success({}, 'Compartimento atualizado com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar atualizar compartimento', error);
+        }
+    }
+    remove(id) {
+        this.db.compartimento.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Compartimento excluído com sucesso!');
+    }
+};
+exports.CompartimentoService = CompartimentoService;
+exports.CompartimentoService = CompartimentoService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], CompartimentoService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/dto/create-compartimento.dto.ts":
+/*!***********************************************************************!*\
+  !*** ./src/controllers/compartimento/dto/create-compartimento.dto.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateCompartimentoDTO = void 0;
+class CreateCompartimentoDTO {
+}
+exports.CreateCompartimentoDTO = CreateCompartimentoDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/compartimento/dto/update-compartimento.dto.ts":
+/*!***********************************************************************!*\
+  !*** ./src/controllers/compartimento/dto/update-compartimento.dto.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateCompartimentoDTO = void 0;
+class UpdateCompartimentoDTO {
+}
+exports.UpdateCompartimentoDTO = UpdateCompartimentoDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.controller.ts":
+/*!*******************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.controller.ts ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const contas_extras_service_1 = __webpack_require__(/*! ./contas_extras.service */ "./src/controllers/contas_extras/contas_extras.service.ts");
+const create_conta_dto_1 = __webpack_require__(/*! ./dto/create-conta.dto */ "./src/controllers/contas_extras/dto/create-conta.dto.ts");
+const update_conta_dto_1 = __webpack_require__(/*! ./dto/update-conta.dto */ "./src/controllers/contas_extras/dto/update-conta.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let ContasExtrasController = class ContasExtrasController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.ContasExtrasController = ContasExtrasController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_conta_dto_1.CreateContaDTO !== "undefined" && create_conta_dto_1.CreateContaDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    (0, session_decorator_1.Session)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_conta_dto_1.UpdateContaDTO !== "undefined" && update_conta_dto_1.UpdateContaDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], ContasExtrasController.prototype, "remove", null);
+exports.ContasExtrasController = ContasExtrasController = __decorate([
+    (0, common_1.Controller)('api/v1/conta-extra'),
+    __metadata("design:paramtypes", [typeof (_a = typeof contas_extras_service_1.ContasExtrasService !== "undefined" && contas_extras_service_1.ContasExtrasService) === "function" ? _a : Object])
+], ContasExtrasController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.module.ts ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const contas_extras_controller_1 = __webpack_require__(/*! ./contas_extras.controller */ "./src/controllers/contas_extras/contas_extras.controller.ts");
+const contas_extras_service_1 = __webpack_require__(/*! ./contas_extras.service */ "./src/controllers/contas_extras/contas_extras.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let ContasExtrasModule = class ContasExtrasModule {
+};
+exports.ContasExtrasModule = ContasExtrasModule;
+exports.ContasExtrasModule = ContasExtrasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [contas_extras_controller_1.ContasExtrasController],
+        providers: [contas_extras_service_1.ContasExtrasService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], ContasExtrasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/contas_extras.service.ts":
+/*!****************************************************************!*\
+  !*** ./src/controllers/contas_extras/contas_extras.service.ts ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ContasExtrasService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let ContasExtrasService = class ContasExtrasService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.contasExtras.findMany();
+    }
+    find(id) {
+        return this.db.contasExtras.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.contasExtras.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    codigo: data.codigo,
+                    exercicio: data.exercicio,
+                    orcamento: data.orcamento,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso!');
+        }
+        catch (err) {
+            this.responseService.error('Erro', err);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.contasExtras.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    codigo: data.codigo,
+                    exercicio: data.exercicio,
+                    orcamento: data.orcamento,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+        }
+        catch (err) {
+            this.responseService.error('Erro', err);
+        }
+    }
+    async remove(id) {
+        await this.db.contasExtras.delete({ where: { id: id } });
+        this.responseService.success({}, 'Registro Excluído com sucesso!');
+    }
+};
+exports.ContasExtrasService = ContasExtrasService;
+exports.ContasExtrasService = ContasExtrasService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], ContasExtrasService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/dto/create-conta.dto.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/dto/create-conta.dto.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateContaDTO = void 0;
+class CreateContaDTO {
+}
+exports.CreateContaDTO = CreateContaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/contas_extras/dto/update-conta.dto.ts":
+/*!***************************************************************!*\
+  !*** ./src/controllers/contas_extras/dto/update-conta.dto.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateContaDTO = void 0;
+class UpdateContaDTO {
+}
+exports.UpdateContaDTO = UpdateContaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/credores/credores.controller.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/credores/credores.controller.ts ***!
+  \*********************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1774,12 +1934,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CredoresController = void 0;
-const common_1 = __webpack_require__(4);
-const auth_guards_1 = __webpack_require__(21);
-const credores_service_1 = __webpack_require__(44);
-const create_credor_dto_1 = __webpack_require__(45);
-const session_decorator_1 = __webpack_require__(34);
-const update_credor_dto_1 = __webpack_require__(46);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const credores_service_1 = __webpack_require__(/*! ./credores.service */ "./src/controllers/credores/credores.service.ts");
+const create_credor_dto_1 = __webpack_require__(/*! ./dto/create-credor.dto */ "./src/controllers/credores/dto/create-credor.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const update_credor_dto_1 = __webpack_require__(/*! ./dto/update-credor.dto */ "./src/controllers/credores/dto/update-credor.dto.ts");
 let CredoresController = class CredoresController {
     constructor(service) {
         this.service = service;
@@ -1846,7 +2006,45 @@ exports.CredoresController = CredoresController = __decorate([
 
 
 /***/ }),
-/* 44 */
+
+/***/ "./src/controllers/credores/credores.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/credores/credores.module.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CredoresModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const credores_controller_1 = __webpack_require__(/*! ./credores.controller */ "./src/controllers/credores/credores.controller.ts");
+const credores_service_1 = __webpack_require__(/*! ./credores.service */ "./src/controllers/credores/credores.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let CredoresModule = class CredoresModule {
+};
+exports.CredoresModule = CredoresModule;
+exports.CredoresModule = CredoresModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [credores_controller_1.CredoresController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, credores_service_1.CredoresService, app_util_1.AppUtil],
+    })
+], CredoresModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/credores/credores.service.ts":
+/*!******************************************************!*\
+  !*** ./src/controllers/credores/credores.service.ts ***!
+  \******************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1862,10 +2060,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CredoresService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const app_util_1 = __webpack_require__(27);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
 let CredoresService = class CredoresService {
     constructor(db, responseService, appUtil) {
         this.db = db;
@@ -1957,7 +2155,11 @@ exports.CredoresService = CredoresService = __decorate([
 
 
 /***/ }),
-/* 45 */
+
+/***/ "./src/controllers/credores/dto/create-credor.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/credores/dto/create-credor.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1969,7 +2171,11 @@ exports.CreateCredorDTO = CreateCredorDTO;
 
 
 /***/ }),
-/* 46 */
+
+/***/ "./src/controllers/credores/dto/update-credor.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/credores/dto/update-credor.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1981,7 +2187,132 @@ exports.UpdateCredorDTO = UpdateCredorDTO;
 
 
 /***/ }),
-/* 47 */
+
+/***/ "./src/controllers/gaveta/dto/create-gaveta.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/gaveta/dto/create-gaveta.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateGavetaDTO = void 0;
+class CreateGavetaDTO {
+}
+exports.CreateGavetaDTO = CreateGavetaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/dto/update-gaveta.dto.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/gaveta/dto/update-gaveta.dto.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateGavetaDTO = void 0;
+class UpdateGavetaDTO {
+}
+exports.UpdateGavetaDTO = UpdateGavetaDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/gaveta.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GavetaController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const gaveta_service_1 = __webpack_require__(/*! ./gaveta.service */ "./src/controllers/gaveta/gaveta.service.ts");
+const create_gaveta_dto_1 = __webpack_require__(/*! ./dto/create-gaveta.dto */ "./src/controllers/gaveta/dto/create-gaveta.dto.ts");
+const update_gaveta_dto_1 = __webpack_require__(/*! ./dto/update-gaveta.dto */ "./src/controllers/gaveta/dto/update-gaveta.dto.ts");
+let GavetaController = class GavetaController {
+    constructor(service) {
+        this.service = service;
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.find(+id);
+    }
+    create(data) {
+        return this.service.create(data);
+    }
+    update(data) {
+        return this.service.update(data);
+    }
+    remove(id) {
+        return this.service.remove(+id);
+    }
+};
+exports.GavetaController = GavetaController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_gaveta_dto_1.CreateGavetaDTO !== "undefined" && create_gaveta_dto_1.CreateGavetaDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_gaveta_dto_1.UpdateGavetaDTO !== "undefined" && update_gaveta_dto_1.UpdateGavetaDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GavetaController.prototype, "remove", null);
+exports.GavetaController = GavetaController = __decorate([
+    (0, common_1.Controller)('/api/v1/gaveta'),
+    __metadata("design:paramtypes", [typeof (_a = typeof gaveta_service_1.GavetaService !== "undefined" && gaveta_service_1.GavetaService) === "function" ? _a : Object])
+], GavetaController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/gaveta/gaveta.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.module.ts ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1992,26 +2323,184 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OrgaosModule = void 0;
-const common_1 = __webpack_require__(4);
-const orgaos_controller_1 = __webpack_require__(48);
-const prisma_service_1 = __webpack_require__(9);
-const orgaos_service_1 = __webpack_require__(49);
-const response_message_1 = __webpack_require__(15);
-const app_util_1 = __webpack_require__(27);
-let OrgaosModule = class OrgaosModule {
+exports.GavetaModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const gaveta_controller_1 = __webpack_require__(/*! ./gaveta.controller */ "./src/controllers/gaveta/gaveta.controller.ts");
+const gaveta_service_1 = __webpack_require__(/*! ./gaveta.service */ "./src/controllers/gaveta/gaveta.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let GavetaModule = class GavetaModule {
 };
-exports.OrgaosModule = OrgaosModule;
-exports.OrgaosModule = OrgaosModule = __decorate([
+exports.GavetaModule = GavetaModule;
+exports.GavetaModule = GavetaModule = __decorate([
     (0, common_1.Module)({
-        controllers: [orgaos_controller_1.OrgaosController],
-        providers: [prisma_service_1.PrismaService, orgaos_service_1.OrgaosService, response_message_1.ResponseService, app_util_1.AppUtil],
+        controllers: [gaveta_controller_1.GavetaController],
+        providers: [gaveta_service_1.GavetaService, prisma_service_1.PrismaService, response_message_1.ResponseService],
     })
-], OrgaosModule);
+], GavetaModule);
 
 
 /***/ }),
-/* 48 */
+
+/***/ "./src/controllers/gaveta/gaveta.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/gaveta/gaveta.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GavetaService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let GavetaService = class GavetaService {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.gaveta.findMany();
+    }
+    find(id) {
+        return this.db.gaveta.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.gaveta.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Gaveta criada com sucesso.');
+        }
+        catch (error) {
+            this.responseService.error('Falha ao tentar criar a gaveta.', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.gaveta.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    sala_id: data.sala_id,
+                    armario_id: data.armario_id,
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Gaveta atualizada com sucesso.');
+        }
+        catch (error) {
+            this.responseService.error('Falha ao tentar criar a gaveta.', error);
+        }
+    }
+    remove(id) {
+        this.db.gaveta.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Gaveta excluída com sucesso.');
+    }
+};
+exports.GavetaService = GavetaService;
+exports.GavetaService = GavetaService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], GavetaService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/dto/create-orgao.dto.ts":
+/*!********************************************************!*\
+  !*** ./src/controllers/orgaos/dto/create-orgao.dto.ts ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateOrgaosDTO = void 0;
+const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+class CreateOrgaosDTO {
+}
+exports.CreateOrgaosDTO = CreateOrgaosDTO;
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "sigla", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "descricao", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "cpf", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({
+        message: 'Este campo só pode ser texto',
+    }),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "responsavel", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrgaosDTO.prototype, "num_expediente", void 0);
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/dto/update-orgao.dto.ts":
+/*!********************************************************!*\
+  !*** ./src/controllers/orgaos/dto/update-orgao.dto.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateOrgaosDTO = void 0;
+class UpdateOrgaosDTO {
+}
+exports.UpdateOrgaosDTO = UpdateOrgaosDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/orgaos.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.controller.ts ***!
+  \*****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2030,12 +2519,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OrgaosController = void 0;
-const common_1 = __webpack_require__(4);
-const orgaos_service_1 = __webpack_require__(49);
-const create_orgao_dto_1 = __webpack_require__(51);
-const session_decorator_1 = __webpack_require__(34);
-const update_orgao_dto_1 = __webpack_require__(53);
-const validation_pipe_1 = __webpack_require__(54);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/controllers/orgaos/orgaos.service.ts");
+const create_orgao_dto_1 = __webpack_require__(/*! ./dto/create-orgao.dto */ "./src/controllers/orgaos/dto/create-orgao.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const update_orgao_dto_1 = __webpack_require__(/*! ./dto/update-orgao.dto */ "./src/controllers/orgaos/dto/update-orgao.dto.ts");
+const validation_pipe_1 = __webpack_require__(/*! src/pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 let OrgaosController = class OrgaosController {
     constructor(orgaoService) {
         this.orgaoService = orgaoService;
@@ -2090,7 +2579,45 @@ exports.OrgaosController = OrgaosController = __decorate([
 
 
 /***/ }),
-/* 49 */
+
+/***/ "./src/controllers/orgaos/orgaos.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OrgaosModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const orgaos_controller_1 = __webpack_require__(/*! ./orgaos.controller */ "./src/controllers/orgaos/orgaos.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const orgaos_service_1 = __webpack_require__(/*! ./orgaos.service */ "./src/controllers/orgaos/orgaos.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+let OrgaosModule = class OrgaosModule {
+};
+exports.OrgaosModule = OrgaosModule;
+exports.OrgaosModule = OrgaosModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [orgaos_controller_1.OrgaosController],
+        providers: [prisma_service_1.PrismaService, orgaos_service_1.OrgaosService, response_message_1.ResponseService, app_util_1.AppUtil],
+    })
+], OrgaosModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/orgaos/orgaos.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/orgaos/orgaos.service.ts ***!
+  \**************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2106,11 +2633,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OrgaosService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const app_util_1 = __webpack_require__(27);
-const db_services_1 = __webpack_require__(50);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+const db_services_1 = __webpack_require__(/*! src/services/prisma/db-services */ "./src/services/prisma/db-services.ts");
 let OrgaosService = class OrgaosService {
     constructor(db, responseService, appUtil) {
         this.db = db;
@@ -2177,393 +2704,43 @@ exports.OrgaosService = OrgaosService = __decorate([
 
 
 /***/ }),
-/* 50 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Already = void 0;
-const client_1 = __webpack_require__(10);
-const response_message_1 = __webpack_require__(15);
-const prisma = new client_1.PrismaClient();
-const responseService = new response_message_1.ResponseService();
-const Already = async (db, id, title = 'Não existe nenhum registro com este código!') => {
-    const model = prisma[db];
-    const record = await model.findUnique({
-        where: { id },
-    });
-    if (!record || record === null) {
-        return responseService.error(title);
-    }
-};
-exports.Already = Already;
-
-
-/***/ }),
-/* 51 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateOrgaosDTO = void 0;
-const class_validator_1 = __webpack_require__(52);
-class CreateOrgaosDTO {
-}
-exports.CreateOrgaosDTO = CreateOrgaosDTO;
-__decorate([
-    (0, class_validator_1.IsString)({
-        message: 'Este campo só pode ser texto',
-    }),
-    __metadata("design:type", String)
-], CreateOrgaosDTO.prototype, "sigla", void 0);
-__decorate([
-    (0, class_validator_1.IsString)({
-        message: 'Este campo só pode ser texto',
-    }),
-    __metadata("design:type", String)
-], CreateOrgaosDTO.prototype, "descricao", void 0);
-__decorate([
-    (0, class_validator_1.IsString)({
-        message: 'Este campo só pode ser texto',
-    }),
-    __metadata("design:type", String)
-], CreateOrgaosDTO.prototype, "cpf", void 0);
-__decorate([
-    (0, class_validator_1.IsString)({
-        message: 'Este campo só pode ser texto',
-    }),
-    __metadata("design:type", String)
-], CreateOrgaosDTO.prototype, "responsavel", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateOrgaosDTO.prototype, "num_expediente", void 0);
-
-
-/***/ }),
-/* 52 */
-/***/ ((module) => {
-
-module.exports = require("class-validator");
-
-/***/ }),
-/* 53 */
+/***/ "./src/controllers/prateleira/dto/create-prateleira.dto.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/prateleira/dto/create-prateleira.dto.ts ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateOrgaosDTO = void 0;
-class UpdateOrgaosDTO {
+exports.CreatePrateleiraDTO = void 0;
+class CreatePrateleiraDTO {
 }
-exports.UpdateOrgaosDTO = UpdateOrgaosDTO;
+exports.CreatePrateleiraDTO = CreatePrateleiraDTO;
 
 
 /***/ }),
-/* 54 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ValidationPipe = void 0;
-const common_1 = __webpack_require__(4);
-const class_validator_1 = __webpack_require__(52);
-const class_transformer_1 = __webpack_require__(55);
-let ValidationPipe = class ValidationPipe {
-    async transform(value, { metatype }) {
-        if (!metatype || !this.toValidate(metatype)) {
-            return value;
-        }
-        const object = (0, class_transformer_1.plainToInstance)(metatype, value);
-        const errors = await (0, class_validator_1.validate)(object);
-        if (errors.length > 0) {
-            throw new common_1.BadRequestException(this.formatErrors(errors));
-        }
-        return value;
-    }
-    toValidate(metatype) {
-        const types = [String, Boolean, Number, Array, Object];
-        return !types.includes(metatype);
-    }
-    formatErrors(errors) {
-        return errors.map((err) => {
-            return {
-                constraints: err.constraints,
-            };
-        });
-    }
-};
-exports.ValidationPipe = ValidationPipe;
-exports.ValidationPipe = ValidationPipe = __decorate([
-    (0, common_1.Injectable)()
-], ValidationPipe);
-
-
-/***/ }),
-/* 55 */
-/***/ ((module) => {
-
-module.exports = require("class-transformer");
-
-/***/ }),
-/* 56 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CaixasModule = void 0;
-const common_1 = __webpack_require__(4);
-const caixas_controller_1 = __webpack_require__(57);
-const caixas_service_1 = __webpack_require__(58);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let CaixasModule = class CaixasModule {
-};
-exports.CaixasModule = CaixasModule;
-exports.CaixasModule = CaixasModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [caixas_controller_1.CaixasController],
-        providers: [caixas_service_1.CaixasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], CaixasModule);
-
-
-/***/ }),
-/* 57 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CaixasController = void 0;
-const common_1 = __webpack_require__(4);
-const caixas_service_1 = __webpack_require__(58);
-const create_caixas_dto_1 = __webpack_require__(59);
-const update_caixas_dto_1 = __webpack_require__(60);
-let CaixasController = class CaixasController {
-    constructor(services) {
-        this.services = services;
-    }
-    findAll() {
-        return this.services.findAll();
-    }
-    find(id) {
-        return this.services.find(+id);
-    }
-    create(data) {
-        return this.services.create(data);
-    }
-    update(data) {
-        return this.services.update(data);
-    }
-    remove(id) {
-        return this.services.remove(+id);
-    }
-};
-exports.CaixasController = CaixasController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], CaixasController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], CaixasController.prototype, "find", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_caixas_dto_1.CreateCaixasDTO !== "undefined" && create_caixas_dto_1.CreateCaixasDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
-], CaixasController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_caixas_dto_1.UpdateCaixasDTO !== "undefined" && update_caixas_dto_1.UpdateCaixasDTO) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], CaixasController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], CaixasController.prototype, "remove", null);
-exports.CaixasController = CaixasController = __decorate([
-    (0, common_1.Controller)('api/v1/caixas'),
-    __metadata("design:paramtypes", [typeof (_a = typeof caixas_service_1.CaixasServices !== "undefined" && caixas_service_1.CaixasServices) === "function" ? _a : Object])
-], CaixasController);
-
-
-/***/ }),
-/* 58 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CaixasServices = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let CaixasServices = class CaixasServices {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    findAll() {
-        return this.db.caixas.findMany();
-    }
-    find(id) {
-        return this.db.caixas.findFirst({
-            where: { id: id },
-        });
-    }
-    async create(data) {
-        try {
-            await this.db.caixas.create({
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    criado_por: global.SESSION.id,
-                },
-            });
-            this.responseService.success({}, 'Registro Criado com sucesso');
-        }
-        catch (error) {
-            this.responseService.error('Não foi possível criar a caixa', error);
-        }
-    }
-    async update(data) {
-        try {
-            await this.db.caixas.update({
-                where: { id: data.id },
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    alterado_por: global.SESSION.id,
-                    alterado_em: new Date(),
-                },
-            });
-            this.responseService.success({}, 'Registro Atualizado com sucesso');
-        }
-        catch (error) {
-            this.responseService.error('Não foi possível atualizar a caixa', error);
-        }
-    }
-    async remove(id) {
-        await this.db.caixas.delete({
-            where: { id: id },
-        });
-        this.responseService.success({}, 'Registro Excluído com Sucesso');
-    }
-};
-exports.CaixasServices = CaixasServices;
-exports.CaixasServices = CaixasServices = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], CaixasServices);
-
-
-/***/ }),
-/* 59 */
+/***/ "./src/controllers/prateleira/dto/update-prateleira.dto.ts":
+/*!*****************************************************************!*\
+  !*** ./src/controllers/prateleira/dto/update-prateleira.dto.ts ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateCaixasDTO = void 0;
-class CreateCaixasDTO {
+exports.UpdatePrateleiraDTO = void 0;
+class UpdatePrateleiraDTO {
 }
-exports.CreateCaixasDTO = CreateCaixasDTO;
+exports.UpdatePrateleiraDTO = UpdatePrateleiraDTO;
 
 
 /***/ }),
-/* 60 */
-/***/ ((__unused_webpack_module, exports) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateCaixasDTO = void 0;
-class UpdateCaixasDTO {
-}
-exports.UpdateCaixasDTO = UpdateCaixasDTO;
-
-
-/***/ }),
-/* 61 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PrateleiraModule = void 0;
-const common_1 = __webpack_require__(4);
-const prateleira_controller_1 = __webpack_require__(62);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const prateleira_service_1 = __webpack_require__(63);
-let PrateleiraModule = class PrateleiraModule {
-};
-exports.PrateleiraModule = PrateleiraModule;
-exports.PrateleiraModule = PrateleiraModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [prateleira_controller_1.PrateleiraController],
-        providers: [prateleira_service_1.PrateleiraService, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], PrateleiraModule);
-
-
-/***/ }),
-/* 62 */
+/***/ "./src/controllers/prateleira/prateleira.controller.ts":
+/*!*************************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.controller.ts ***!
+  \*************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2582,11 +2759,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PrateleiraController = void 0;
-const common_1 = __webpack_require__(4);
-const prateleira_service_1 = __webpack_require__(63);
-const create_prateleira_dto_1 = __webpack_require__(64);
-const update_prateleira_dto_1 = __webpack_require__(65);
-const session_decorator_1 = __webpack_require__(34);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prateleira_service_1 = __webpack_require__(/*! ./prateleira.service */ "./src/controllers/prateleira/prateleira.service.ts");
+const create_prateleira_dto_1 = __webpack_require__(/*! ./dto/create-prateleira.dto */ "./src/controllers/prateleira/dto/create-prateleira.dto.ts");
+const update_prateleira_dto_1 = __webpack_require__(/*! ./dto/update-prateleira.dto */ "./src/controllers/prateleira/dto/update-prateleira.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
 let PrateleiraController = class PrateleiraController {
     constructor(service) {
         this.service = service;
@@ -2651,7 +2828,44 @@ exports.PrateleiraController = PrateleiraController = __decorate([
 
 
 /***/ }),
-/* 63 */
+
+/***/ "./src/controllers/prateleira/prateleira.module.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.module.ts ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PrateleiraModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prateleira_controller_1 = __webpack_require__(/*! ./prateleira.controller */ "./src/controllers/prateleira/prateleira.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prateleira_service_1 = __webpack_require__(/*! ./prateleira.service */ "./src/controllers/prateleira/prateleira.service.ts");
+let PrateleiraModule = class PrateleiraModule {
+};
+exports.PrateleiraModule = PrateleiraModule;
+exports.PrateleiraModule = PrateleiraModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [prateleira_controller_1.PrateleiraController],
+        providers: [prateleira_service_1.PrateleiraService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], PrateleiraModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/prateleira/prateleira.service.ts":
+/*!**********************************************************!*\
+  !*** ./src/controllers/prateleira/prateleira.service.ts ***!
+  \**********************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2667,9 +2881,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PrateleiraService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 let PrateleiraService = class PrateleiraService {
     constructor(db, responseService) {
         this.db = db;
@@ -2728,60 +2942,43 @@ exports.PrateleiraService = PrateleiraService = __decorate([
 
 
 /***/ }),
-/* 64 */
+
+/***/ "./src/controllers/salas/dto/create-salas.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/salas/dto/create-salas.dto.ts ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreatePrateleiraDTO = void 0;
-class CreatePrateleiraDTO {
+exports.CreateSalasDTO = void 0;
+class CreateSalasDTO {
 }
-exports.CreatePrateleiraDTO = CreatePrateleiraDTO;
+exports.CreateSalasDTO = CreateSalasDTO;
 
 
 /***/ }),
-/* 65 */
+
+/***/ "./src/controllers/salas/dto/update-salas.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/salas/dto/update-salas.dto.ts ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdatePrateleiraDTO = void 0;
-class UpdatePrateleiraDTO {
+exports.UpdateSalasDTO = void 0;
+class UpdateSalasDTO {
 }
-exports.UpdatePrateleiraDTO = UpdatePrateleiraDTO;
+exports.UpdateSalasDTO = UpdateSalasDTO;
 
 
 /***/ }),
-/* 66 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ContasExtrasModule = void 0;
-const common_1 = __webpack_require__(4);
-const contas_extras_controller_1 = __webpack_require__(67);
-const contas_extras_service_1 = __webpack_require__(68);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let ContasExtrasModule = class ContasExtrasModule {
-};
-exports.ContasExtrasModule = ContasExtrasModule;
-exports.ContasExtrasModule = ContasExtrasModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [contas_extras_controller_1.ContasExtrasController],
-        providers: [contas_extras_service_1.ContasExtrasService, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], ContasExtrasModule);
-
-
-/***/ }),
-/* 67 */
+/***/ "./src/controllers/salas/salas.controller.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/salas/salas.controller.ts ***!
+  \***************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2799,20 +2996,21 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ContasExtrasController = void 0;
-const common_1 = __webpack_require__(4);
-const contas_extras_service_1 = __webpack_require__(68);
-const create_conta_dto_1 = __webpack_require__(69);
-const update_conta_dto_1 = __webpack_require__(70);
-const session_decorator_1 = __webpack_require__(34);
-let ContasExtrasController = class ContasExtrasController {
+exports.SalasController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const update_salas_dto_1 = __webpack_require__(/*! ./dto/update-salas.dto */ "./src/controllers/salas/dto/update-salas.dto.ts");
+const create_salas_dto_1 = __webpack_require__(/*! ./dto/create-salas.dto */ "./src/controllers/salas/dto/create-salas.dto.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+let SalasController = class SalasController {
     constructor(service) {
         this.service = service;
     }
     findAll() {
         return this.service.findAll();
     }
-    findOne(id) {
+    find(id) {
         return this.service.find(+id);
     }
     create(data) {
@@ -2825,51 +3023,90 @@ let ContasExtrasController = class ContasExtrasController {
         return this.service.remove(+id);
     }
 };
-exports.ContasExtrasController = ContasExtrasController;
+exports.SalasController = SalasController;
 __decorate([
     (0, common_1.Get)(),
+    (0, session_decorator_1.Session)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ContasExtrasController.prototype, "findAll", null);
+], SalasController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], ContasExtrasController.prototype, "findOne", null);
+], SalasController.prototype, "find", null);
 __decorate([
     (0, common_1.Post)(),
     (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_conta_dto_1.CreateContaDTO !== "undefined" && create_conta_dto_1.CreateContaDTO) === "function" ? _b : Object]),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_salas_dto_1.CreateSalasDTO !== "undefined" && create_salas_dto_1.CreateSalasDTO) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
-], ContasExtrasController.prototype, "create", null);
+], SalasController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(),
     (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_conta_dto_1.UpdateContaDTO !== "undefined" && update_conta_dto_1.UpdateContaDTO) === "function" ? _c : Object]),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_salas_dto_1.UpdateSalasDTO !== "undefined" && update_salas_dto_1.UpdateSalasDTO) === "function" ? _c : Object]),
     __metadata("design:returntype", void 0)
-], ContasExtrasController.prototype, "update", null);
+], SalasController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
+    (0, common_1.Delete)('remove/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], ContasExtrasController.prototype, "remove", null);
-exports.ContasExtrasController = ContasExtrasController = __decorate([
-    (0, common_1.Controller)('api/v1/conta-extra'),
-    __metadata("design:paramtypes", [typeof (_a = typeof contas_extras_service_1.ContasExtrasService !== "undefined" && contas_extras_service_1.ContasExtrasService) === "function" ? _a : Object])
-], ContasExtrasController);
+], SalasController.prototype, "remove", null);
+exports.SalasController = SalasController = __decorate([
+    (0, common_1.Controller)('api/v1/salas'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof salas_service_1.SalasServices !== "undefined" && salas_service_1.SalasServices) === "function" ? _a : Object])
+], SalasController);
 
 
 /***/ }),
-/* 68 */
+
+/***/ "./src/controllers/salas/salas.module.ts":
+/*!***********************************************!*\
+  !*** ./src/controllers/salas/salas.module.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SalasModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const salas_service_1 = __webpack_require__(/*! ./salas.service */ "./src/controllers/salas/salas.service.ts");
+const salas_controller_1 = __webpack_require__(/*! ./salas.controller */ "./src/controllers/salas/salas.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SalasModule = class SalasModule {
+};
+exports.SalasModule = SalasModule;
+exports.SalasModule = SalasModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [salas_controller_1.SalasController],
+        providers: [salas_service_1.SalasServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], SalasModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/salas/salas.service.ts":
+/*!************************************************!*\
+  !*** ./src/controllers/salas/salas.service.ts ***!
+  \************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2884,125 +3121,116 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ContasExtrasService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let ContasExtrasService = class ContasExtrasService {
+exports.SalasServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SalasServices = class SalasServices {
     constructor(db, responseService) {
         this.db = db;
         this.responseService = responseService;
     }
-    findAll() {
-        return this.db.contasExtras.findMany();
+    async findAll() {
+        return this.db.salas.findMany();
     }
-    find(id) {
-        return this.db.contasExtras.findFirst({
+    async find(id) {
+        return this.db.salas.findFirst({
             where: { id: id },
         });
     }
     async create(data) {
         try {
-            await this.db.contasExtras.create({
+            await this.db.salas.create({
                 data: {
                     descricao: data.descricao.toUpperCase(),
-                    codigo: data.codigo,
-                    exercicio: data.exercicio,
-                    orcamento: data.orcamento,
                     criado_por: global.SESSION.id,
                 },
             });
-            this.responseService.success({}, 'Registro Criado com sucesso!');
+            return this.responseService.success({}, 'Registro criado com sucesso!');
         }
-        catch (err) {
-            this.responseService.error('Erro', err);
+        catch (error) {
+            this.responseService.error('Erro ao tentar criar a sala', error);
         }
     }
     async update(data) {
         try {
-            await this.db.contasExtras.update({
+            const exists = await this.db.salas.findFirst({
+                where: { id: data.id },
+            });
+            if (!exists) {
+                return this.responseService.error('Este registro não existe!');
+            }
+            await this.db.salas.update({
                 where: { id: data.id },
                 data: {
-                    descricao: data.descricao.toUpperCase(),
-                    codigo: data.codigo,
-                    exercicio: data.exercicio,
-                    orcamento: data.orcamento,
+                    descricao: data.descricao,
                     alterado_por: global.SESSION.id,
                     alterado_em: new Date(),
                 },
             });
+            return this.responseService.success({}, 'Registro atualizado com sucesso!');
         }
-        catch (err) {
-            this.responseService.error('Erro', err);
+        catch (error) {
+            this.responseService.error('Erro ao tentar atualizar a sala', error);
         }
     }
     async remove(id) {
-        await this.db.contasExtras.delete({ where: { id: id } });
-        this.responseService.success({}, 'Registro Excluído com sucesso!');
+        try {
+            await this.db.salas.delete({
+                where: { id: id },
+            });
+            return this.responseService.success({}, 'Registro excluído com sucesso!');
+        }
+        catch (error) {
+            this.responseService.error('Erro ao tentar excluir a sala', error);
+        }
     }
 };
-exports.ContasExtrasService = ContasExtrasService;
-exports.ContasExtrasService = ContasExtrasService = __decorate([
+exports.SalasServices = SalasServices;
+exports.SalasServices = SalasServices = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], ContasExtrasService);
+], SalasServices);
 
 
 /***/ }),
-/* 69 */
+
+/***/ "./src/controllers/setores/dto/create-setores.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/setores/dto/create-setores.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateContaDTO = void 0;
-class CreateContaDTO {
+exports.CreateSetoresDTO = void 0;
+class CreateSetoresDTO {
 }
-exports.CreateContaDTO = CreateContaDTO;
+exports.CreateSetoresDTO = CreateSetoresDTO;
 
 
 /***/ }),
-/* 70 */
+
+/***/ "./src/controllers/setores/dto/update-setores.dto.ts":
+/*!***********************************************************!*\
+  !*** ./src/controllers/setores/dto/update-setores.dto.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateContaDTO = void 0;
-class UpdateContaDTO {
+exports.UpdateSetoresDto = void 0;
+class UpdateSetoresDto {
 }
-exports.UpdateContaDTO = UpdateContaDTO;
+exports.UpdateSetoresDto = UpdateSetoresDto;
 
 
 /***/ }),
-/* 71 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CentroCustoModule = void 0;
-const common_1 = __webpack_require__(4);
-const centro_custo_controller_1 = __webpack_require__(72);
-const prisma_service_1 = __webpack_require__(9);
-const centro_custo_service_1 = __webpack_require__(73);
-const response_message_1 = __webpack_require__(15);
-let CentroCustoModule = class CentroCustoModule {
-};
-exports.CentroCustoModule = CentroCustoModule;
-exports.CentroCustoModule = CentroCustoModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [centro_custo_controller_1.CentroCustoController],
-        providers: [prisma_service_1.PrismaService, centro_custo_service_1.CentroCustoService, response_message_1.ResponseService],
-    })
-], CentroCustoModule);
-
-
-/***/ }),
-/* 72 */
+/***/ "./src/controllers/setores/setores.controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/setores/setores.controller.ts ***!
+  \*******************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3020,18 +3248,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CentroCustoController = void 0;
-const common_1 = __webpack_require__(4);
-const centro_custo_service_1 = __webpack_require__(73);
-const create_centro_custo_dto_1 = __webpack_require__(74);
-const update_centro_custo_dto_1 = __webpack_require__(75);
-const session_decorator_1 = __webpack_require__(34);
-let CentroCustoController = class CentroCustoController {
+exports.SetoresController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const constants_1 = __webpack_require__(/*! src/constants/constants */ "./src/constants/constants.ts");
+const setores_service_1 = __webpack_require__(/*! ./setores.service */ "./src/controllers/setores/setores.service.ts");
+const create_setores_dto_1 = __webpack_require__(/*! ./dto/create-setores.dto */ "./src/controllers/setores/dto/create-setores.dto.ts");
+const update_setores_dto_1 = __webpack_require__(/*! ./dto/update-setores.dto */ "./src/controllers/setores/dto/update-setores.dto.ts");
+let SetoresController = class SetoresController {
     constructor(service) {
         this.service = service;
     }
     findAll() {
-        return this.service.findAll();
+        return this.service.indAll();
+    }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
     }
     findOne(id) {
         return this.service.find(+id);
@@ -3043,54 +3275,96 @@ let CentroCustoController = class CentroCustoController {
         return this.service.update(data);
     }
     remove(id) {
-        return this.service.remove(+id);
+        return this.service.delete(+id);
     }
 };
-exports.CentroCustoController = CentroCustoController;
+exports.SetoresController = SetoresController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], CentroCustoController.prototype, "findAll", null);
+], SetoresController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SetoresController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], CentroCustoController.prototype, "findOne", null);
+], SetoresController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
-    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_centro_custo_dto_1.CreateCentroCustoDTO !== "undefined" && create_centro_custo_dto_1.CreateCentroCustoDTO) === "function" ? _b : Object]),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_setores_dto_1.CreateSetoresDTO !== "undefined" && create_setores_dto_1.CreateSetoresDTO) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
-], CentroCustoController.prototype, "create", null);
+], SetoresController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(),
-    (0, session_decorator_1.Session)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_centro_custo_dto_1.UpdateCentroCusto !== "undefined" && update_centro_custo_dto_1.UpdateCentroCusto) === "function" ? _c : Object]),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_setores_dto_1.UpdateSetoresDto !== "undefined" && update_setores_dto_1.UpdateSetoresDto) === "function" ? _c : Object]),
     __metadata("design:returntype", void 0)
-], CentroCustoController.prototype, "update", null);
+], SetoresController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], CentroCustoController.prototype, "remove", null);
-exports.CentroCustoController = CentroCustoController = __decorate([
-    (0, common_1.Controller)('api/v1/centro-custo'),
-    __metadata("design:paramtypes", [typeof (_a = typeof centro_custo_service_1.CentroCustoService !== "undefined" && centro_custo_service_1.CentroCustoService) === "function" ? _a : Object])
-], CentroCustoController);
+], SetoresController.prototype, "remove", null);
+exports.SetoresController = SetoresController = __decorate([
+    (0, common_1.Controller)(constants_1.APIV1 + 'setores'),
+    __metadata("design:paramtypes", [typeof (_a = typeof setores_service_1.SetoresServices !== "undefined" && setores_service_1.SetoresServices) === "function" ? _a : Object])
+], SetoresController);
 
 
 /***/ }),
-/* 73 */
+
+/***/ "./src/controllers/setores/setores.module.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/setores/setores.module.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SetoresModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const setores_controller_1 = __webpack_require__(/*! ./setores.controller */ "./src/controllers/setores/setores.controller.ts");
+const setores_service_1 = __webpack_require__(/*! ./setores.service */ "./src/controllers/setores/setores.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SetoresModule = class SetoresModule {
+};
+exports.SetoresModule = SetoresModule;
+exports.SetoresModule = SetoresModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [setores_controller_1.SetoresController],
+        providers: [setores_service_1.SetoresServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], SetoresModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/setores/setores.service.ts":
+/*!****************************************************!*\
+  !*** ./src/controllers/setores/setores.service.ts ***!
+  \****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3105,127 +3379,79 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CentroCustoService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let CentroCustoService = class CentroCustoService {
+exports.SetoresServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let SetoresServices = class SetoresServices {
     constructor(db, responseService) {
         this.db = db;
         this.responseService = responseService;
     }
-    findAll() {
-        return this.db.centroCusto.findMany();
+    indAll() {
+        return this.db.tiposDocumentos.findMany();
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.setores, { page, limit });
     }
     find(id) {
-        return this.db.centroCusto.findFirst({
+        return this.db.tiposDocumentos.findFirst({
             where: { id: id },
         });
     }
-    async create(data) {
-        try {
-            await this.db.centroCusto.create({
-                data: {
-                    cod_entidade: data.cod_entidade,
-                    cod_centro_custo: data.cod_centro_custo,
-                    descricao: data.descricao.toUpperCase(),
-                    criado_por: global.SESSION.id,
-                },
-            });
-            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
-        }
-        catch (error) {
-            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
-        }
+    create(data) {
+        return this.db.setores.create({
+            data: {
+                descricao: data.descricao.toUpperCase(),
+                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
+            },
+        });
     }
-    async update(data) {
-        try {
-            await this.db.centroCusto.update({
-                where: { id: data.id },
-                data: {
-                    cod_entidade: data.cod_entidade,
-                    cod_centro_custo: data.cod_centro_custo,
-                    descricao: data.descricao.toUpperCase(),
-                    ativo: data.ativo,
-                    alterado_em: new Date(),
-                    alterado_por: global.SESSION.id,
-                },
-            });
-            return this.responseService.success({}, 'Centro de Custo criado com sucesso!');
-        }
-        catch (error) {
-            return this.responseService.error('Ocorreu um erro ao tentar criar o centro de custo.', error);
-        }
+    update(data) {
+        return this.db.setores.update({
+            where: { id: data.id },
+            data: {
+                descricao: data.descricao.toUpperCase(),
+                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
+            },
+        });
     }
-    async remove(id) {
-        await this.db.centroCusto.delete({
+    delete(id) {
+        return this.db.tiposDocumentos.delete({
             where: { id: id },
         });
-        return this.responseService.success({}, 'Registro Excluído com sucesso!');
     }
 };
-exports.CentroCustoService = CentroCustoService;
-exports.CentroCustoService = CentroCustoService = __decorate([
+exports.SetoresServices = SetoresServices;
+exports.SetoresServices = SetoresServices = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], CentroCustoService);
+], SetoresServices);
 
 
 /***/ }),
-/* 74 */
+
+/***/ "./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateCentroCustoDTO = void 0;
-class CreateCentroCustoDTO {
+exports.CreateTiposDocumentosDTO = void 0;
+class CreateTiposDocumentosDTO {
 }
-exports.CreateCentroCustoDTO = CreateCentroCustoDTO;
+exports.CreateTiposDocumentosDTO = CreateTiposDocumentosDTO;
 
 
 /***/ }),
-/* 75 */
-/***/ ((__unused_webpack_module, exports) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateCentroCusto = void 0;
-class UpdateCentroCusto {
-}
-exports.UpdateCentroCusto = UpdateCentroCusto;
-
-
-/***/ }),
-/* 76 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GavetaModule = void 0;
-const common_1 = __webpack_require__(4);
-const gaveta_controller_1 = __webpack_require__(77);
-const gaveta_service_1 = __webpack_require__(78);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let GavetaModule = class GavetaModule {
-};
-exports.GavetaModule = GavetaModule;
-exports.GavetaModule = GavetaModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [gaveta_controller_1.GavetaController],
-        providers: [gaveta_service_1.GavetaService, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], GavetaModule);
-
-
-/***/ }),
-/* 77 */
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.controller.ts":
+/*!*************************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.controller.ts ***!
+  \*************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3243,17 +3469,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GavetaController = void 0;
-const common_1 = __webpack_require__(4);
-const gaveta_service_1 = __webpack_require__(78);
-const create_gaveta_dto_1 = __webpack_require__(79);
-const update_gaveta_dto_1 = __webpack_require__(80);
-let GavetaController = class GavetaController {
+exports.TiposDocumentosController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const tipos_documentos_service_1 = __webpack_require__(/*! ./tipos-documentos.service */ "./src/controllers/tipos-documentos/tipos-documentos.service.ts");
+const create_tipos_documentos_dto_1 = __webpack_require__(/*! ./dto/create-tipos-documentos.dto */ "./src/controllers/tipos-documentos/dto/create-tipos-documentos.dto.ts");
+let TiposDocumentosController = class TiposDocumentosController {
     constructor(service) {
         this.service = service;
     }
     findAll() {
         return this.service.findAll();
+    }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
     }
     findOne(id) {
         return this.service.find(+id);
@@ -3264,53 +3493,97 @@ let GavetaController = class GavetaController {
     update(data) {
         return this.service.update(data);
     }
-    remove(id) {
-        return this.service.remove(+id);
+    delete(id) {
+        return this.service.delete(+id);
     }
 };
-exports.GavetaController = GavetaController;
+exports.TiposDocumentosController = TiposDocumentosController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], GavetaController.prototype, "findAll", null);
+], TiposDocumentosController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], GavetaController.prototype, "findOne", null);
+], TiposDocumentosController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_gaveta_dto_1.CreateGavetaDTO !== "undefined" && create_gaveta_dto_1.CreateGavetaDTO) === "function" ? _b : Object]),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
-], GavetaController.prototype, "create", null);
+], TiposDocumentosController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_gaveta_dto_1.UpdateGavetaDTO !== "undefined" && update_gaveta_dto_1.UpdateGavetaDTO) === "function" ? _c : Object]),
+    __metadata("design:paramtypes", [typeof (_c = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _c : Object]),
     __metadata("design:returntype", void 0)
-], GavetaController.prototype, "update", null);
+], TiposDocumentosController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], GavetaController.prototype, "remove", null);
-exports.GavetaController = GavetaController = __decorate([
-    (0, common_1.Controller)('/api/v1/gaveta'),
-    __metadata("design:paramtypes", [typeof (_a = typeof gaveta_service_1.GavetaService !== "undefined" && gaveta_service_1.GavetaService) === "function" ? _a : Object])
-], GavetaController);
+], TiposDocumentosController.prototype, "delete", null);
+exports.TiposDocumentosController = TiposDocumentosController = __decorate([
+    (0, common_1.Controller)('/api/v1/tipos-documentos'),
+    __metadata("design:paramtypes", [typeof (_a = typeof tipos_documentos_service_1.TiposDocumentosService !== "undefined" && tipos_documentos_service_1.TiposDocumentosService) === "function" ? _a : Object])
+], TiposDocumentosController);
 
 
 /***/ }),
-/* 78 */
+
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.module.ts":
+/*!*********************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.module.ts ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TiposDocumentosModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const tipos_documentos_controller_1 = __webpack_require__(/*! ./tipos-documentos.controller */ "./src/controllers/tipos-documentos/tipos-documentos.controller.ts");
+const tipos_documentos_service_1 = __webpack_require__(/*! ./tipos-documentos.service */ "./src/controllers/tipos-documentos/tipos-documentos.service.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let TiposDocumentosModule = class TiposDocumentosModule {
+};
+exports.TiposDocumentosModule = TiposDocumentosModule;
+exports.TiposDocumentosModule = TiposDocumentosModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [tipos_documentos_controller_1.TiposDocumentosController],
+        providers: [tipos_documentos_service_1.TiposDocumentosService, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], TiposDocumentosModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/tipos-documentos/tipos-documentos.service.ts":
+/*!**********************************************************************!*\
+  !*** ./src/controllers/tipos-documentos/tipos-documentos.service.ts ***!
+  \**********************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3325,347 +3598,93 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GavetaService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let GavetaService = class GavetaService {
+exports.TiposDocumentosService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
+let TiposDocumentosService = class TiposDocumentosService {
     constructor(db, responseService) {
         this.db = db;
         this.responseService = responseService;
     }
     findAll() {
-        return this.db.gaveta.findMany();
+        return this.db.tiposDocumentos.findMany();
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.tiposDocumentos, { page, limit });
     }
     find(id) {
-        return this.db.gaveta.findFirst({
+        return this.db.tiposDocumentos.findFirst({
             where: { id: id },
         });
-    }
-    async create(data) {
-        try {
-            await this.db.gaveta.create({
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    sala_id: data.sala_id,
-                    armario_id: data.armario_id,
-                    criado_por: global.SESSION.id,
-                },
-            });
-            this.responseService.success({}, 'Gaveta criada com sucesso.');
-        }
-        catch (error) {
-            this.responseService.error('Falha ao tentar criar a gaveta.', error);
-        }
-    }
-    async update(data) {
-        try {
-            await this.db.gaveta.update({
-                where: { id: data.id },
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    sala_id: data.sala_id,
-                    armario_id: data.armario_id,
-                    alterado_por: global.SESSION.id,
-                    alterado_em: new Date(),
-                },
-            });
-            this.responseService.success({}, 'Gaveta atualizada com sucesso.');
-        }
-        catch (error) {
-            this.responseService.error('Falha ao tentar criar a gaveta.', error);
-        }
-    }
-    remove(id) {
-        this.db.gaveta.delete({
-            where: { id: id },
-        });
-        this.responseService.success({}, 'Gaveta excluída com sucesso.');
-    }
-};
-exports.GavetaService = GavetaService;
-exports.GavetaService = GavetaService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], GavetaService);
-
-
-/***/ }),
-/* 79 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateGavetaDTO = void 0;
-class CreateGavetaDTO {
-}
-exports.CreateGavetaDTO = CreateGavetaDTO;
-
-
-/***/ }),
-/* 80 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateGavetaDTO = void 0;
-class UpdateGavetaDTO {
-}
-exports.UpdateGavetaDTO = UpdateGavetaDTO;
-
-
-/***/ }),
-/* 81 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CompartimentoModule = void 0;
-const common_1 = __webpack_require__(4);
-const compartimento_controller_1 = __webpack_require__(82);
-const compartimento_service_1 = __webpack_require__(83);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let CompartimentoModule = class CompartimentoModule {
-};
-exports.CompartimentoModule = CompartimentoModule;
-exports.CompartimentoModule = CompartimentoModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [compartimento_controller_1.CompartimentoController],
-        providers: [compartimento_service_1.CompartimentoService, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], CompartimentoModule);
-
-
-/***/ }),
-/* 82 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CompartimentoController = void 0;
-const common_1 = __webpack_require__(4);
-const compartimento_service_1 = __webpack_require__(83);
-const create_compartimento_dto_1 = __webpack_require__(84);
-const update_compartimento_dto_1 = __webpack_require__(85);
-let CompartimentoController = class CompartimentoController {
-    constructor(service) {
-        this.service = service;
-    }
-    findAll() {
-        return this.service.findAll();
-    }
-    findOne(id) {
-        return this.service.find(+id);
     }
     create(data) {
-        return this.service.create(data);
+        return this.db.tiposDocumentos.create({
+            data: {
+                descricao: data.descricao.toUpperCase(),
+            },
+        });
     }
     update(data) {
-        return this.service.update(data);
+        return this.db.tiposDocumentos.update({
+            where: { id: data.id },
+            data: {
+                descricao: data.descricao.toUpperCase(),
+            },
+        });
     }
-    remove(id) {
-        return this.service.remove(+id);
-    }
-};
-exports.CompartimentoController = CompartimentoController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_compartimento_dto_1.CreateCompartimentoDTO !== "undefined" && create_compartimento_dto_1.CreateCompartimentoDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_compartimento_dto_1.UpdateCompartimentoDTO !== "undefined" && update_compartimento_dto_1.UpdateCompartimentoDTO) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], CompartimentoController.prototype, "remove", null);
-exports.CompartimentoController = CompartimentoController = __decorate([
-    (0, common_1.Controller)('/api/v1/compartimento'),
-    __metadata("design:paramtypes", [typeof (_a = typeof compartimento_service_1.CompartimentoService !== "undefined" && compartimento_service_1.CompartimentoService) === "function" ? _a : Object])
-], CompartimentoController);
-
-
-/***/ }),
-/* 83 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CompartimentoService = void 0;
-const common_1 = __webpack_require__(4);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let CompartimentoService = class CompartimentoService {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    findAll() {
-        return this.db.compartimento.findMany();
-    }
-    find(id) {
-        return this.db.compartimento.findFirst({
+    delete(id) {
+        return this.db.tiposDocumentos.delete({
             where: { id: id },
         });
     }
-    async create(data) {
-        try {
-            await this.db.compartimento.create({
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    sala_id: data.sala_id,
-                    armario_id: data.armario_id,
-                    gaveta_id: data.gaveta_id,
-                    criado_por: global.SESSION.id,
-                },
-            });
-            return this.responseService.success({}, 'Compartimento cadastrado com sucesso!');
-        }
-        catch (error) {
-            this.responseService.error('Erro ao cadastrar compartimento', error);
-        }
-    }
-    async update(data) {
-        try {
-            await this.db.compartimento.update({
-                where: { id: data.id },
-                data: {
-                    descricao: data.descricao.toUpperCase(),
-                    sala_id: data.sala_id,
-                    armario_id: data.armario_id,
-                    gaveta_id: data.gaveta_id,
-                    alterado_por: global.SESSION.id,
-                    alterado_em: new Date(),
-                },
-            });
-            return this.responseService.success({}, 'Compartimento atualizado com sucesso!');
-        }
-        catch (error) {
-            this.responseService.error('Erro ao tentar atualizar compartimento', error);
-        }
-    }
-    remove(id) {
-        this.db.compartimento.delete({
-            where: { id: id },
-        });
-        this.responseService.success({}, 'Compartimento excluído com sucesso!');
-    }
 };
-exports.CompartimentoService = CompartimentoService;
-exports.CompartimentoService = CompartimentoService = __decorate([
+exports.TiposDocumentosService = TiposDocumentosService;
+exports.TiposDocumentosService = TiposDocumentosService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], CompartimentoService);
+], TiposDocumentosService);
 
 
 /***/ }),
-/* 84 */
+
+/***/ "./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateCompartimentoDTO = void 0;
-class CreateCompartimentoDTO {
+exports.CreateUnidadeOrcamentariaDTO = void 0;
+class CreateUnidadeOrcamentariaDTO {
 }
-exports.CreateCompartimentoDTO = CreateCompartimentoDTO;
+exports.CreateUnidadeOrcamentariaDTO = CreateUnidadeOrcamentariaDTO;
 
 
 /***/ }),
-/* 85 */
+
+/***/ "./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateCompartimentoDTO = void 0;
-class UpdateCompartimentoDTO {
+exports.UpdateUnidadeOrcamentariaDTO = void 0;
+class UpdateUnidadeOrcamentariaDTO {
 }
-exports.UpdateCompartimentoDTO = UpdateCompartimentoDTO;
+exports.UpdateUnidadeOrcamentariaDTO = UpdateUnidadeOrcamentariaDTO;
 
 
 /***/ }),
-/* 86 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UnidadeOrcamentariaModule = void 0;
-const common_1 = __webpack_require__(4);
-const unidade_orcamentaria_controller_1 = __webpack_require__(87);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-const unidade_orcamentaria_service_1 = __webpack_require__(88);
-let UnidadeOrcamentariaModule = class UnidadeOrcamentariaModule {
-};
-exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule;
-exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [unidade_orcamentaria_controller_1.UnidadeOrcamentariaController],
-        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, unidade_orcamentaria_service_1.UnidadeOrcamentariaService],
-    })
-], UnidadeOrcamentariaModule);
-
-
-/***/ }),
-/* 87 */
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts ***!
+  \*********************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3684,11 +3703,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UnidadeOrcamentariaController = void 0;
-const common_1 = __webpack_require__(4);
-const unidade_orcamentaria_service_1 = __webpack_require__(88);
-const session_decorator_1 = __webpack_require__(34);
-const create_unidade_orcamentaria_dto_1 = __webpack_require__(90);
-const update_unidade_orcamentaria_dto_1 = __webpack_require__(91);
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const unidade_orcamentaria_service_1 = __webpack_require__(/*! ./unidade-orcamentaria.service */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts");
+const session_decorator_1 = __webpack_require__(/*! src/customs/decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const create_unidade_orcamentaria_dto_1 = __webpack_require__(/*! ./dto/create-unidade-orcamentaria.dto */ "./src/controllers/unidade_orcamentaria/dto/create-unidade-orcamentaria.dto.ts");
+const update_unidade_orcamentaria_dto_1 = __webpack_require__(/*! ./dto/update-unidade-orcamentaria.dto */ "./src/controllers/unidade_orcamentaria/dto/update-unidade-orcamentaria.dto.ts");
 let UnidadeOrcamentariaController = class UnidadeOrcamentariaController {
     constructor(service) {
         this.service = service;
@@ -3783,7 +3802,44 @@ exports.UnidadeOrcamentariaController = UnidadeOrcamentariaController = __decora
 
 
 /***/ }),
-/* 88 */
+
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UnidadeOrcamentariaModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const unidade_orcamentaria_controller_1 = __webpack_require__(/*! ./unidade-orcamentaria.controller */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const unidade_orcamentaria_service_1 = __webpack_require__(/*! ./unidade-orcamentaria.service */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts");
+let UnidadeOrcamentariaModule = class UnidadeOrcamentariaModule {
+};
+exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule;
+exports.UnidadeOrcamentariaModule = UnidadeOrcamentariaModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [unidade_orcamentaria_controller_1.UnidadeOrcamentariaController],
+        providers: [prisma_service_1.PrismaService, response_message_1.ResponseService, unidade_orcamentaria_service_1.UnidadeOrcamentariaService],
+    })
+], UnidadeOrcamentariaModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts":
+/*!******************************************************************************!*\
+  !*** ./src/controllers/unidade_orcamentaria/unidade-orcamentaria.service.ts ***!
+  \******************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3799,10 +3855,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UnidadeOrcamentariaService = void 0;
-const response_message_1 = __webpack_require__(15);
-const prisma_service_1 = __webpack_require__(9);
-const common_1 = __webpack_require__(4);
-const pagination_helper_1 = __webpack_require__(89);
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const prisma_service_1 = __webpack_require__(/*! ./../../services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
     constructor(db, responseService) {
         this.db = db;
@@ -3859,11 +3915,22 @@ let UnidadeOrcamentariaService = class UnidadeOrcamentariaService {
             this.responseService.error('Erro ao tentar atualizar a Unidade Orçamentária', error);
         }
     }
-    remove(id) {
-        this.db.unidadeOrcamentaria.delete({
-            where: { id: id },
-        });
-        this.responseService.success(null, 'Unidade Orçamentária excluída com sucesso!');
+    async remove(id) {
+        try {
+            const unidadeOrcamentaria = await this.db.unidadeOrcamentaria.findUnique({
+                where: { id: id },
+            });
+            if (!unidadeOrcamentaria) {
+                return this.responseService.error('Unidade Orçamentária não encontrada!');
+            }
+            await this.db.unidadeOrcamentaria.delete({
+                where: { id: id },
+            });
+            return this.responseService.success(null, 'Unidade Orçamentária excluída com sucesso!');
+        }
+        catch (error) {
+            return this.responseService.error('Erro ao excluir a Unidade Orçamentária!', error.message);
+        }
     }
     async getPaginatedItems(page, limit) {
         return await (0, pagination_helper_1.paginate)(this.db.unidadeOrcamentaria, { page, limit });
@@ -3877,7 +3944,468 @@ exports.UnidadeOrcamentariaService = UnidadeOrcamentariaService = __decorate([
 
 
 /***/ }),
-/* 89 */
+
+/***/ "./src/controllers/users/dto/create-users.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/users/dto/create-users.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateUsersDTO = void 0;
+class CreateUsersDTO {
+}
+exports.CreateUsersDTO = CreateUsersDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/dto/update-users.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/controllers/users/dto/update-users.dto.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateUsersDto = void 0;
+class UpdateUsersDto {
+}
+exports.UpdateUsersDto = UpdateUsersDto;
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.controller.ts":
+/*!***************************************************!*\
+  !*** ./src/controllers/users/users.controller.ts ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const create_users_dto_1 = __webpack_require__(/*! ./dto/create-users.dto */ "./src/controllers/users/dto/create-users.dto.ts");
+const update_users_dto_1 = __webpack_require__(/*! ./dto/update-users.dto */ "./src/controllers/users/dto/update-users.dto.ts");
+let UsersController = class UsersController {
+    constructor(services) {
+        this.services = services;
+    }
+    async findAll() {
+        return await this.services.findAll();
+    }
+    async find(id) {
+        return await this.services.find(+id);
+    }
+    async create(data) {
+        return this.services.create(data);
+    }
+    async update(data) {
+        return this.services.update(data);
+    }
+    async remove(id) {
+        return this.services.remove(+id);
+    }
+};
+exports.UsersController = UsersController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_users_dto_1.CreateUsersDTO !== "undefined" && create_users_dto_1.CreateUsersDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_users_dto_1.UpdateUsersDto !== "undefined" && update_users_dto_1.UpdateUsersDto) === "function" ? _c : Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('remove/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "remove", null);
+exports.UsersController = UsersController = __decorate([
+    (0, common_1.Controller)('/api/v1/users'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersServices !== "undefined" && users_service_1.UsersServices) === "function" ? _a : Object])
+], UsersController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.module.ts":
+/*!***********************************************!*\
+  !*** ./src/controllers/users/users.module.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const users_controller_1 = __webpack_require__(/*! ./users.controller */ "./src/controllers/users/users.controller.ts");
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/controllers/users/users.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let UsersModule = class UsersModule {
+};
+exports.UsersModule = UsersModule;
+exports.UsersModule = UsersModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [users_controller_1.UsersController],
+        providers: [prisma_service_1.PrismaService, users_service_1.UsersServices, response_message_1.ResponseService],
+    })
+], UsersModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/users/users.service.ts":
+/*!************************************************!*\
+  !*** ./src/controllers/users/users.service.ts ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const bcrypt_1 = __webpack_require__(/*! bcrypt */ "bcrypt");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+let UsersServices = class UsersServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.users.findMany();
+    }
+    find(id) {
+        return this.db.users.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            const { nome, login, senha, email, telefone } = data;
+            const hashPassword = await (0, bcrypt_1.hash)(senha, 10);
+            const user = await this.db.users.findFirst({
+                where: { email: email },
+            });
+            if (user) {
+                return this.responseService.error('Já existe um usuário com este e-mail!');
+            }
+            await this.db.users.create({
+                data: {
+                    nome: nome,
+                    email: email,
+                    login: login,
+                    senha: hashPassword,
+                    ativo: 'S',
+                    telefone: telefone,
+                },
+            });
+            return this.responseService.success({}, 'Usuário cadastrado com sucesso!');
+        }
+        catch (err) {
+            return this.responseService.error('Erro', err);
+        }
+    }
+    async update(data) {
+        const { id, nome, email, telefone, ativo, login, senha } = data;
+        const user = await this.db.users.findFirst({
+            where: { email: email, id: id },
+        });
+        if (!user) {
+            return this.responseService.error('Já existe um usuário com este e-mail!');
+        }
+        const newPasswordHash = await (0, bcrypt_1.hash)(senha, 10);
+        await this.db.users.update({
+            where: { id: id },
+            data: {
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                ativo: ativo,
+                login: login,
+                senha: newPasswordHash,
+            },
+        });
+        return this.responseService.success({}, 'Registro Alterado com Sucesso!');
+    }
+    async remove(id) {
+        const user = await this.db.users.findFirst({
+            where: { id: id },
+        });
+        if (!user) {
+            this.responseService.error('Este usuário não existe em nossa base de dados. Por favor entre em contato com operador do sistema!');
+        }
+        await this.db.users.delete({
+            where: { id: id },
+        });
+        return this.responseService.success({}, 'Regristo excluído com sucesso!');
+    }
+};
+exports.UsersServices = UsersServices;
+exports.UsersServices = UsersServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], UsersServices);
+
+
+/***/ }),
+
+/***/ "./src/customs/decorator/session.decorator.ts":
+/*!****************************************************!*\
+  !*** ./src/customs/decorator/session.decorator.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GetSession = exports.Session = exports.SESSION_KEY = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+exports.SESSION_KEY = 'session';
+const Session = () => (0, common_1.SetMetadata)(exports.SESSION_KEY, true);
+exports.Session = Session;
+exports.GetSession = (0, common_1.createParamDecorator)((data, ctx) => {
+    const request = ctx.switchToHttp().getRequest();
+    return request.session;
+});
+
+
+/***/ }),
+
+/***/ "./src/customs/interceptor/session.interceptor.ts":
+/*!********************************************************!*\
+  !*** ./src/customs/interceptor/session.interceptor.ts ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SessionInterceptor = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const session_decorator_1 = __webpack_require__(/*! ../decorator/session.decorator */ "./src/customs/decorator/session.decorator.ts");
+const jwt = __webpack_require__(/*! jsonwebtoken */ "jsonwebtoken");
+let SessionInterceptor = class SessionInterceptor {
+    constructor(reflector) {
+        this.reflector = reflector;
+    }
+    intercept(context, next) {
+        const isSessionEnabled = this.reflector.get(session_decorator_1.SESSION_KEY, context.getHandler());
+        if (isSessionEnabled) {
+            const request = context.switchToHttp().getRequest();
+            const authHeader = request.headers['authorization'];
+            if (authHeader) {
+                const token = authHeader.replace('Bearer ', '');
+                try {
+                    const decoded = jwt.decode(token, { complete: true });
+                    request.sessionContext = decoded?.payload || {};
+                    global.SESSION = decoded?.payload;
+                }
+                catch (err) {
+                    console.error(err);
+                }
+            }
+            else {
+                request.sessionContext = {};
+            }
+        }
+        return next.handle();
+    }
+};
+exports.SessionInterceptor = SessionInterceptor;
+exports.SessionInterceptor = SessionInterceptor = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
+], SessionInterceptor);
+
+
+/***/ }),
+
+/***/ "./src/entidades/entidades.controller.ts":
+/*!***********************************************!*\
+  !*** ./src/entidades/entidades.controller.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EntidadesController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const clients_1 = __webpack_require__(/*! src/config/clients */ "./src/config/clients.ts");
+const database_guard_1 = __webpack_require__(/*! src/config/guards/database.guard */ "./src/config/guards/database.guard.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let EntidadesController = class EntidadesController {
+    constructor(connectionService) {
+        this.connectionService = connectionService;
+    }
+    getEstados() {
+        return clients_1.clientes.estados;
+    }
+    getMunicipios(uf) {
+        return clients_1.clientes.municipios[uf];
+    }
+    getEntidade(ibge) {
+        return clients_1.clientes.entidades[ibge];
+    }
+    async getConectarBanco(cliente, req) {
+        const prisma = req.dbConnection;
+        const result = await prisma.caixas.findMany();
+        return result;
+    }
+};
+exports.EntidadesController = EntidadesController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], EntidadesController.prototype, "getEstados", null);
+__decorate([
+    (0, common_1.Get)('municipios/:uf'),
+    __param(0, (0, common_1.Param)('uf')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], EntidadesController.prototype, "getMunicipios", null);
+__decorate([
+    (0, common_1.Get)('entidades/:ibge'),
+    __param(0, (0, common_1.Param)('ibge')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], EntidadesController.prototype, "getEntidade", null);
+__decorate([
+    (0, common_1.UseGuards)(database_guard_1.DynamicDatabaseGuard),
+    (0, common_1.Get)('/:cliente'),
+    __param(0, (0, common_1.Param)('cliente')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], EntidadesController.prototype, "getConectarBanco", null);
+exports.EntidadesController = EntidadesController = __decorate([
+    (0, common_1.Controller)('/api/v1/entidades'),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+], EntidadesController);
+
+
+/***/ }),
+
+/***/ "./src/entidades/entidades.module.ts":
+/*!*******************************************!*\
+  !*** ./src/entidades/entidades.module.ts ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EntidadesModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const entidades_controller_1 = __webpack_require__(/*! ./entidades.controller */ "./src/entidades/entidades.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let EntidadesModule = class EntidadesModule {
+};
+exports.EntidadesModule = EntidadesModule;
+exports.EntidadesModule = EntidadesModule = __decorate([
+    (0, common_1.Module)({
+        imports: [],
+        controllers: [entidades_controller_1.EntidadesController],
+        providers: [prisma_service_1.PrismaService],
+    })
+], EntidadesModule);
+
+
+/***/ }),
+
+/***/ "./src/helpers/pagination.helper.ts":
+/*!******************************************!*\
+  !*** ./src/helpers/pagination.helper.ts ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -3909,31 +4437,11 @@ exports.paginate = paginate;
 
 
 /***/ }),
-/* 90 */
-/***/ ((__unused_webpack_module, exports) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateUnidadeOrcamentariaDTO = void 0;
-class CreateUnidadeOrcamentariaDTO {
-}
-exports.CreateUnidadeOrcamentariaDTO = CreateUnidadeOrcamentariaDTO;
-
-
-/***/ }),
-/* 91 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateUnidadeOrcamentariaDTO = void 0;
-class UpdateUnidadeOrcamentariaDTO {
-}
-exports.UpdateUnidadeOrcamentariaDTO = UpdateUnidadeOrcamentariaDTO;
-
-
-/***/ }),
-/* 92 */
+/***/ "./src/pipes/validation.pipe.ts":
+/*!**************************************!*\
+  !*** ./src/pipes/validation.pipe.ts ***!
+  \**************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3944,25 +4452,132 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TiposDocumentosModule = void 0;
-const common_1 = __webpack_require__(4);
-const tipos_documentos_controller_1 = __webpack_require__(93);
-const tipos_documentos_service_1 = __webpack_require__(94);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let TiposDocumentosModule = class TiposDocumentosModule {
+exports.ValidationPipe = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+const class_transformer_1 = __webpack_require__(/*! class-transformer */ "class-transformer");
+let ValidationPipe = class ValidationPipe {
+    async transform(value, { metatype }) {
+        if (!metatype || !this.toValidate(metatype)) {
+            return value;
+        }
+        const object = (0, class_transformer_1.plainToInstance)(metatype, value);
+        const errors = await (0, class_validator_1.validate)(object);
+        if (errors.length > 0) {
+            throw new common_1.BadRequestException(this.formatErrors(errors));
+        }
+        return value;
+    }
+    toValidate(metatype) {
+        const types = [String, Boolean, Number, Array, Object];
+        return !types.includes(metatype);
+    }
+    formatErrors(errors) {
+        return errors.map((err) => {
+            return {
+                constraints: err.constraints,
+            };
+        });
+    }
 };
-exports.TiposDocumentosModule = TiposDocumentosModule;
-exports.TiposDocumentosModule = TiposDocumentosModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [tipos_documentos_controller_1.TiposDocumentosController],
-        providers: [tipos_documentos_service_1.TiposDocumentosService, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], TiposDocumentosModule);
+exports.ValidationPipe = ValidationPipe;
+exports.ValidationPipe = ValidationPipe = __decorate([
+    (0, common_1.Injectable)()
+], ValidationPipe);
 
 
 /***/ }),
-/* 93 */
+
+/***/ "./src/services/app-util.ts":
+/*!**********************************!*\
+  !*** ./src/services/app-util.ts ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppUtil = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let AppUtil = class AppUtil {
+    formatarMes(mes) {
+        switch (mes) {
+            case '1':
+                return 'Janeiro';
+            case '2':
+                return 'Fevereiro';
+            case '3':
+                return 'Março';
+            case '4':
+                return 'Abril';
+            case '5':
+                return 'Maio';
+            case '6':
+                return 'Junho';
+            case '7':
+                return 'Julho';
+            case '8':
+                return 'Agosto';
+            case '9':
+                return 'Setembro';
+            case '10':
+                return 'Outubro';
+            case '11':
+                return 'Novembro';
+            case '12':
+                return 'Dezembro';
+            default:
+                return 'Mês inválido';
+        }
+    }
+    clearMask(value) {
+        return value?.replace(/\D/g, '');
+    }
+};
+exports.AppUtil = AppUtil;
+exports.AppUtil = AppUtil = __decorate([
+    (0, common_1.Injectable)()
+], AppUtil);
+
+
+/***/ }),
+
+/***/ "./src/services/prisma/db-services.ts":
+/*!********************************************!*\
+  !*** ./src/services/prisma/db-services.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Already = void 0;
+const client_1 = __webpack_require__(/*! @prisma/client */ "@prisma/client");
+const response_message_1 = __webpack_require__(/*! ../response-message */ "./src/services/response-message.ts");
+const prisma = new client_1.PrismaClient();
+const responseService = new response_message_1.ResponseService();
+const Already = async (db, id, title = 'Não existe nenhum registro com este código!') => {
+    const model = prisma[db];
+    const record = await model.findUnique({
+        where: { id },
+    });
+    if (!record || record === null) {
+        return responseService.error(title);
+    }
+};
+exports.Already = Already;
+
+
+/***/ }),
+
+/***/ "./src/services/prisma/prisma.service.ts":
+/*!***********************************************!*\
+  !*** ./src/services/prisma/prisma.service.ts ***!
+  \***********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3975,166 +4590,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TiposDocumentosController = void 0;
-const common_1 = __webpack_require__(4);
-const tipos_documentos_service_1 = __webpack_require__(94);
-const create_tipos_documentos_dto_1 = __webpack_require__(95);
-let TiposDocumentosController = class TiposDocumentosController {
-    constructor(service) {
-        this.service = service;
+exports.PrismaService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const client_1 = __webpack_require__(/*! @prisma/client */ "@prisma/client");
+const clients_1 = __webpack_require__(/*! src/config/clients */ "./src/config/clients.ts");
+let PrismaService = class PrismaService extends client_1.PrismaClient {
+    constructor() {
+        super();
+        this.prisma = this;
     }
-    findAll() {
-        return this.service.findAll();
+    async onModuleInit() {
+        await this.$connect();
     }
-    findPage(page) {
-        const pageNumber = parseInt(page, 10);
-        return this.service.getPaginatedItems(pageNumber, 10);
+    async onModuleDestroy() {
+        await this.$disconnect();
     }
-    findOne(id) {
-        return this.service.find(+id);
-    }
-    create(data) {
-        return this.service.create(data);
-    }
-    update(data) {
-        return this.service.update(data);
-    }
-    delete(id) {
-        return this.service.delete(+id);
-    }
-};
-exports.TiposDocumentosController = TiposDocumentosController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('/page'),
-    __param(0, (0, common_1.Query)('page')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "findPage", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof create_tipos_documentos_dto_1.CreateTiposDocumentosDTO !== "undefined" && create_tipos_documentos_dto_1.CreateTiposDocumentosDTO) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], TiposDocumentosController.prototype, "delete", null);
-exports.TiposDocumentosController = TiposDocumentosController = __decorate([
-    (0, common_1.Controller)('/api/v1/tipos-documentos'),
-    __metadata("design:paramtypes", [typeof (_a = typeof tipos_documentos_service_1.TiposDocumentosService !== "undefined" && tipos_documentos_service_1.TiposDocumentosService) === "function" ? _a : Object])
-], TiposDocumentosController);
-
-
-/***/ }),
-/* 94 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TiposDocumentosService = void 0;
-const common_1 = __webpack_require__(4);
-const response_message_1 = __webpack_require__(15);
-const prisma_service_1 = __webpack_require__(9);
-const pagination_helper_1 = __webpack_require__(89);
-let TiposDocumentosService = class TiposDocumentosService {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    findAll() {
-        return this.db.tiposDocumentos.findMany();
-    }
-    async getPaginatedItems(page, limit) {
-        return await (0, pagination_helper_1.paginate)(this.db.tiposDocumentos, { page, limit });
-    }
-    find(id) {
-        return this.db.tiposDocumentos.findFirst({
-            where: { id: id },
-        });
-    }
-    create(data) {
-        return this.db.tiposDocumentos.create({
-            data: {
-                descricao: data.descricao.toUpperCase(),
+    async setConnectionUrl(clientId) {
+        const cliente = clients_1.configuracoes.database[+clientId];
+        const url = `postgresql://${cliente.username}:${cliente.password}@${cliente.host}:${cliente.port}/${cliente.database}?schema=public`;
+        await this.prisma.$disconnect();
+        this.prisma = new client_1.PrismaClient({
+            datasources: {
+                db: {
+                    url,
+                },
             },
         });
+        await this.prisma.$connect();
     }
-    update(data) {
-        return this.db.tiposDocumentos.update({
-            where: { id: data.id },
-            data: {
-                descricao: data.descricao.toUpperCase(),
-            },
-        });
-    }
-    delete(id) {
-        return this.db.tiposDocumentos.delete({
-            where: { id: id },
-        });
+    getPrismaClient() {
+        return this.prisma;
     }
 };
-exports.TiposDocumentosService = TiposDocumentosService;
-exports.TiposDocumentosService = TiposDocumentosService = __decorate([
+exports.PrismaService = PrismaService;
+exports.PrismaService = PrismaService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], TiposDocumentosService);
+    __metadata("design:paramtypes", [])
+], PrismaService);
 
 
 /***/ }),
-/* 95 */
-/***/ ((__unused_webpack_module, exports) => {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateTiposDocumentosDTO = void 0;
-class CreateTiposDocumentosDTO {
-}
-exports.CreateTiposDocumentosDTO = CreateTiposDocumentosDTO;
-
-
-/***/ }),
-/* 96 */
+/***/ "./src/services/response-message.ts":
+/*!******************************************!*\
+  !*** ./src/services/response-message.ts ***!
+  \******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -4145,213 +4646,123 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SetoresModule = void 0;
-const common_1 = __webpack_require__(4);
-const setores_controller_1 = __webpack_require__(97);
-const setores_service_1 = __webpack_require__(98);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let SetoresModule = class SetoresModule {
+exports.ResponseService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let ResponseService = class ResponseService {
+    success(data, message = 'Success') {
+        return {
+            status: common_1.HttpStatus.OK,
+            message,
+            data,
+        };
+    }
+    error(title, err) {
+        throw new common_1.HttpException({
+            status: common_1.HttpStatus.BAD_REQUEST,
+            error: title,
+            message_erro: err,
+        }, common_1.HttpStatus.BAD_REQUEST);
+    }
 };
-exports.SetoresModule = SetoresModule;
-exports.SetoresModule = SetoresModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [setores_controller_1.SetoresController],
-        providers: [setores_service_1.SetoresServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
-    })
-], SetoresModule);
+exports.ResponseService = ResponseService;
+exports.ResponseService = ResponseService = __decorate([
+    (0, common_1.Injectable)()
+], ResponseService);
 
 
 /***/ }),
-/* 97 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+/***/ "@nestjs/common":
+/*!*********************************!*\
+  !*** external "@nestjs/common" ***!
+  \*********************************/
+/***/ ((module) => {
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SetoresController = void 0;
-const common_1 = __webpack_require__(4);
-const constants_1 = __webpack_require__(16);
-const setores_service_1 = __webpack_require__(98);
-const create_setores_dto_1 = __webpack_require__(99);
-const update_setores_dto_1 = __webpack_require__(100);
-let SetoresController = class SetoresController {
-    constructor(service) {
-        this.service = service;
-    }
-    findAll() {
-        return this.service.indAll();
-    }
-    findPage(page) {
-        const pageNumber = parseInt(page, 10);
-        return this.service.getPaginatedItems(pageNumber, 10);
-    }
-    findOne(id) {
-        return this.service.find(+id);
-    }
-    create(data) {
-        return this.service.create(data);
-    }
-    update(data) {
-        return this.service.update(data);
-    }
-    remove(id) {
-        return this.service.delete(+id);
-    }
-};
-exports.SetoresController = SetoresController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('/page'),
-    __param(0, (0, common_1.Query)('page')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "findPage", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_setores_dto_1.CreateSetoresDTO !== "undefined" && create_setores_dto_1.CreateSetoresDTO) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof update_setores_dto_1.UpdateSetoresDto !== "undefined" && update_setores_dto_1.UpdateSetoresDto) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], SetoresController.prototype, "remove", null);
-exports.SetoresController = SetoresController = __decorate([
-    (0, common_1.Controller)(constants_1.APIV1 + 'setores'),
-    __metadata("design:paramtypes", [typeof (_a = typeof setores_service_1.SetoresServices !== "undefined" && setores_service_1.SetoresServices) === "function" ? _a : Object])
-], SetoresController);
-
+module.exports = require("@nestjs/common");
 
 /***/ }),
-/* 98 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+/***/ "@nestjs/core":
+/*!*******************************!*\
+  !*** external "@nestjs/core" ***!
+  \*******************************/
+/***/ ((module) => {
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SetoresServices = void 0;
-const common_1 = __webpack_require__(4);
-const pagination_helper_1 = __webpack_require__(89);
-const prisma_service_1 = __webpack_require__(9);
-const response_message_1 = __webpack_require__(15);
-let SetoresServices = class SetoresServices {
-    constructor(db, responseService) {
-        this.db = db;
-        this.responseService = responseService;
-    }
-    indAll() {
-        return this.db.tiposDocumentos.findMany();
-    }
-    async getPaginatedItems(page, limit) {
-        return await (0, pagination_helper_1.paginate)(this.db.setores, { page, limit });
-    }
-    find(id) {
-        return this.db.tiposDocumentos.findFirst({
-            where: { id: id },
-        });
-    }
-    create(data) {
-        return this.db.setores.create({
-            data: {
-                descricao: data.descricao.toUpperCase(),
-                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
-            },
-        });
-    }
-    update(data) {
-        return this.db.setores.update({
-            where: { id: data.id },
-            data: {
-                descricao: data.descricao.toUpperCase(),
-                unidade_orcamentaria_id: data.unidade_orcamentaria_id,
-            },
-        });
-    }
-    delete(id) {
-        return this.db.tiposDocumentos.delete({
-            where: { id: id },
-        });
-    }
-};
-exports.SetoresServices = SetoresServices;
-exports.SetoresServices = SetoresServices = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
-], SetoresServices);
-
+module.exports = require("@nestjs/core");
 
 /***/ }),
-/* 99 */
-/***/ ((__unused_webpack_module, exports) => {
 
+/***/ "@nestjs/jwt":
+/*!******************************!*\
+  !*** external "@nestjs/jwt" ***!
+  \******************************/
+/***/ ((module) => {
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateSetoresDTO = void 0;
-class CreateSetoresDTO {
-}
-exports.CreateSetoresDTO = CreateSetoresDTO;
-
+module.exports = require("@nestjs/jwt");
 
 /***/ }),
-/* 100 */
-/***/ ((__unused_webpack_module, exports) => {
 
+/***/ "@prisma/client":
+/*!*********************************!*\
+  !*** external "@prisma/client" ***!
+  \*********************************/
+/***/ ((module) => {
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateSetoresDto = void 0;
-class UpdateSetoresDto {
-}
-exports.UpdateSetoresDto = UpdateSetoresDto;
+module.exports = require("@prisma/client");
 
+/***/ }),
+
+/***/ "bcrypt":
+/*!*************************!*\
+  !*** external "bcrypt" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("bcrypt");
+
+/***/ }),
+
+/***/ "class-transformer":
+/*!************************************!*\
+  !*** external "class-transformer" ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = require("class-transformer");
+
+/***/ }),
+
+/***/ "class-validator":
+/*!**********************************!*\
+  !*** external "class-validator" ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = require("class-validator");
+
+/***/ }),
+
+/***/ "dotenv/config":
+/*!********************************!*\
+  !*** external "dotenv/config" ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = require("dotenv/config");
+
+/***/ }),
+
+/***/ "jsonwebtoken":
+/*!*******************************!*\
+  !*** external "jsonwebtoken" ***!
+  \*******************************/
+/***/ ((module) => {
+
+module.exports = require("jsonwebtoken");
 
 /***/ })
-/******/ 	]);
+
+/******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -4382,12 +4793,15 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
+/*!*********************!*\
+  !*** ./src/main.ts ***!
+  \*********************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __webpack_require__(1);
-const app_module_1 = __webpack_require__(2);
-const session_interceptor_1 = __webpack_require__(40);
-const validation_pipe_1 = __webpack_require__(54);
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
+const session_interceptor_1 = __webpack_require__(/*! ./customs/interceptor/session.interceptor */ "./src/customs/interceptor/session.interceptor.ts");
+const validation_pipe_1 = __webpack_require__(/*! ./pipes/validation.pipe */ "./src/pipes/validation.pipe.ts");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
