@@ -3,4 +3,5 @@ export class UpdateUnidadeOrcamentariaDTO {
   descricao: string;
   cnpj: string;
   ativo: string;
+  responsavel: string;
 }
