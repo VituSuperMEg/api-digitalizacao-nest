@@ -4,6 +4,7 @@ import { ResponseService } from 'src/services/response-message';
 import { CreateCredorDTO } from './dto/create-credor.dto';
 import { AppUtil } from 'src/services/app-util';
 import { UpdateCredorDTO } from './dto/update-credor.dto';
+import { paginate } from 'src/helpers/pagination.helper';
 
 @Injectable()
 export class CredoresService {
@@ -27,6 +28,13 @@ export class CredoresService {
       return;
     }
     return credor;
+  }
+
+  listOptions(descricao: string) {
+    return this.db.credores.findMany({
+      where: { nome: { contains: descricao, mode: 'insensitive' } },
+      take: 10,
+    });
   }
 
   async create(data: CreateCredorDTO) {
@@ -131,5 +139,9 @@ export class CredoresService {
       where: { id: id },
     });
     return this.responseService.success({}, 'Registro Excluído com Sucesso');
+  }
+
+  async getPaginatedItems(page: number, limit: number) {
+    return await paginate(this.db.credores, { page, limit });
   }
 }

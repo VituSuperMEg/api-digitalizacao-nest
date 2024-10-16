@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthAndDatabaseGuard } from 'src/config/guards/auth.guards';
@@ -19,13 +20,19 @@ import { UpdateCredorDTO } from './dto/update-credor.dto';
 export class CredoresController {
   constructor(private service: CredoresService) {}
 
+  @Get('/page')
+  findPage(@Query('page') page: string) {
+    const pageNumber = parseInt(page, 10);
+    return this.service.getPaginatedItems(pageNumber, 10);
+  }
+
   @Get()
   findAll() {
     return this.service.findAll();
   }
 
   @Get(':id')
-  find(@Param('id') id: number) {
+  findOne(@Param('id') id: number) {
     return this.service.find(+id);
   }
 

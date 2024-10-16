@@ -25,8 +25,18 @@ export class TiposDocumentosController {
     return this.service.getPaginatedItems(pageNumber, 10);
   }
 
+  @Get('/options')
+  listOptions(@Query('descricao') descricao: string) {
+    return this.service.listOptions(descricao);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
+    return this.service.find(+id);
+  }
+
+  @Get('/find')
+  find(@Query('id') id: number) {
     return this.service.find(+id);
   }
 

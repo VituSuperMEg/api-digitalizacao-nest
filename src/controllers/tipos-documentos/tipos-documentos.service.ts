@@ -33,6 +33,13 @@ export class TiposDocumentosService {
     });
   }
 
+  listOptions(descricao: string) {
+    return this.db.tiposDocumentos.findMany({
+      where: { descricao: { contains: descricao, mode: 'insensitive' } },
+      take: 10,
+    });
+  }
+
   update(data: CreateTiposDocumentosDTO) {
     return this.db.tiposDocumentos.update({
       where: { id: data.id },

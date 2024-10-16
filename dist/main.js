@@ -1944,10 +1944,14 @@ let CredoresController = class CredoresController {
     constructor(service) {
         this.service = service;
     }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
+    }
     findAll() {
         return this.service.findAll();
     }
-    find(id) {
+    findOne(id) {
         return this.service.find(+id);
     }
     create(data) {
@@ -1962,6 +1966,13 @@ let CredoresController = class CredoresController {
 };
 exports.CredoresController = CredoresController;
 __decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CredoresController.prototype, "findPage", null);
+__decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -1973,7 +1984,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], CredoresController.prototype, "find", null);
+], CredoresController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
     (0, session_decorator_1.Session)(),
@@ -2064,6 +2075,7 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
 const app_util_1 = __webpack_require__(/*! src/services/app-util */ "./src/services/app-util.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let CredoresService = class CredoresService {
     constructor(db, responseService, appUtil) {
         this.db = db;
@@ -2083,6 +2095,12 @@ let CredoresService = class CredoresService {
             return;
         }
         return credor;
+    }
+    listOptions(descricao) {
+        return this.db.credores.findMany({
+            where: { nome: { contains: descricao, mode: 'insensitive' } },
+            take: 10,
+        });
     }
     async create(data) {
         const { agencia, banco, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, } = data;
@@ -2145,6 +2163,9 @@ let CredoresService = class CredoresService {
             where: { id: id },
         });
         return this.responseService.success({}, 'Registro Excluído com Sucesso');
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.credores, { page, limit });
     }
 };
 exports.CredoresService = CredoresService;
@@ -3484,7 +3505,13 @@ let TiposDocumentosController = class TiposDocumentosController {
         const pageNumber = parseInt(page, 10);
         return this.service.getPaginatedItems(pageNumber, 10);
     }
+    listOptions(descricao) {
+        return this.service.listOptions(descricao);
+    }
     findOne(id) {
+        return this.service.find(+id);
+    }
+    find(id) {
         return this.service.find(+id);
     }
     create(data) {
@@ -3512,12 +3539,26 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TiposDocumentosController.prototype, "findPage", null);
 __decorate([
+    (0, common_1.Get)('/options'),
+    __param(0, (0, common_1.Query)('descricao')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "listOptions", null);
+__decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], TiposDocumentosController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Get)('/find'),
+    __param(0, (0, common_1.Query)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TiposDocumentosController.prototype, "find", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
@@ -3624,6 +3665,12 @@ let TiposDocumentosService = class TiposDocumentosService {
             data: {
                 descricao: data.descricao.toUpperCase(),
             },
+        });
+    }
+    listOptions(descricao) {
+        return this.db.tiposDocumentos.findMany({
+            where: { descricao: { contains: descricao, mode: 'insensitive' } },
+            take: 10,
         });
     }
     update(data) {
