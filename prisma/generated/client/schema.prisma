@@ -89,7 +89,8 @@ model Credores {
   cidade                String?
   telefone              String
   telefone_complementar String?
-  banco                 String
+  bancos                Bancos         @relation(fields: [banco_id], references: [id])
+  banco_id              Int
   agencia               String
   conta                 String
   observacoes           String?
@@ -102,6 +103,15 @@ model Credores {
   alterado_por Int?
 
   @@map("credores")
+}
+
+model Bancos {
+  id        Int        @id @default(autoincrement())
+  descricao String
+  codigo    Int
+  Credores  Credores[]
+
+  @@map("bancos")
 }
 
 model Caixas {

@@ -22,6 +22,7 @@ import { CompartimentoModule } from './controllers/compartimento/compartimento.m
 import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/unidade-orcamentaria.module';
 import { TiposDocumentosModule } from './controllers/tipos-documentos/tipos-documentos.module';
 import { SetoresModule } from './controllers/setores/setores.module';
+import { BancosModule } from './controllers/bancos/bancos.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { SetoresModule } from './controllers/setores/setores.module';
     UnidadeOrcamentariaModule,
     TiposDocumentosModule,
     SetoresModule,
+    BancosModule,
   ],
   controllers: [],
   providers: [

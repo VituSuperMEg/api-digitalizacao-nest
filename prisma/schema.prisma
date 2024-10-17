@@ -1,19 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/client"
+  // output   = "./generated/client"
 }
-
-// datasource db {
-//   provider  = "postgresql"
-//   url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-//   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-// }
 
 datasource db {
   provider = "postgresql"
@@ -24,14 +12,14 @@ model Users {
   id           Int      @id @default(autoincrement())
   login        String
   senha        String
-  nome         String?
   ativo        String
   email        String   @unique
   telefone     String   @unique
   criado_em    DateTime @default(now())
   alterado_em  DateTime @default(now())
-  criado_por   Int?
+  nome         String?
   alterado_por Int?
+  criado_por   Int?
 
   @@map("users")
 }
@@ -40,10 +28,10 @@ model AnoMes {
   id           Int      @id @default(autoincrement())
   ano          String
   mes          String
-  criado_em    DateTime @default(now())
   alterado_em  DateTime @default(now())
-  criado_por   Int?
   alterado_por Int?
+  criado_em    DateTime @default(now())
+  criado_por   Int?
 
   @@map("ano_mes")
 }
@@ -53,11 +41,11 @@ model Salas {
   descricao     String
   criado_em     DateTime        @default(now())
   alterado_em   DateTime        @default(now())
-  Armario       Armario[]
-  Gaveta        Gaveta[]
-  Compartimento Compartimento[]
-  criado_por    Int?
   alterado_por  Int?
+  criado_por    Int?
+  Armario       Armario[]
+  Compartimento Compartimento[]
+  Gaveta        Gaveta[]
 
   @@map("salas")
 }
@@ -67,12 +55,12 @@ model Armario {
   descricao     String
   criado_em     DateTime        @default(now())
   alterado_em   DateTime        @default(now())
-  salas         Salas           @relation(fields: [salas_id], references: [id])
   salas_id      Int
-  Gaveta        Gaveta[]
-  Compartimento Compartimento[]
-  criado_por    Int?
   alterado_por  Int?
+  criado_por    Int?
+  salas         Salas           @relation(fields: [salas_id], references: [id])
+  Compartimento Compartimento[]
+  Gaveta        Gaveta[]
 
   @@map("armarios")
 }
@@ -89,19 +77,28 @@ model Credores {
   cidade                String?
   telefone              String
   telefone_complementar String?
-  banco                 String
   agencia               String
   conta                 String
   observacoes           String?
   criado_em             DateTime       @default(now())
   alterado_em           DateTime       @default(now())
+  alterado_por          Int?
+  criado_por            Int?
+  banco_id              Int
   CabDocumento          CabDocumento[]
+  bancos                Bancos         @relation(fields: [banco_id], references: [id])
   DetDocumento          DetDocumento[]
 
-  criado_por   Int?
-  alterado_por Int?
-
   @@map("credores")
+}
+
+model Bancos {
+  id        Int        @id @default(autoincrement())
+  descricao String
+  codigo    Int
+  Credores  Credores[]
+
+  @@map("bancos")
 }
 
 model Caixas {
@@ -109,9 +106,9 @@ model Caixas {
   descricao    String
   criado_em    DateTime       @default(now())
   alterado_em  DateTime       @default(now())
-  CabDocumento CabDocumento[]
-  criado_por   Int?
   alterado_por Int?
+  criado_por   Int?
+  CabDocumento CabDocumento[]
 
   @@map("caixas")
 }
@@ -121,9 +118,9 @@ model Prateleira {
   descricao    String
   criado_em    DateTime       @default(now())
   alterado_em  DateTime       @default(now())
-  CabDocumento CabDocumento[]
-  criado_por   Int?
   alterado_por Int?
+  criado_por   Int?
+  CabDocumento CabDocumento[]
 
   @@map("prateleira")
 }
@@ -134,11 +131,11 @@ model ContasExtras {
   codigo       Int
   exercicio    String
   orcamento    String
-  CabDocumento CabDocumento[]
-  criado_por   Int?
   alterado_por Int?
-  criado_em    DateTime       @default(now())
+  criado_por   Int?
   alterado_em  DateTime       @default(now())
+  criado_em    DateTime       @default(now())
+  CabDocumento CabDocumento[]
 
   @@map("contas_extras")
 }
@@ -161,7 +158,6 @@ model CabDocumento {
   dta_digita              DateTime?
   qtde_folhas             String?
   cod_suborgao            String?
-  credor                  Credores      @relation(fields: [credor_id], references: [id])
   credor_id               Int
   num_processo            String?
   num_empenho             String?
@@ -177,16 +173,17 @@ model CabDocumento {
   tipo_contrato           String?
   modalidade_contrato     String?
   data_empenho            DateTime?
-  caixas                  Caixas?       @relation(fields: [caixa_id], references: [id])
   caixa_id                Int?
-  prateleria              Prateleira?   @relation(fields: [prateleria_id], references: [id])
   prateleria_id           Int?
-  contas_extras           ContasExtras? @relation(fields: [contas_extra_id], references: [id])
   contas_extra_id         Int?
   criado_em               DateTime      @default(now())
   alterado_em             DateTime      @default(now())
-  criado_por              Int?
   alterado_por            Int?
+  criado_por              Int?
+  caixas                  Caixas?       @relation(fields: [caixa_id], references: [id])
+  contas_extras           ContasExtras? @relation(fields: [contas_extra_id], references: [id])
+  credor                  Credores      @relation(fields: [credor_id], references: [id])
+  prateleria              Prateleira?   @relation(fields: [prateleria_id], references: [id])
 
   @@map("cab_documento")
 }
@@ -199,9 +196,9 @@ model CentroCusto {
   ativo            String?   @default("S")
   criado_em        DateTime  @default(now())
   alterado_em      DateTime  @default(now())
-  Destino          Destino[]
-  criado_por       Int?
   alterado_por     Int?
+  criado_por       Int?
+  Destino          Destino[]
 
   @@map("centro_custo")
 }
@@ -209,15 +206,15 @@ model CentroCusto {
 model Gaveta {
   id            Int             @id @default(autoincrement())
   descricao     String
-  salas         Salas           @relation(fields: [sala_id], references: [id])
   sala_id       Int
-  armarios      Armario         @relation(fields: [armario_id], references: [id])
   armario_id    Int
-  Compartimento Compartimento[]
-  criado_por    Int?
   alterado_por  Int?
-  criado_em     DateTime        @default(now())
+  criado_por    Int?
   alterado_em   DateTime        @default(now())
+  criado_em     DateTime        @default(now())
+  Compartimento Compartimento[]
+  armarios      Armario         @relation(fields: [armario_id], references: [id])
+  salas         Salas           @relation(fields: [sala_id], references: [id])
 
   @@map("gaveta")
 }
@@ -225,16 +222,16 @@ model Gaveta {
 model Compartimento {
   id           Int      @id @default(autoincrement())
   descricao    String
-  salas        Salas    @relation(fields: [sala_id], references: [id])
   sala_id      Int
-  armarios     Armario  @relation(fields: [armario_id], references: [id])
   armario_id   Int
-  gavetas      Gaveta   @relation(fields: [gaveta_id], references: [id])
   gaveta_id    Int
-  criado_por   Int?
   alterado_por Int?
-  criado_em    DateTime @default(now())
+  criado_por   Int?
   alterado_em  DateTime @default(now())
+  criado_em    DateTime @default(now())
+  armarios     Armario  @relation(fields: [armario_id], references: [id])
+  gavetas      Gaveta   @relation(fields: [gaveta_id], references: [id])
+  salas        Salas    @relation(fields: [sala_id], references: [id])
 
   @@map("compartimento")
 }
@@ -248,10 +245,10 @@ model Orgaos {
   num_expediente            String
   criado_em                 DateTime                    @default(now())
   alterado_em               DateTime                    @default(now())
+  alterado_por              Int?
+  criado_por                Int?
   DespesaCategoriaEconomica DespesaCategoriaEconomica[]
   Destino                   Destino[]
-  criado_por                Int?
-  alterado_por              Int?
 
   @@map("orgaos")
 }
@@ -259,17 +256,17 @@ model Orgaos {
 model UnidadeOrcamentaria {
   id                        Int                         @id @default(autoincrement())
   descricao                 String
-  cnpj                      String                      @unique
   ativo                     String                      @default("S")
   criado_em                 DateTime                    @default(now())
   alterado_em               DateTime                    @default(now())
-  responsavel               String
-  cod_unidade_orcamentaria  String
+  alterado_por              Int?
+  criado_por                Int?
   cod_orgao                 String
+  cod_unidade_orcamentaria  String
+  responsavel               String
+  cnpj                      String                      @unique
   DespesaCategoriaEconomica DespesaCategoriaEconomica[]
   Destino                   Destino[]
-  criado_por                Int?
-  alterado_por              Int?
   Setores                   Setores[]
 
   @@map("unidades_orcamentaria")
@@ -280,15 +277,15 @@ model DespesaCategoriaEconomica {
   descricao             String
   cod_municipio         String
   exercicio             String
-  orgaos                Orgaos              @relation(fields: [cod_orgao], references: [id])
   cod_orgao             Int
-  unidades_orcamentaria UnidadeOrcamentaria @relation(fields: [cod_unid_orc], references: [id])
   cod_unid_orc          Int
   codigo_elmento        String
   criado_em             DateTime            @default(now())
   alterado_em           DateTime            @default(now())
-  criado_por            Int?
   alterado_por          Int?
+  criado_por            Int?
+  orgaos                Orgaos              @relation(fields: [cod_orgao], references: [id])
+  unidades_orcamentaria UnidadeOrcamentaria @relation(fields: [cod_unid_orc], references: [id])
 
   @@map("despesa_categoria_economica")
 }
@@ -314,24 +311,20 @@ model Entidade {
   fgts                  String
   criado_em             DateTime  @default(now())
   alterado_em           DateTime  @default(now())
-  Destino               Destino[]
-  criado_por            Int?
   alterado_por          Int?
+  criado_por            Int?
+  Destino               Destino[]
 
   @@map("entidade")
 }
 
 model Destino {
   id                   Int                 @id @default(autoincrement())
-  entidades            Entidade            @relation(fields: [cod_ent], references: [id])
   cod_ent              Int
-  centro_custo         CentroCusto         @relation(fields: [cod_cc], references: [id])
   cod_cc               Int
-  unidade_orcamenteria UnidadeOrcamentaria @relation(fields: [cod_und_ormt], references: [id])
   cod_und_ormt         Int
   desc_destino         String
   responsavel_destino  String
-  orgaos               Orgaos              @relation(fields: [cod_orgao], references: [id])
   cod_orgao            Int
   cd_unid              String
   exercicio            String
@@ -346,8 +339,12 @@ model Destino {
   competencia          String
   criado_em            DateTime            @default(now())
   alterado_em          DateTime            @default(now())
-  criado_por           Int?
   alterado_por         Int?
+  criado_por           Int?
+  centro_custo         CentroCusto         @relation(fields: [cod_cc], references: [id])
+  entidades            Entidade            @relation(fields: [cod_ent], references: [id])
+  orgaos               Orgaos              @relation(fields: [cod_orgao], references: [id])
+  unidade_orcamenteria UnidadeOrcamentaria @relation(fields: [cod_und_ormt], references: [id])
 
   @@map("destino")
 }
@@ -368,15 +365,15 @@ model DetDocumento {
   cod_doc            String
   path_doc           String
   qtde_paginas       String
-  credor             Credores @relation(fields: [credor_id], references: [id])
   credor_id          Int
   tipo_documento     String
   data_digitalizacao DateTime
   nome_arquivo       String
   criado_em          DateTime @default(now())
   alterado_em        DateTime @default(now())
-  criado_por         Int?
   alterado_por       Int?
+  criado_por         Int?
+  credor             Credores @relation(fields: [credor_id], references: [id])
 
   @@map("det_documento")
 }
@@ -386,8 +383,8 @@ model Estante {
   descricao    String
   criado_em    DateTime @default(now())
   alterado_em  DateTime @default(now())
-  criado_por   Int?
   alterado_por Int?
+  criado_por   Int?
 
   @@map("estante")
 }
@@ -395,12 +392,12 @@ model Estante {
 model Setores {
   id                      Int                 @id @default(autoincrement())
   descricao               String
-  unidade_orcamentaria    UnidadeOrcamentaria @relation(fields: [unidade_orcamentaria_id], references: [id])
   unidade_orcamentaria_id Int
   criado_em               DateTime            @default(now())
   alterado_em             DateTime            @default(now())
   criado_por              Int?
   alterado_por            Int?
+  unidade_orcamentaria    UnidadeOrcamentaria @relation(fields: [unidade_orcamentaria_id], references: [id])
 
   @@map("setores")
 }
@@ -413,8 +410,8 @@ model Grupo {
   patrimonio    String
   criado_em     DateTime @default(now())
   alterado_em   DateTime @default(now())
-  criado_por    Int?
   alterado_por  Int?
+  criado_por    Int?
 
   @@map("grupo")
 }

@@ -41,6 +41,7 @@ const compartimento_module_1 = __webpack_require__(/*! ./controllers/compartimen
 const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unidade_orcamentaria/unidade-orcamentaria.module */ "./src/controllers/unidade_orcamentaria/unidade-orcamentaria.module.ts");
 const tipos_documentos_module_1 = __webpack_require__(/*! ./controllers/tipos-documentos/tipos-documentos.module */ "./src/controllers/tipos-documentos/tipos-documentos.module.ts");
 const setores_module_1 = __webpack_require__(/*! ./controllers/setores/setores.module */ "./src/controllers/setores/setores.module.ts");
+const bancos_module_1 = __webpack_require__(/*! ./controllers/bancos/bancos.module */ "./src/controllers/bancos/bancos.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -64,6 +65,7 @@ exports.AppModule = AppModule = __decorate([
             unidade_orcamentaria_module_1.UnidadeOrcamentariaModule,
             tipos_documentos_module_1.TiposDocumentosModule,
             setores_module_1.SetoresModule,
+            bancos_module_1.BancosModule,
         ],
         controllers: [],
         providers: [
@@ -949,6 +951,142 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _c : Object])
 ], AuthService);
+
+
+/***/ }),
+
+/***/ "./src/controllers/bancos/bancos.controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/bancos/bancos.controller.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.BancosController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const bancos_service_1 = __webpack_require__(/*! ./bancos.service */ "./src/controllers/bancos/bancos.service.ts");
+let BancosController = class BancosController {
+    constructor(service) {
+        this.service = service;
+    }
+    find(id) {
+        return this.service.find(+id);
+    }
+    listOptions(descricao) {
+        return this.service.listOptions(descricao);
+    }
+};
+exports.BancosController = BancosController;
+__decorate([
+    (0, common_1.Get)('/find'),
+    __param(0, (0, common_1.Query)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], BancosController.prototype, "find", null);
+__decorate([
+    (0, common_1.Get)('/options'),
+    __param(0, (0, common_1.Query)('descricao')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BancosController.prototype, "listOptions", null);
+exports.BancosController = BancosController = __decorate([
+    (0, common_1.Controller)('api/v1/bancos'),
+    __metadata("design:paramtypes", [typeof (_a = typeof bancos_service_1.BancosServices !== "undefined" && bancos_service_1.BancosServices) === "function" ? _a : Object])
+], BancosController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/bancos/bancos.module.ts":
+/*!*************************************************!*\
+  !*** ./src/controllers/bancos/bancos.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.BancosModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const bancos_controller_1 = __webpack_require__(/*! ./bancos.controller */ "./src/controllers/bancos/bancos.controller.ts");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const bancos_service_1 = __webpack_require__(/*! ./bancos.service */ "./src/controllers/bancos/bancos.service.ts");
+let BancosModule = class BancosModule {
+};
+exports.BancosModule = BancosModule;
+exports.BancosModule = BancosModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [bancos_controller_1.BancosController],
+        providers: [bancos_service_1.BancosServices, prisma_service_1.PrismaService],
+    })
+], BancosModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/bancos/bancos.service.ts":
+/*!**************************************************!*\
+  !*** ./src/controllers/bancos/bancos.service.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.BancosServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+let BancosServices = class BancosServices {
+    constructor(db) {
+        this.db = db;
+    }
+    find(id) {
+        return this.db.bancos.findFirst({
+            where: { id: id },
+        });
+    }
+    listOptions(descricao) {
+        return this.db.bancos.findMany({
+            where: { descricao: { contains: descricao, mode: 'insensitive' } },
+            take: 10,
+        });
+    }
+};
+exports.BancosServices = BancosServices;
+exports.BancosServices = BancosServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+], BancosServices);
 
 
 /***/ }),
@@ -4458,7 +4596,7 @@ exports.EntidadesModule = EntidadesModule = __decorate([
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.paginate = void 0;
+exports.paginate = paginate;
 async function paginate(prismaModel, paginationParams = { page: 1, limit: 10 }, whereClause = {}, orderBy = {}) {
     const { page = 1, limit = 10 } = paginationParams;
     const skip = (page - 1) * limit;
@@ -4481,7 +4619,6 @@ async function paginate(prismaModel, paginationParams = { page: 1, limit: 10 }, 
         totalPages: Math.ceil(total / limit),
     };
 }
-exports.paginate = paginate;
 
 
 /***/ }),
@@ -4838,7 +4975,7 @@ module.exports = require("jsonwebtoken");
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it uses a non-standard name for the exports (exports).
 (() => {
 var exports = __webpack_exports__;
 /*!*********************!*\
