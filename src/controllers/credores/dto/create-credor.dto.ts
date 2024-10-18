@@ -9,8 +9,9 @@ export class CreateCredorDTO {
   cidade: string;
   telefone: string;
   telefone_complementar: string;
-  banco: string;
+  banco_id: number;
   agencia: string;
   conta: string;
   observacoes: string;
+  bairro: string;
 }
