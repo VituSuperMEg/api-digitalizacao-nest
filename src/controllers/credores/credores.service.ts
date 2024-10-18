@@ -40,7 +40,7 @@ export class CredoresService {
   async create(data: CreateCredorDTO) {
     const {
       agencia,
-      banco,
+      banco_id,
       cep,
       cidade,
       conta,
@@ -53,6 +53,7 @@ export class CredoresService {
       telefone,
       telefone_complementar,
       tipo_documento,
+      bairro,
     } = data;
 
     const cpfClear = this.appUtil.clearMask(cpf);
@@ -65,7 +66,7 @@ export class CredoresService {
     await this.db.credores.create({
       data: {
         agencia,
-        banco,
+        banco_id: +banco_id,
         cep: cepClear,
         cidade,
         conta,
@@ -75,6 +76,7 @@ export class CredoresService {
         nome,
         numero,
         observacoes,
+        bairro: bairro.toUpperCase(),
         telefone: telefoneClear,
         telefone_complementar: telefoneComplementarClear,
         tipo_documento,
@@ -88,7 +90,7 @@ export class CredoresService {
     const {
       id,
       agencia,
-      banco,
+      banco_id,
       cep,
       cidade,
       conta,
@@ -101,6 +103,7 @@ export class CredoresService {
       telefone,
       telefone_complementar,
       tipo_documento,
+      bairro,
     } = data;
 
     const cpfClear = this.appUtil.clearMask(cpf);
@@ -114,13 +117,14 @@ export class CredoresService {
       where: { id: id },
       data: {
         agencia,
-        banco,
+        banco_id: +banco_id,
         cep: cepClear,
         cidade,
         conta,
         cpf: cpfClear,
         email,
         logradouro,
+        bairro: bairro.toUpperCase(),
         nome,
         numero,
         observacoes,

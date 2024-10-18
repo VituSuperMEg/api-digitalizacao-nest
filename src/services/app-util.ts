@@ -36,4 +36,8 @@ export class AppUtil {
   clearMask(value: string): string {
     return value?.replace(/\D/g, '');
   }
+
+  formatarCpf(cpf: string): string {
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  }
 }

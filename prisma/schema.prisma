@@ -70,6 +70,7 @@ model Credores {
   nome                  String
   tipo_documento        String
   cpf                   String         @unique
+  bairro                String?
   logradouro            String?
   numero                String?
   cep                   String

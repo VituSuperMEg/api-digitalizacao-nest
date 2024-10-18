@@ -2241,7 +2241,7 @@ let CredoresService = class CredoresService {
         });
     }
     async create(data) {
-        const { agencia, banco, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, } = data;
+        const { agencia, banco_id, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, bairro, } = data;
         const cpfClear = this.appUtil.clearMask(cpf);
         const telefoneClear = this.appUtil.clearMask(telefone);
         const telefoneComplementarClear = this.appUtil.clearMask(telefone_complementar);
@@ -2249,7 +2249,7 @@ let CredoresService = class CredoresService {
         await this.db.credores.create({
             data: {
                 agencia,
-                banco,
+                banco_id: +banco_id,
                 cep: cepClear,
                 cidade,
                 conta,
@@ -2259,6 +2259,7 @@ let CredoresService = class CredoresService {
                 nome,
                 numero,
                 observacoes,
+                bairro: bairro.toUpperCase(),
                 telefone: telefoneClear,
                 telefone_complementar: telefoneComplementarClear,
                 tipo_documento,
@@ -2268,7 +2269,7 @@ let CredoresService = class CredoresService {
         return this.responseService.success({}, 'Registro criado com Sucesso');
     }
     async update(data) {
-        const { id, agencia, banco, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, } = data;
+        const { id, agencia, banco_id, cep, cidade, conta, cpf, email, logradouro, nome, numero, observacoes, telefone, telefone_complementar, tipo_documento, bairro, } = data;
         const cpfClear = this.appUtil.clearMask(cpf);
         const telefoneClear = this.appUtil.clearMask(telefone);
         const telefoneComplementarClear = this.appUtil.clearMask(telefone_complementar);
@@ -2277,13 +2278,14 @@ let CredoresService = class CredoresService {
             where: { id: id },
             data: {
                 agencia,
-                banco,
+                banco_id: +banco_id,
                 cep: cepClear,
                 cidade,
                 conta,
                 cpf: cpfClear,
                 email,
                 logradouro,
+                bairro: bairro.toUpperCase(),
                 nome,
                 numero,
                 observacoes,
@@ -4722,6 +4724,9 @@ let AppUtil = class AppUtil {
     }
     clearMask(value) {
         return value?.replace(/\D/g, '');
+    }
+    formatarCpf(cpf) {
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     }
 };
 exports.AppUtil = AppUtil;

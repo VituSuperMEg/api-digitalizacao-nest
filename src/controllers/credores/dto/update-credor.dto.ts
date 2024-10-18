@@ -10,7 +10,7 @@ export class UpdateCredorDTO {
   cidade: string;
   telefone: string;
   telefone_complementar: string;
-  banco: string;
+  banco_id: number;
   agencia: string;
   conta: string;
   observacoes: string;
@@ -18,4 +18,5 @@ export class UpdateCredorDTO {
   criado_por: number;
   criado_em: Date;
   alterado_em: Date;
+  bairro: string;
 }
