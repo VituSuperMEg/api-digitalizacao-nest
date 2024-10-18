@@ -3168,6 +3168,10 @@ let SalasController = class SalasController {
     constructor(service) {
         this.service = service;
     }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.service.getPaginatedItems(pageNumber, 10);
+    }
     findAll() {
         return this.service.findAll();
     }
@@ -3185,6 +3189,13 @@ let SalasController = class SalasController {
     }
 };
 exports.SalasController = SalasController;
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SalasController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(),
     (0, session_decorator_1.Session)(),
@@ -3216,7 +3227,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SalasController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)('remove/:id'),
+    (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -3286,6 +3297,7 @@ exports.SalasServices = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let SalasServices = class SalasServices {
     constructor(db, responseService) {
         this.db = db;
@@ -3345,6 +3357,9 @@ let SalasServices = class SalasServices {
         catch (error) {
             this.responseService.error('Erro ao tentar excluir a sala', error);
         }
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.salas, { page, limit });
     }
 };
 exports.SalasServices = SalasServices;

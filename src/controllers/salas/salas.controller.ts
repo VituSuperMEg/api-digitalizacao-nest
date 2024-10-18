@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { SalasServices } from './salas.service';
@@ -18,6 +19,12 @@ import { Session } from 'src/customs/decorator/session.decorator';
 @UseGuards(AuthAndDatabaseGuard)
 export class SalasController {
   constructor(private readonly service: SalasServices) {}
+
+  @Get('/page')
+  findPage(@Query('page') page: string) {
+    const pageNumber = parseInt(page, 10);
+    return this.service.getPaginatedItems(pageNumber, 10);
+  }
 
   @Get()
   @Session()
@@ -38,7 +45,7 @@ export class SalasController {
   update(@Body() data: UpdateSalasDTO) {
     return this.service.update(data);
   }
-  @Delete('remove/:id')
+  @Delete(':id')
   remove(@Param('id') id: number) {
     return this.service.remove(+id);
   }

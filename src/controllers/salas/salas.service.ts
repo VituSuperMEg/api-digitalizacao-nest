@@ -3,6 +3,7 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 import { CreateSalasDTO } from './dto/create-salas.dto';
 import { UpdateSalasDTO } from './dto/update-salas.dto';
+import { paginate } from 'src/helpers/pagination.helper';
 
 @Injectable()
 export class SalasServices {
@@ -69,5 +70,9 @@ export class SalasServices {
     } catch (error) {
       this.responseService.error('Erro ao tentar excluir a sala', error);
     }
+  }
+
+  async getPaginatedItems(page: number, limit: number) {
+    return await paginate(this.db.salas, { page, limit });
   }
 }
