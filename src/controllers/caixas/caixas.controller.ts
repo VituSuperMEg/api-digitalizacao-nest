@@ -6,14 +6,24 @@ import {
   Param,
   Post,
   Put,
+  Query,
+  UseGuards,
 } from '@nestjs/common';
 import { CaixasServices } from './caixas.service';
 import { CreateCaixasDTO } from './dto/create-caixas.dto';
 import { UpdateCaixasDTO } from './dto/update-caixas.dto';
+import { AuthAndDatabaseGuard } from 'src/config/guards/auth.guards';
 
 @Controller('api/v1/caixas')
+@UseGuards(AuthAndDatabaseGuard)
 export class CaixasController {
   constructor(private readonly services: CaixasServices) {}
+
+  @Get('/page')
+  findPage(@Query('page') page: string) {
+    const pageNumber = parseInt(page, 10);
+    return this.services.getPaginatedItems(pageNumber, 10);
+  }
 
   @Get()
   findAll() {

@@ -877,7 +877,7 @@ exports.AuthModule = AuthModule = __decorate([
             jwt_1.JwtModule.register({
                 global: true,
                 secret: constants_1.jwtConstants.secret,
-                signOptions: { expiresIn: '3600s' },
+                signOptions: { expiresIn: '600000s' },
             }),
         ],
         controllers: [auth_controller_1.AuthController],
@@ -1117,9 +1117,14 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const caixas_service_1 = __webpack_require__(/*! ./caixas.service */ "./src/controllers/caixas/caixas.service.ts");
 const create_caixas_dto_1 = __webpack_require__(/*! ./dto/create-caixas.dto */ "./src/controllers/caixas/dto/create-caixas.dto.ts");
 const update_caixas_dto_1 = __webpack_require__(/*! ./dto/update-caixas.dto */ "./src/controllers/caixas/dto/update-caixas.dto.ts");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
 let CaixasController = class CaixasController {
     constructor(services) {
         this.services = services;
+    }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.services.getPaginatedItems(pageNumber, 10);
     }
     findAll() {
         return this.services.findAll();
@@ -1138,6 +1143,13 @@ let CaixasController = class CaixasController {
     }
 };
 exports.CaixasController = CaixasController;
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CaixasController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -1173,6 +1185,7 @@ __decorate([
 ], CaixasController.prototype, "remove", null);
 exports.CaixasController = CaixasController = __decorate([
     (0, common_1.Controller)('api/v1/caixas'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
     __metadata("design:paramtypes", [typeof (_a = typeof caixas_service_1.CaixasServices !== "undefined" && caixas_service_1.CaixasServices) === "function" ? _a : Object])
 ], CaixasController);
 
@@ -1234,6 +1247,7 @@ exports.CaixasServices = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
 const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
 let CaixasServices = class CaixasServices {
     constructor(db, responseService) {
         this.db = db;
@@ -1282,6 +1296,9 @@ let CaixasServices = class CaixasServices {
             where: { id: id },
         });
         this.responseService.success({}, 'Registro Excluído com Sucesso');
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.caixas, { page, limit });
     }
 };
 exports.CaixasServices = CaixasServices;

@@ -3,6 +3,7 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { ResponseService } from 'src/services/response-message';
 import { CreateCaixasDTO } from './dto/create-caixas.dto';
 import { UpdateCaixasDTO } from './dto/update-caixas.dto';
+import { paginate } from 'src/helpers/pagination.helper';
 
 @Injectable()
 export class CaixasServices {
@@ -56,5 +57,9 @@ export class CaixasServices {
       where: { id: id },
     });
     this.responseService.success({}, 'Registro Excluído com Sucesso');
+  }
+
+  async getPaginatedItems(page: number, limit: number) {
+    return await paginate(this.db.caixas, { page, limit });
   }
 }
