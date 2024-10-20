@@ -42,6 +42,7 @@ const unidade_orcamentaria_module_1 = __webpack_require__(/*! ./controllers/unid
 const tipos_documentos_module_1 = __webpack_require__(/*! ./controllers/tipos-documentos/tipos-documentos.module */ "./src/controllers/tipos-documentos/tipos-documentos.module.ts");
 const setores_module_1 = __webpack_require__(/*! ./controllers/setores/setores.module */ "./src/controllers/setores/setores.module.ts");
 const bancos_module_1 = __webpack_require__(/*! ./controllers/bancos/bancos.module */ "./src/controllers/bancos/bancos.module.ts");
+const estantes_module_1 = __webpack_require__(/*! ./controllers/Estantes/estantes.module */ "./src/controllers/Estantes/estantes.module.ts");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -66,6 +67,7 @@ exports.AppModule = AppModule = __decorate([
             tipos_documentos_module_1.TiposDocumentosModule,
             setores_module_1.SetoresModule,
             bancos_module_1.BancosModule,
+            estantes_module_1.EstanteModule,
         ],
         controllers: [],
         providers: [
@@ -291,6 +293,257 @@ exports.jwtConstants = {
     secret: '5bfca4a1474397f842accb61211ab197',
 };
 exports.APIV1 = '/api/v1/';
+
+
+/***/ }),
+
+/***/ "./src/controllers/Estantes/dto/create-estante.dto.ts":
+/*!************************************************************!*\
+  !*** ./src/controllers/Estantes/dto/create-estante.dto.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateEstantesDTO = void 0;
+class CreateEstantesDTO {
+}
+exports.CreateEstantesDTO = CreateEstantesDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/Estantes/dto/update-estante.dto.ts":
+/*!************************************************************!*\
+  !*** ./src/controllers/Estantes/dto/update-estante.dto.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateEstantesDTO = void 0;
+class UpdateEstantesDTO {
+}
+exports.UpdateEstantesDTO = UpdateEstantesDTO;
+
+
+/***/ }),
+
+/***/ "./src/controllers/Estantes/estantes.controller.ts":
+/*!*********************************************************!*\
+  !*** ./src/controllers/Estantes/estantes.controller.ts ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a, _b, _c;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EstantesController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_guards_1 = __webpack_require__(/*! src/config/guards/auth.guards */ "./src/config/guards/auth.guards.ts");
+const estantes_service_1 = __webpack_require__(/*! ./estantes.service */ "./src/controllers/Estantes/estantes.service.ts");
+const create_estante_dto_1 = __webpack_require__(/*! ./dto/create-estante.dto */ "./src/controllers/Estantes/dto/create-estante.dto.ts");
+const update_estante_dto_1 = __webpack_require__(/*! ./dto/update-estante.dto */ "./src/controllers/Estantes/dto/update-estante.dto.ts");
+let EstantesController = class EstantesController {
+    constructor(services) {
+        this.services = services;
+    }
+    findPage(page) {
+        const pageNumber = parseInt(page, 10);
+        return this.services.getPaginatedItems(pageNumber, 10);
+    }
+    findAll() {
+        return this.services.findAll();
+    }
+    find(id) {
+        return this.services.find(+id);
+    }
+    create(data) {
+        return this.services.create(data);
+    }
+    update(data) {
+        return this.services.update(data);
+    }
+    remove(id) {
+        return this.services.remove(+id);
+    }
+};
+exports.EstantesController = EstantesController;
+__decorate([
+    (0, common_1.Get)('/page'),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "findPage", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "find", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_estante_dto_1.CreateEstantesDTO !== "undefined" && create_estante_dto_1.CreateEstantesDTO) === "function" ? _b : Object]),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [typeof (_c = typeof update_estante_dto_1.UpdateEstantesDTO !== "undefined" && update_estante_dto_1.UpdateEstantesDTO) === "function" ? _c : Object]),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], EstantesController.prototype, "remove", null);
+exports.EstantesController = EstantesController = __decorate([
+    (0, common_1.Controller)('api/v1/estantes'),
+    (0, common_1.UseGuards)(auth_guards_1.AuthAndDatabaseGuard),
+    __metadata("design:paramtypes", [typeof (_a = typeof estantes_service_1.EstantesServices !== "undefined" && estantes_service_1.EstantesServices) === "function" ? _a : Object])
+], EstantesController);
+
+
+/***/ }),
+
+/***/ "./src/controllers/Estantes/estantes.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/controllers/Estantes/estantes.module.ts ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EstanteModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const estantes_controller_1 = __webpack_require__(/*! ./estantes.controller */ "./src/controllers/Estantes/estantes.controller.ts");
+const estantes_service_1 = __webpack_require__(/*! ./estantes.service */ "./src/controllers/Estantes/estantes.service.ts");
+let EstanteModule = class EstanteModule {
+};
+exports.EstanteModule = EstanteModule;
+exports.EstanteModule = EstanteModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [estantes_controller_1.EstantesController],
+        providers: [estantes_service_1.EstantesServices, prisma_service_1.PrismaService, response_message_1.ResponseService],
+    })
+], EstanteModule);
+
+
+/***/ }),
+
+/***/ "./src/controllers/Estantes/estantes.service.ts":
+/*!******************************************************!*\
+  !*** ./src/controllers/Estantes/estantes.service.ts ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a, _b;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EstantesServices = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_service_1 = __webpack_require__(/*! src/services/prisma/prisma.service */ "./src/services/prisma/prisma.service.ts");
+const response_message_1 = __webpack_require__(/*! src/services/response-message */ "./src/services/response-message.ts");
+const pagination_helper_1 = __webpack_require__(/*! src/helpers/pagination.helper */ "./src/helpers/pagination.helper.ts");
+let EstantesServices = class EstantesServices {
+    constructor(db, responseService) {
+        this.db = db;
+        this.responseService = responseService;
+    }
+    findAll() {
+        return this.db.estante.findMany();
+    }
+    find(id) {
+        return this.db.estante.findFirst({
+            where: { id: id },
+        });
+    }
+    async create(data) {
+        try {
+            await this.db.estante.create({
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    criado_por: global.SESSION.id,
+                },
+            });
+            this.responseService.success({}, 'Registro Criado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível criar a caixa', error);
+        }
+    }
+    async update(data) {
+        try {
+            await this.db.estante.update({
+                where: { id: data.id },
+                data: {
+                    descricao: data.descricao.toUpperCase(),
+                    alterado_por: global.SESSION.id,
+                    alterado_em: new Date(),
+                },
+            });
+            this.responseService.success({}, 'Registro Atualizado com sucesso');
+        }
+        catch (error) {
+            this.responseService.error('Não foi possível atualizar a caixa', error);
+        }
+    }
+    async remove(id) {
+        await this.db.estante.delete({
+            where: { id: id },
+        });
+        this.responseService.success({}, 'Registro Excluído com Sucesso');
+    }
+    async getPaginatedItems(page, limit) {
+        return await (0, pagination_helper_1.paginate)(this.db.estante, { page, limit });
+    }
+};
+exports.EstantesServices = EstantesServices;
+exports.EstantesServices = EstantesServices = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, typeof (_b = typeof response_message_1.ResponseService !== "undefined" && response_message_1.ResponseService) === "function" ? _b : Object])
+], EstantesServices);
 
 
 /***/ }),

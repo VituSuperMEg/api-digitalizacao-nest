@@ -23,6 +23,7 @@ import { UnidadeOrcamentariaModule } from './controllers/unidade_orcamentaria/un
 import { TiposDocumentosModule } from './controllers/tipos-documentos/tipos-documentos.module';
 import { SetoresModule } from './controllers/setores/setores.module';
 import { BancosModule } from './controllers/bancos/bancos.module';
+import { EstanteModule } from './controllers/Estantes/estantes.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { BancosModule } from './controllers/bancos/bancos.module';
     TiposDocumentosModule,
     SetoresModule,
     BancosModule,
+    EstanteModule,
   ],
   controllers: [],
   providers: [
